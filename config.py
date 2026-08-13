@@ -100,7 +100,44 @@ EUROSTAT_SERIES = {
         "seasonal_adjustment": "NSA",
         "calculation": "YoY",
         "source_series_code": "prc_hicp_manr.CP00",
-    }
+    },
+    "UNEMPLOYMENT_RATE_M": {
+        "dataset": "une_rt_m",
+        "params": {"freq": "M", "s_adj": "SA", "age": "TOTAL", "unit": "PC_ACT", "sex": "T"},
+        # Eurostat currently returns no EA19/EA20 aggregate for this exact filter.
+        "geos": ["DE", "FR", "IT", "ES"],
+        "indicator_name_zh": "月度失业率",
+        "indicator_name_en": "Monthly unemployment rate",
+        "unit": "%",
+        "frequency": "M",
+        "seasonal_adjustment": "SA",
+        "calculation": "level",
+        "source_series_code": "une_rt_m.M.SA.TOTAL.PC_ACT.T",
+    },
+    "INDUSTRIAL_PRODUCTION_INDEX_M": {
+        "dataset": "sts_inpr_m",
+        "params": {"freq": "M", "indic_bt": "PRD", "nace_r2": "B-D", "s_adj": "SCA", "unit": "I21"},
+        "geos": ["EA20", "DE", "FR", "IT", "ES"],
+        "indicator_name_zh": "工业生产指数",
+        "indicator_name_en": "Industrial production index",
+        "unit": "index (2021=100)",
+        "frequency": "M",
+        "seasonal_adjustment": "SCA",
+        "calculation": "level",
+        "source_series_code": "sts_inpr_m.M.PRD.B-D.SCA.I21",
+    },
+    "GDP_REAL_GROWTH_YOY_Q": {
+        "dataset": "namq_10_gdp",
+        "params": {"freq": "Q", "unit": "CLV_PCH_SM", "s_adj": "SCA", "na_item": "B1GQ"},
+        "geos": ["EA20", "DE", "FR", "IT", "ES"],
+        "indicator_name_zh": "季度实际GDP同比增速",
+        "indicator_name_en": "Quarterly real GDP growth YoY",
+        "unit": "%",
+        "frequency": "Q",
+        "seasonal_adjustment": "SCA",
+        "calculation": "YoY",
+        "source_series_code": "namq_10_gdp.Q.CLV_PCH_SM.SCA.B1GQ",
+    },
 }
 
 ECB_SERIES = {
@@ -346,6 +383,39 @@ INDICATOR_MAP = {
             {"organization": "Eurostat", "dataset": "HICP monthly annual rate of change", "source_series_code": "prc_hicp_manr.CP00"},
             {"organization": "FRED", "dataset": "Federal Reserve Economic Data (derived from CPIAUCSL)", "source_series_code": "CPIAUCSL.YOY"},
             {"organization": "National Bureau of Statistics of China", "dataset": "National Bureau of Statistics monthly data (aligned)", "source_series_code": "NBS.CPI.YOY.M.ALIGNED"},
+        ],
+    },
+    "UNEMPLOYMENT_RATE_M": {
+        "indicator_name_zh": "月度失业率",
+        "indicator_name_en": "Monthly unemployment rate",
+        "unit": "%",
+        "frequency": "M",
+        "seasonal_adjustment": "SA",
+        "calculation": "level",
+        "sources": [
+            {"organization": "Eurostat", "dataset": "Unemployment by sex and age - monthly data", "source_series_code": "une_rt_m.M.SA.TOTAL.PC_ACT.T"},
+        ],
+    },
+    "INDUSTRIAL_PRODUCTION_INDEX_M": {
+        "indicator_name_zh": "工业生产指数",
+        "indicator_name_en": "Industrial production index",
+        "unit": "index (2021=100)",
+        "frequency": "M",
+        "seasonal_adjustment": "SCA",
+        "calculation": "level",
+        "sources": [
+            {"organization": "Eurostat", "dataset": "Production in industry - monthly data", "source_series_code": "sts_inpr_m.M.PRD.B-D.SCA.I21"},
+        ],
+    },
+    "GDP_REAL_GROWTH_YOY_Q": {
+        "indicator_name_zh": "季度实际GDP同比增速",
+        "indicator_name_en": "Quarterly real GDP growth YoY",
+        "unit": "%",
+        "frequency": "Q",
+        "seasonal_adjustment": "SCA",
+        "calculation": "YoY",
+        "sources": [
+            {"organization": "Eurostat", "dataset": "GDP and main components - quarterly data", "source_series_code": "namq_10_gdp.Q.CLV_PCH_SM.SCA.B1GQ"},
         ],
     },
     "EUR_USD_EXCHANGE_RATE_D": {

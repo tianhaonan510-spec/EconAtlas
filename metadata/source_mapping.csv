@@ -25,6 +25,9 @@ OECD,Prices: Consumer prices,DF_PRICES_ALL.CPI.GY,CPI_YOY_M
 Eurostat,HICP monthly annual rate of change,prc_hicp_manr.CP00,CPI_YOY_M
 FRED,Federal Reserve Economic Data (derived from CPIAUCSL),CPIAUCSL.YOY,CPI_YOY_M
 National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.CPI.YOY.M.ALIGNED,CPI_YOY_M
+Eurostat,Unemployment by sex and age - monthly data,une_rt_m.M.SA.TOTAL.PC_ACT.T,UNEMPLOYMENT_RATE_M
+Eurostat,Production in industry - monthly data,sts_inpr_m.M.PRD.B-D.SCA.I21,INDUSTRIAL_PRODUCTION_INDEX_M
+Eurostat,GDP and main components - quarterly data,namq_10_gdp.Q.CLV_PCH_SM.SCA.B1GQ,GDP_REAL_GROWTH_YOY_Q
 ECB,Euro foreign exchange reference rates,EXR.D.USD.EUR.SP00.A,EUR_USD_EXCHANGE_RATE_D
 BIS,Exchange rates,WS_XRU.D,EXCHANGE_RATE_USD_D
 ECB,Euro foreign exchange reference rates (inverted),EXR.D.USD.EUR.SP00.A.INV,EXCHANGE_RATE_USD_D

@@ -17,7 +17,12 @@ from config import DATA_CLEAN, DATA_RAW, METADATA_DIR
 from quality.check_quality import run_quality_checks
 from quality.gates import run_quality_gates
 from scripts.build_aligned_derived_sources import build_aligned_derived_sources
-from standardizer.standardize import standardize_worldbank
+from standardizer.standardize import (
+    build_country_master,
+    build_indicator_master,
+    build_source_mapping,
+    standardize_worldbank,
+)
 from storage.database import init_db
 
 
@@ -183,6 +188,9 @@ def run_full_pipeline(force_refresh: bool = False, skip_fred: bool = False, skip
 
 
 def run_merge_only():
+    build_country_master()
+    build_indicator_master()
+    build_source_mapping()
     build_aligned_derived_sources()
     merge_standardized_sources()
     run_quality_checks()
@@ -240,7 +248,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
 
 

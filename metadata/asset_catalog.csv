@@ -38,12 +38,15 @@ IMPORTS_GROWTH_A,进口实际增速,A,extended,具备一定广度或多源能力
 TAX_REVENUE_GDP_A,税收收入占GDP比重,A,extended,具备一定广度或多源能力，仍需增强,134,0,134,14,1,2015,2024
 BROAD_MONEY_GDP_A,广义货币占GDP比重,A,extended,具备一定广度或多源能力，仍需增强,118,0,118,13,1,2015,2024
 EXCHANGE_RATE_USD_D,本币兑美元汇率,D,extended,具备一定广度或多源能力，仍需增强,32350,0,32350,11,1,2015-01-01,2026-06-02
+GDP_REAL_GROWTH_YOY_Q,季度实际GDP同比增速,Q,extended,具备一定广度或多源能力，仍需增强,230,0,230,5,1,2015-Q1,2026-Q2
+INDUSTRIAL_PRODUCTION_INDEX_M,工业生产指数,M,extended,具备一定广度或多源能力，仍需增强,690,0,690,5,1,2015-01,2026-06
 EXCHANGE_RATE_USD_A,本币兑美元汇率,A,insufficient,缺少有效历史观测,0,0,0,0,0,,
 EXCHANGE_RATE_USD_M,本币兑美元汇率,M,insufficient,缺少有效历史观测,0,0,0,0,0,,
 INDUSTRIAL_OUTPUT_YOY_A,工业生产同比,A,insufficient,缺少有效历史观测,0,0,0,0,0,,
 INDUSTRIAL_OUTPUT_YOY_M,工业生产同比,M,insufficient,缺少有效历史观测,0,0,0,0,0,,
 PPI_YOY_A,生产者价格指数同比,A,insufficient,缺少有效历史观测,0,0,0,0,0,,
 PPI_YOY_M,生产者价格指数同比,M,insufficient,缺少有效历史观测,0,0,0,0,0,,
+UNEMPLOYMENT_RATE_M,月度失业率,M,specialized,国家专属或低覆盖指标,552,0,552,4,1,2015-01,2026-06
 CN_CPI_YOY_M,中国居民消费价格指数同比,M,specialized,国家专属或低覆盖指标,12,0,12,1,1,2024-01,2024-12
 CN_INDUSTRIAL_VALUE_ADDED_YOY_M,中国规模以上工业增加值同比,M,specialized,国家专属或低覆盖指标,11,0,11,1,1,2024-02,2024-12
 CN_PPI_YOY_M,中国工业生产者出厂价格指数同比,M,specialized,国家专属或低覆盖指标,12,0,12,1,1,2024-01,2024-12

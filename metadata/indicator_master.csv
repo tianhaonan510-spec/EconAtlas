@@ -10,6 +10,9 @@ RESERVES_USD_A,外汇储备,Total reserves,current USD,A,NSA,level,1
 GOV_DEBT_GDP_A,政府债务占GDP比重,"Central government debt, total",% of GDP,A,NSA,level,2
 CURRENT_ACCOUNT_GDP_A,经常账户余额占GDP比重,Current account balance,% of GDP,A,NSA,level,2
 CPI_YOY_M,居民消费价格指数同比,Consumer Price Index YoY,%,M,NSA,YoY,4
+UNEMPLOYMENT_RATE_M,月度失业率,Monthly unemployment rate,%,M,SA,level,1
+INDUSTRIAL_PRODUCTION_INDEX_M,工业生产指数,Industrial production index,index (2021=100),M,SCA,level,1
+GDP_REAL_GROWTH_YOY_Q,季度实际GDP同比增速,Quarterly real GDP growth YoY,%,Q,SCA,YoY,1
 EUR_USD_EXCHANGE_RATE_D,欧元兑美元参考汇率,Euro foreign exchange reference rate: USD,USD per EUR,D,NSA,level,1
 EXCHANGE_RATE_USD_D,本币兑美元汇率,Exchange rates against USD,local currency per USD,D,NSA,level,2
 GDP_CURRENT_LCU_A,本币计价名义GDP,Nominal GDP in local currency,current LCU,A,NSA,level,2

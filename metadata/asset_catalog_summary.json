@@ -1,10 +1,10 @@
 {
-  "registered_indicator_count": 70,
-  "observed_indicator_count": 61,
+  "registered_indicator_count": 73,
+  "observed_indicator_count": 64,
   "tiers": {
-    "extended": 22,
+    "extended": 24,
     "core": 17,
-    "specialized": 16,
+    "specialized": 17,
     "pending": 9,
     "insufficient": 6
   },
