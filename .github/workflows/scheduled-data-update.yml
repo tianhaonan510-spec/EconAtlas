@@ -1,0 +1,119 @@
+name: EconAtlas Scheduled Data Update
+
+on:
+  schedule:
+    # GitHub cron uses UTC: 01:20 UTC = 09:20 Asia/Shanghai.
+    - cron: "20 1 * * 1"
+  workflow_dispatch:
+    inputs:
+      force_refresh:
+        description: "Force downloading all online data sources"
+        required: true
+        default: true
+        type: boolean
+
+concurrency:
+  group: econatlas-data-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      TZ: Asia/Shanghai
+      FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+      SMTP_TO: ${{ secrets.SMTP_TO }}
+      SMTP_USE_SSL: ${{ secrets.SMTP_USE_SSL }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        id: tests
+        continue-on-error: true
+        run: python -m unittest discover -s tests -v
+
+      - name: Record test failure
+        if: steps.tests.outcome != 'success'
+        run: |
+          python -c 'import json; from datetime import datetime; from pathlib import Path; Path("metadata/update_status.json").write_text(json.dumps({"status":"failed","started_at":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),"finished_at":datetime.now().strftime("%Y-%m-%d %H:%M:%S"),"duration_seconds":0,"message":"Automated tests failed before data refresh."}, ensure_ascii=False, indent=2), encoding="utf-8")'
+
+      - name: Refresh data and enforce quality gates
+        if: steps.tests.outcome == 'success'
+        id: refresh
+        shell: bash
+        run: |
+          set +e
+          force_flag="--force-refresh"
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.force_refresh }}" != "true" ]]; then
+            force_flag=""
+          fi
+          python scripts/scheduled_update.py ${force_flag} --skip-benchmark
+          exit_code=$?
+          if [[ "${exit_code}" == "0" ]]; then
+            python scripts/classify_data_assets.py
+            python scripts/audit_data_assets.py
+            exit_code=$?
+          fi
+          echo "exit_code=${exit_code}" >> "${GITHUB_OUTPUT}"
+          exit 0
+
+      - name: Commit verified data snapshot
+        if: steps.tests.outcome == 'success' && steps.refresh.outputs.exit_code == '0'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data_raw data_clean metadata audit
+          if git diff --cached --quiet; then
+            echo "No verified data changes to commit."
+          else
+            git commit -m "data: automated verified snapshot $(date +'%Y-%m-%d')"
+            git push
+          fi
+
+      - name: Send update notification
+        if: always()
+        continue-on-error: true
+        run: python scripts/notify_update.py
+
+      - name: Upload quality and status reports
+        if: always()
+        uses: actions/upload-artifact@v5
+        with:
+          name: econatlas-update-${{ github.run_id }}
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            metadata/update_status.json
+            metadata/run_manifest.json
+            data_clean/quality_gate.json
+            data_clean/quality_report.csv
+            data_clean/quality_coverage_report.csv
+            audit/DATA_AUDIT.md
+            logs/scheduled_update.log
+
+      - name: Fail workflow when refresh failed
+        if: steps.tests.outcome != 'success' || steps.refresh.outputs.exit_code != '0'
+        run: exit 1

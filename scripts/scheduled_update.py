@@ -49,7 +49,7 @@ def data_summary() -> dict:
     data_file = DATA_CLEAN / "macro_observations.csv"
     if not data_file.exists():
         return {"data_file_exists": False}
-    df = pd.read_csv(data_file, encoding="utf-8-sig")
+    df = pd.read_csv(data_file, encoding="utf-8-sig", low_memory=False)
     return {
         "data_file_exists": True,
         "row_count": int(len(df)),

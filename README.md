@@ -5,8 +5,8 @@ EconAtlas 面向“全球宏观经济指标数据要素采集与结构化服务�
 ## 项目能力概览
 
 - 已接入 8 类数据源：World Bank、IMF WEO、FRED、OECD、Eurostat、ECB、BIS、中国国家统计局样例数据
-- 已沉淀 61 个标准指标、18 个国家（地区）、66,002 条观测值
-- 支持年频、月频、日频数据统一查询
+- 已沉淀 64 个有数据指标、18 个国家（地区）、65,578 条有效观测值
+- 支持年频、季频、月频、日频数据统一查询
 - 支持标准 JSON 输出、批量查询、多来源一致性分析、风险预警、智能报告和资产评级
 - 支持半自动指标对齐审核，当前已生成 82 条候选关系，均为高可信且已确认
 
@@ -130,7 +130,25 @@ metadata/alignment_candidates.csv
 
 候选结果包含来源机构、来源数据集、原始指标代码、正式标准指标、候选标准指标、匹配得分、置信等级、推荐理由、审核状态、覆盖国家数量和观测值数量等字段。当前版本共生成 82 条候选关系，全部为高可信且已确认。
 
-## 定时更新与调度
+## 云端定时更新与通知
+
+仓库已提供 `.github/workflows/scheduled-data-update.yml`，默认每周一北京时间 09:20 在 GitHub Actions 自动执行，也支持在 Actions 页面手动触发。云端任务依次完成自动测试、官方数据刷新、质量门禁、SQLite 重建、质量报告归档和成功快照提交；任一数据质量门禁失败时不会提交数据。
+
+在 GitHub 仓库的 `Settings → Secrets and variables → Actions` 中按需配置以下 Secrets：
+
+- 飞书通知：`FEISHU_WEBHOOK_URL`（飞书群自定义机器人的 Webhook 地址）
+- 邮件通知：`SMTP_HOST`、`SMTP_PORT`、`SMTP_USERNAME`、`SMTP_PASSWORD`、`SMTP_FROM`、`SMTP_TO`
+- 邮件可选项：`SMTP_USE_SSL`，默认 `true`；`SMTP_TO` 支持以英文逗号分隔多个收件人
+
+飞书和邮件可只配置其中一种；均未配置时数据任务仍正常运行，只跳过通知。所有凭据仅由 GitHub Secrets 注入，不写入仓库。
+
+可在本地预览通知内容而不实际发送：
+
+```bash
+python scripts/notify_update.py --dry-run
+```
+
+## 本地定时更新与调度
 
 平台查询默认读取本地标准库 `data_clean/macrohub.db`。外部数据源通过调度任务定期刷新，推荐采用“固定时间自动采集 + 必要时手动强制刷新”的运行方式。
 
