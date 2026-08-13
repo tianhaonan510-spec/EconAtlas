@@ -1,0 +1,10 @@
+{
+  "indicator_count": 61,
+  "tiers": {
+    "extended": 22,
+    "core": 17,
+    "specialized": 16,
+    "insufficient": 6
+  },
+  "rule_version": "2.0.0"
+}

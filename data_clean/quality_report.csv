@@ -1,6 +1,6 @@
 ﻿check_item,value,status
-row_count,66002,info
-missing_value_count,1896,warning
+row_count,64106,info
+missing_value_count,0,ok
 duplicate_key_count,0,ok
 missing_source_url_count,0,ok
 country_count,18,info

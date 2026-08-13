@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "row_count": 64106,
+  "checks": {
+    "required_columns_present": {
+      "passed": true,
+      "detail": []
+    },
+    "no_null_observations": {
+      "passed": true,
+      "detail": 0
+    },
+    "no_duplicate_business_keys": {
+      "passed": true,
+      "detail": 0
+    },
+    "all_indicators_registered": {
+      "passed": true,
+      "detail": []
+    },
+    "forecast_semantics_valid": {
+      "passed": true,
+      "detail": 0
+    },
+    "source_urls_complete": {
+      "passed": true,
+      "detail": 0
+    }
+  }
+}

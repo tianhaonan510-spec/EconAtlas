@@ -2,6 +2,7 @@
 import argparse
 import json
 from datetime import datetime
+from pathlib import Path
 
 import pandas as pd
 
@@ -14,9 +15,34 @@ from collectors.oecd_collector import collect_oecd
 from collectors.worldbank_collector import collect_worldbank
 from config import DATA_CLEAN, DATA_RAW, METADATA_DIR
 from quality.check_quality import run_quality_checks
+from quality.gates import run_quality_gates
 from scripts.build_aligned_derived_sources import build_aligned_derived_sources
 from standardizer.standardize import standardize_worldbank
 from storage.database import init_db
+
+
+SEMANTIC_COLUMNS = ["observation_type", "processing_level", "source_status"]
+
+
+def apply_observation_semantics(df: pd.DataFrame) -> pd.DataFrame:
+    """Normalize observation semantics without discarding source-specific status."""
+    out = df.copy()
+    out["value"] = pd.to_numeric(out["value"], errors="coerce")
+    out["source_status"] = out.get("source_status", out.get("status", "")).fillna("").astype(str)
+    out["processing_level"] = "standardized"
+    derived = out["status"].fillna("").astype(str).eq("derived_aligned")
+    out.loc[derived, "processing_level"] = "derived"
+
+    year = pd.to_numeric(out["date"].astype(str).str.extract(r"^(\d{4})", expand=False), errors="coerce")
+    out["observation_type"] = "historical"
+    imf_forecast = out["source_organization"].eq("IMF") & year.gt(datetime.now().year)
+    out.loc[imf_forecast, "observation_type"] = "forecast"
+    out.loc[derived, "observation_type"] = "derived"
+    out["status"] = out["observation_type"]
+
+    # Empty placeholders describe failed/unavailable combinations, not observations.
+    out = out[out["value"].notna()].copy()
+    return out
 
 
 def _align_to_main_schema(main_file, extra_file):
@@ -58,6 +84,7 @@ def merge_standardized_sources():
     df_all["indicator_code"] = df_all["indicator_code"].astype("string")
     df_all = df_all[df_all["indicator_code"].notna() & (df_all["indicator_code"].str.strip() != "")].copy()
     df_all["date"] = df_all["date"].astype(str)
+    df_all = apply_observation_semantics(df_all)
 
     key_cols = ["country_code", "indicator_code", "date", "source_organization", "source_dataset"]
     df_all = df_all.drop_duplicates(subset=key_cols, keep="last")
@@ -68,20 +95,26 @@ def merge_standardized_sources():
 
 
 def write_run_manifest():
+    def relative(path: Path) -> str:
+        try:
+            return str(path.resolve().relative_to(Path(__file__).resolve().parent))
+        except ValueError:
+            return str(path)
+
     manifest = {
         "generated_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         "data_files": {
-            "worldbank_raw": str(DATA_RAW / "worldbank_raw.csv"),
-            "imf_standardized": str(DATA_RAW / "imf" / "imf_standardized.csv"),
-            "fred_raw": str(DATA_RAW / "fred_raw.csv"),
-            "oecd_raw": str(DATA_RAW / "oecd_raw.csv"),
-            "eurostat_raw": str(DATA_RAW / "eurostat_raw.csv"),
-            "ecb_raw": str(DATA_RAW / "ecb_raw.csv"),
-            "bis_raw": str(DATA_RAW / "bis_raw.csv"),
-            "china_official_raw": str(DATA_RAW / "china_official_raw.csv"),
-            "aligned_derived_raw": str(DATA_RAW / "aligned_derived_raw.csv"),
-            "macro_observations": str(DATA_CLEAN / "macro_observations.csv"),
-            "macrohub_db": str(DATA_CLEAN / "macrohub.db"),
+            "worldbank_raw": relative(DATA_RAW / "worldbank_raw.csv"),
+            "imf_standardized": relative(DATA_RAW / "imf" / "imf_standardized.csv"),
+            "fred_raw": relative(DATA_RAW / "fred_raw.csv"),
+            "oecd_raw": relative(DATA_RAW / "oecd_raw.csv"),
+            "eurostat_raw": relative(DATA_RAW / "eurostat_raw.csv"),
+            "ecb_raw": relative(DATA_RAW / "ecb_raw.csv"),
+            "bis_raw": relative(DATA_RAW / "bis_raw.csv"),
+            "china_official_raw": relative(DATA_RAW / "china_official_raw.csv"),
+            "aligned_derived_raw": relative(DATA_RAW / "aligned_derived_raw.csv"),
+            "macro_observations": relative(DATA_CLEAN / "macro_observations.csv"),
+            "database": relative(DATA_CLEAN / "macrohub.db"),
         },
         "notes": [
             "World Bank requests use local JSON cache unless --force-refresh is set.",
@@ -137,10 +170,13 @@ def run_full_pipeline(force_refresh: bool = False, skip_fred: bool = False, skip
     print("Step 11/13: run quality checks")
     run_quality_checks()
 
-    print("Step 12/13: initialize SQLite database")
+    print("Step 12/14: enforce publication quality gates")
+    run_quality_gates()
+
+    print("Step 13/14: initialize SQLite database")
     init_db()
 
-    print("Step 13/13: write run manifest")
+    print("Step 14/14: write run manifest")
     write_run_manifest()
 
     print("Pipeline complete.")
@@ -150,6 +186,7 @@ def run_merge_only():
     build_aligned_derived_sources()
     merge_standardized_sources()
     run_quality_checks()
+    run_quality_gates()
     init_db()
     write_run_manifest()
 
@@ -203,8 +240,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
 
 
 

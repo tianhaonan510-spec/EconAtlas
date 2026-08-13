@@ -72,6 +72,9 @@ def _series_from_group(group: pd.DataFrame) -> dict[str, Any]:
                 "date": str(row.get("date")),
                 "value": _clean_value(row.get("value")),
                 "status": row.get("status") or "final",
+                "observation_type": row.get("observation_type") or "historical",
+                "processing_level": row.get("processing_level") or "standardized",
+                "source_status": _clean_value(row.get("source_status")),
                 "retrieved_at": _clean_value(row.get("retrieved_at")),
                 "data_version": _clean_value(row.get("data_version")),
             }

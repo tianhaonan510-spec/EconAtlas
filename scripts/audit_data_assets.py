@@ -164,8 +164,12 @@ def main() -> None:
         ]
     )
 
-    raw_rows = int((df["status"].astype(str).str.lower() != "derived_aligned").sum())
-    derived_rows = int((df["status"].astype(str).str.lower() == "derived_aligned").sum())
+    if "processing_level" in df.columns:
+        derived_mask = df["processing_level"].astype(str).eq("derived")
+    else:
+        derived_mask = df["status"].astype(str).str.lower().eq("derived_aligned")
+    raw_rows = int((~derived_mask).sum())
+    derived_rows = int(derived_mask.sum())
     multi_source_indicators = int((indicator_df["source_count"] >= 2).sum())
     single_country_indicators = int((indicator_df["country_count"] == 1).sum())
     low_volume_sources = int((source_df["valid_rows"] < 100).sum())

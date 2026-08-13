@@ -1,9 +1,9 @@
 ﻿source_organization,row_count,valid_rows,valid_rate,country_count,indicator_count,frequency_count,start_date,end_date,source_url_complete_rate
 BIS,34000,34000,1.0,11,3,3,2015,2026-06-02,1.0
-IMF,14144,13246,0.9365,17,16,1,1980,2031,1.0
+IMF,13246,13246,1.0,17,16,1,1980,2031,1.0
 ECB,5996,5996,1.0,1,4,3,2015,2026-06-04,1.0
-World Bank,6919,5924,0.8562,17,37,1,2015,2025,1.0
+World Bank,5924,5924,1.0,17,37,1,2015,2025,1.0
 OECD,2153,2153,1.0,17,1,1,2015-01,2026-04,1.0
-FRED,2057,2054,0.9985,1,19,2,2015,2026-05,1.0
+FRED,2054,2054,1.0,1,19,2,2015,2026-05,1.0
 Eurostat,660,660,1.0,5,1,1,2015-01,2025-12,1.0
 National Bureau of Statistics of China,73,73,1.0,1,9,2,2024,2024-12,1.0
