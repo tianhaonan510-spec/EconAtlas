@@ -1,9 +1,11 @@
 {
-  "indicator_count": 61,
+  "registered_indicator_count": 70,
+  "observed_indicator_count": 61,
   "tiers": {
     "extended": 22,
     "core": 17,
     "specialized": 16,
+    "pending": 9,
     "insufficient": 6
   },
   "rule_version": "2.0.0"

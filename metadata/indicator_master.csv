@@ -54,6 +54,15 @@ US_2Y_TREASURY_RATE_M,美国2年期国债收益率,U.S. 2-Year Treasury Rate,%,M
 CN_CPI_YOY_M,中国居民消费价格指数同比,China CPI YoY,%,M,NSA,YoY,1
 CN_PPI_YOY_M,中国工业生产者出厂价格指数同比,China PPI YoY,%,M,NSA,YoY,1
 CN_INDUSTRIAL_VALUE_ADDED_YOY_M,中国规模以上工业增加值同比,China industrial value added YoY,%,M,NSA,YoY,1
+CN_RETAIL_SALES_YOY_M,中国社会消费品零售总额同比,China total retail sales YoY,%,M,NSA,YoY,1
+CN_FIXED_ASSET_INVESTMENT_YTD_YOY_M,中国固定资产投资累计同比,China fixed asset investment YTD YoY,%,M,NSA,YTD_YoY,1
+CN_URBAN_SURVEYED_UNEMPLOYMENT_RATE_M,中国城镇调查失业率,China surveyed urban unemployment rate,%,M,NSA,level,1
+CN_MANUFACTURING_PMI_M,中国制造业采购经理指数,China manufacturing PMI,index,M,SA,level,1
+CN_M1_YOY_M,中国狭义货币 M1 同比,China M1 money supply YoY,%,M,NSA,YoY,1
+CN_M2_YOY_M,中国广义货币 M2 同比,China M2 money supply YoY,%,M,NSA,YoY,1
+CN_TOTAL_SOCIAL_FINANCING_FLOW_M,中国社会融资规模增量,China aggregate financing to the real economy flow,100 million CNY,M,NSA,flow,1
+CN_EXPORTS_USD_YOY_M,中国出口金额同比,China exports in USD YoY,%,M,NSA,YoY,1
+CN_IMPORTS_USD_YOY_M,中国进口金额同比,China imports in USD YoY,%,M,NSA,YoY,1
 PPI_YOY_M,生产者价格指数同比,Producer Price Index YoY,%,M,NSA,YoY,2
 PPI_YOY_A,生产者价格指数同比,Producer Price Index YoY,%,A,NSA,annual_average,2
 INDUSTRIAL_OUTPUT_YOY_M,工业生产同比,Industrial Output YoY,%,M,NSA,YoY,2

@@ -8,6 +8,8 @@ it to the template in data_raw/china_official/README.md, then run this collector
 """
 
 from datetime import datetime
+import hashlib
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -16,6 +18,22 @@ from config import CHINA_OFFICIAL_SERIES, COUNTRIES, DATA_RAW
 
 SOURCE_DIR = DATA_RAW / "china_official"
 OUT_FILE = DATA_RAW / "china_official_raw.csv"
+MANIFEST_FILE = SOURCE_DIR / "manifest.json"
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def _load_manifest() -> dict[str, dict]:
+    if not MANIFEST_FILE.exists():
+        raise FileNotFoundError(f"China official manifest not found: {MANIFEST_FILE}")
+    payload = json.loads(MANIFEST_FILE.read_text(encoding="utf-8"))
+    return {item["file"]: item for item in payload.get("files", [])}
 
 
 def _empty_standard_table():
@@ -36,7 +54,20 @@ def _load_input_files():
     files = sorted(SOURCE_DIR.glob("*.csv"))
     if not files:
         return pd.DataFrame()
-    frames = [pd.read_csv(path, encoding="utf-8-sig") for path in files]
+    manifest = _load_manifest()
+    frames = []
+    for path in files:
+        entry = manifest.get(path.name)
+        if not entry:
+            raise ValueError(f"Official file is not registered in manifest.json: {path.name}")
+        actual_hash = _sha256(path)
+        if actual_hash != entry.get("sha256"):
+            raise ValueError(f"SHA-256 mismatch for {path.name}")
+        frame = pd.read_csv(path, encoding="utf-8-sig")
+        frame["official_file"] = path.name
+        frame["official_file_sha256"] = actual_hash
+        frame["publisher"] = entry.get("publisher", "")
+        frames.append(frame)
     return pd.concat(frames, ignore_index=True)
 
 
@@ -88,6 +119,9 @@ def collect_china_official() -> pd.DataFrame:
                 "status": str(row.get("status", "official")),
                 "retrieved_at": retrieved_at,
                 "data_version": str(row.get("data_version", data_version)),
+                "official_file": str(row.get("official_file", "")),
+                "official_file_sha256": str(row.get("official_file_sha256", "")),
+                "publisher": str(row.get("publisher", "")),
             }
         )
 

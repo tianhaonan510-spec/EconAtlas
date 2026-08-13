@@ -161,6 +161,60 @@ CHINA_OFFICIAL_SERIES = {
         "source_series_code": "NBS.IVA.YOY.M",
         "source_dataset": "National Bureau of Statistics monthly data",
     },
+    "CN_RETAIL_SALES_YOY_M": {
+        "indicator_name_zh": "中国社会消费品零售总额同比",
+        "indicator_name_en": "China total retail sales YoY",
+        "unit": "%", "frequency": "M", "seasonal_adjustment": "NSA", "calculation": "YoY",
+        "source_series_code": "NBS.RETAIL.SALES.YOY.M", "source_dataset": "National Bureau of Statistics monthly data",
+    },
+    "CN_FIXED_ASSET_INVESTMENT_YTD_YOY_M": {
+        "indicator_name_zh": "中国固定资产投资累计同比",
+        "indicator_name_en": "China fixed asset investment YTD YoY",
+        "unit": "%", "frequency": "M", "seasonal_adjustment": "NSA", "calculation": "YTD_YoY",
+        "source_series_code": "NBS.FAI.YTD.YOY.M", "source_dataset": "National Bureau of Statistics monthly data",
+    },
+    "CN_URBAN_SURVEYED_UNEMPLOYMENT_RATE_M": {
+        "indicator_name_zh": "中国城镇调查失业率",
+        "indicator_name_en": "China surveyed urban unemployment rate",
+        "unit": "%", "frequency": "M", "seasonal_adjustment": "NSA", "calculation": "level",
+        "source_series_code": "NBS.URBAN.UNEMPLOYMENT.M", "source_dataset": "National Bureau of Statistics monthly data",
+    },
+    "CN_MANUFACTURING_PMI_M": {
+        "indicator_name_zh": "中国制造业采购经理指数",
+        "indicator_name_en": "China manufacturing PMI",
+        "unit": "index", "frequency": "M", "seasonal_adjustment": "SA", "calculation": "level",
+        "source_series_code": "NBS.MANUFACTURING.PMI.M", "source_dataset": "National Bureau of Statistics monthly data",
+    },
+    "CN_M1_YOY_M": {
+        "indicator_name_zh": "中国狭义货币 M1 同比",
+        "indicator_name_en": "China M1 money supply YoY",
+        "unit": "%", "frequency": "M", "seasonal_adjustment": "NSA", "calculation": "YoY",
+        "source_series_code": "PBOC.M1.YOY.M", "source_dataset": "People's Bank of China financial statistics",
+    },
+    "CN_M2_YOY_M": {
+        "indicator_name_zh": "中国广义货币 M2 同比",
+        "indicator_name_en": "China M2 money supply YoY",
+        "unit": "%", "frequency": "M", "seasonal_adjustment": "NSA", "calculation": "YoY",
+        "source_series_code": "PBOC.M2.YOY.M", "source_dataset": "People's Bank of China financial statistics",
+    },
+    "CN_TOTAL_SOCIAL_FINANCING_FLOW_M": {
+        "indicator_name_zh": "中国社会融资规模增量",
+        "indicator_name_en": "China aggregate financing to the real economy flow",
+        "unit": "100 million CNY", "frequency": "M", "seasonal_adjustment": "NSA", "calculation": "flow",
+        "source_series_code": "PBOC.TSF.FLOW.M", "source_dataset": "People's Bank of China aggregate financing statistics",
+    },
+    "CN_EXPORTS_USD_YOY_M": {
+        "indicator_name_zh": "中国出口金额同比",
+        "indicator_name_en": "China exports in USD YoY",
+        "unit": "%", "frequency": "M", "seasonal_adjustment": "NSA", "calculation": "YoY",
+        "source_series_code": "GACC.EXPORTS.USD.YOY.M", "source_dataset": "General Administration of Customs monthly trade data",
+    },
+    "CN_IMPORTS_USD_YOY_M": {
+        "indicator_name_zh": "中国进口金额同比",
+        "indicator_name_en": "China imports in USD YoY",
+        "unit": "%", "frequency": "M", "seasonal_adjustment": "NSA", "calculation": "YoY",
+        "source_series_code": "GACC.IMPORTS.USD.YOY.M", "source_dataset": "General Administration of Customs monthly trade data",
+    },
 }
 
 INDICATOR_MAP = {

@@ -60,3 +60,12 @@ US_NONFARM_PAYROLLS_M,美国非农就业人数,M,specialized,国家专属或低�
 US_PPI_INDEX_M,美国生产者价格指数,M,specialized,国家专属或低覆盖指标,137,0,137,1,1,2015-01,2026-05
 US_RETAIL_SALES_M,美国零售销售额,M,specialized,国家专属或低覆盖指标,137,0,137,1,1,2015-01,2026-05
 US_UNEMPLOYMENT_RATE_M,美国失业率,M,specialized,国家专属或低覆盖指标,135,0,135,1,1,2015-01,2026-04
+CN_RETAIL_SALES_YOY_M,中国社会消费品零售总额同比,M,pending,已登记元数据，尚无通过质量门禁的正式观测,0,0,0,0,0,,
+CN_FIXED_ASSET_INVESTMENT_YTD_YOY_M,中国固定资产投资累计同比,M,pending,已登记元数据，尚无通过质量门禁的正式观测,0,0,0,0,0,,
+CN_URBAN_SURVEYED_UNEMPLOYMENT_RATE_M,中国城镇调查失业率,M,pending,已登记元数据，尚无通过质量门禁的正式观测,0,0,0,0,0,,
+CN_MANUFACTURING_PMI_M,中国制造业采购经理指数,M,pending,已登记元数据，尚无通过质量门禁的正式观测,0,0,0,0,0,,
+CN_M1_YOY_M,中国狭义货币 M1 同比,M,pending,已登记元数据，尚无通过质量门禁的正式观测,0,0,0,0,0,,
+CN_M2_YOY_M,中国广义货币 M2 同比,M,pending,已登记元数据，尚无通过质量门禁的正式观测,0,0,0,0,0,,
+CN_TOTAL_SOCIAL_FINANCING_FLOW_M,中国社会融资规模增量,M,pending,已登记元数据，尚无通过质量门禁的正式观测,0,0,0,0,0,,
+CN_EXPORTS_USD_YOY_M,中国出口金额同比,M,pending,已登记元数据，尚无通过质量门禁的正式观测,0,0,0,0,0,,
+CN_IMPORTS_USD_YOY_M,中国进口金额同比,M,pending,已登记元数据，尚无通过质量门禁的正式观测,0,0,0,0,0,,

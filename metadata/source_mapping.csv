@@ -79,6 +79,15 @@ FRED,Federal Reserve Economic Data,GS2,US_2Y_TREASURY_RATE_M
 National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.CPI.YOY.M,CN_CPI_YOY_M
 National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.PPI.YOY.M,CN_PPI_YOY_M
 National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.IVA.YOY.M,CN_INDUSTRIAL_VALUE_ADDED_YOY_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.RETAIL.SALES.YOY.M,CN_RETAIL_SALES_YOY_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.FAI.YTD.YOY.M,CN_FIXED_ASSET_INVESTMENT_YTD_YOY_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.URBAN.UNEMPLOYMENT.M,CN_URBAN_SURVEYED_UNEMPLOYMENT_RATE_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.MANUFACTURING.PMI.M,CN_MANUFACTURING_PMI_M
+National Bureau of Statistics of China,People's Bank of China financial statistics,PBOC.M1.YOY.M,CN_M1_YOY_M
+National Bureau of Statistics of China,People's Bank of China financial statistics,PBOC.M2.YOY.M,CN_M2_YOY_M
+National Bureau of Statistics of China,People's Bank of China aggregate financing statistics,PBOC.TSF.FLOW.M,CN_TOTAL_SOCIAL_FINANCING_FLOW_M
+National Bureau of Statistics of China,General Administration of Customs monthly trade data,GACC.EXPORTS.USD.YOY.M,CN_EXPORTS_USD_YOY_M
+National Bureau of Statistics of China,General Administration of Customs monthly trade data,GACC.IMPORTS.USD.YOY.M,CN_IMPORTS_USD_YOY_M
 FRED,Federal Reserve Economic Data (derived from PPIACO),PPIACO.YOY,PPI_YOY_M
 National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.PPI.YOY.M.ALIGNED,PPI_YOY_M
 FRED,Federal Reserve Economic Data (annualized from PPIACO.YOY),PPIACO.YOY.AAVG,PPI_YOY_A

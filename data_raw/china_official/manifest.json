@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "files": [
+    {
+      "file": "nbs_2024_monthly_sample.csv",
+      "sha256": "4573092bee349e3c8edca92c40882e2ca1e92827e0b06685af7120191bbc00f1",
+      "publisher": "National Bureau of Statistics of China",
+      "source_page": "https://www.stats.gov.cn/",
+      "acquisition_method": "official release manually normalized for the initial competition sample",
+      "asset_status": "sample",
+      "notes": "Initial 2024 sample; not sufficient for EconAtlas 2.0 core asset classification."
+    }
+  ]
+}
