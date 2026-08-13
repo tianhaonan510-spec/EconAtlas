@@ -1,0 +1,11 @@
+﻿__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.streamlit/
+logs/*.log
+cache/
+data_clean/_macro_observations_with_imf.csv
+metadata/update_status.json

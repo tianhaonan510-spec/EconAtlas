@@ -1,0 +1,62 @@
+﻿indicator_code,indicator_name_zh,indicator_name_en,unit,frequency,seasonal_adjustment,calculation,source_count
+GDP_NOMINAL_USD_A,名义GDP,Nominal GDP,current USD,A,NSA,level,2
+GDP_REAL_GROWTH_YOY_A,实际GDP增速,Real GDP Growth,%,A,NSA,YoY,2
+GDP_PER_CAPITA_USD_A,人均GDP,GDP per capita,current USD,A,NSA,level,2
+CPI_YOY_A,居民消费价格指数同比,Consumer Price Index YoY,%,A,NSA,YoY,4
+UNEMPLOYMENT_RATE_A,失业率,Unemployment Rate,% of labor force,A,NSA,level,3
+EXPORTS_USD_A,货物和服务出口,Exports of goods and services,current USD,A,NSA,level,2
+IMPORTS_USD_A,货物和服务进口,Imports of goods and services,current USD,A,NSA,level,2
+RESERVES_USD_A,外汇储备,Total reserves,current USD,A,NSA,level,1
+GOV_DEBT_GDP_A,政府债务占GDP比重,"Central government debt, total",% of GDP,A,NSA,level,2
+CURRENT_ACCOUNT_GDP_A,经常账户余额占GDP比重,Current account balance,% of GDP,A,NSA,level,2
+CPI_YOY_M,居民消费价格指数同比,Consumer Price Index YoY,%,M,NSA,YoY,4
+EUR_USD_EXCHANGE_RATE_D,欧元兑美元参考汇率,Euro foreign exchange reference rate: USD,USD per EUR,D,NSA,level,1
+EXCHANGE_RATE_USD_D,本币兑美元汇率,Exchange rates against USD,local currency per USD,D,NSA,level,2
+GDP_CURRENT_LCU_A,本币计价名义GDP,Nominal GDP in local currency,current LCU,A,NSA,level,2
+GDP_REAL_LCU_A,本币计价实际GDP,Real GDP in local currency,constant LCU,A,NSA,level,2
+GDP_DEFLATOR_INDEX_A,GDP平减指数,GDP deflator index,index,A,NSA,level,2
+GROSS_SAVINGS_GDP_A,国民总储蓄占GDP比重,Gross national savings as percent of GDP,% of GDP,A,NSA,level,2
+GROSS_CAPITAL_FORMATION_GDP_A,资本形成总额占GDP比重,Gross capital formation as percent of GDP,% of GDP,A,NSA,level,2
+GOV_REVENUE_GDP_A,政府收入占GDP比重,General government revenue as percent of GDP,% of GDP,A,NSA,level,2
+GOV_EXPENSE_GDP_A,政府支出占GDP比重,General government expense as percent of GDP,% of GDP,A,NSA,level,2
+GOV_NET_LENDING_GDP_A,政府净借贷占GDP比重,General government net lending or borrowing as percent of GDP,% of GDP,A,NSA,level,2
+POPULATION_TOTAL_A,总人口,"Population, total",persons,A,NSA,level,2
+POPULATION_GROWTH_A,人口增长率,Population growth,%,A,NSA,YoY,1
+URBAN_POPULATION_RATE_A,城镇人口比重,Urban population share,% of total population,A,NSA,level,1
+GNI_CURRENT_USD_A,国民总收入,"GNI, current US dollars",current USD,A,NSA,level,1
+GNI_PER_CAPITA_USD_A,人均国民总收入,GNI per capita,current USD,A,NSA,level,1
+FDI_NET_INFLOWS_GDP_A,外商直接投资净流入占GDP比重,FDI net inflows as percent of GDP,% of GDP,A,NSA,level,1
+TRADE_GDP_A,贸易开放度,Trade as percent of GDP,% of GDP,A,NSA,level,1
+EXPORTS_GROWTH_A,出口实际增速,Exports real growth,%,A,NSA,YoY,1
+IMPORTS_GROWTH_A,进口实际增速,Imports real growth,%,A,NSA,YoY,1
+GDP_DEFLATOR_GROWTH_A,GDP平减指数增速,"Inflation, GDP deflator",%,A,NSA,YoY,1
+BROAD_MONEY_GDP_A,广义货币占GDP比重,Broad money as percent of GDP,% of GDP,A,NSA,level,1
+DOMESTIC_CREDIT_PRIVATE_GDP_A,对私营部门国内信贷占GDP比重,Domestic credit to private sector as percent of GDP,% of GDP,A,NSA,level,1
+TAX_REVENUE_GDP_A,税收收入占GDP比重,Tax revenue as percent of GDP,% of GDP,A,NSA,level,1
+MILITARY_EXPENDITURE_GDP_A,军费支出占GDP比重,Military expenditure as percent of GDP,% of GDP,A,NSA,level,1
+ENERGY_USE_PER_CAPITA_A,人均能源使用量,Energy use per capita,kg of oil equivalent per capita,A,NSA,level,1
+ELECTRIC_POWER_CONSUMPTION_A,人均电力消费,Electric power consumption per capita,kWh per capita,A,NSA,level,1
+INTERNET_USERS_RATE_A,互联网使用率,Individuals using the Internet,% of population,A,NSA,level,1
+LIFE_EXPECTANCY_A,预期寿命,Life expectancy at birth,years,A,NSA,level,1
+SCHOOL_ENROLLMENT_TERTIARY_A,高等教育毛入学率,"School enrollment, tertiary",% gross,A,NSA,level,1
+US_CPI_INDEX_M,美国居民消费价格指数,U.S. Consumer Price Index,index 1982-1984=100,M,SA,level,1
+US_UNEMPLOYMENT_RATE_M,美国失业率,U.S. Unemployment Rate,%,M,SA,level,1
+US_INDUSTRIAL_PRODUCTION_M,美国工业生产指数,U.S. Industrial Production Index,index 2017=100,M,SA,level,1
+US_FED_FUNDS_RATE_M,美国联邦基金有效利率,U.S. Effective Federal Funds Rate,%,M,NSA,level,1
+US_PPI_INDEX_M,美国生产者价格指数,U.S. Producer Price Index,index 1982=100,M,NSA,level,1
+US_CORE_CPI_INDEX_M,美国核心CPI指数,U.S. Core CPI Index,index 1982-1984=100,M,SA,level,1
+US_RETAIL_SALES_M,美国零售销售额,U.S. Retail Sales,millions of dollars,M,SA,level,1
+US_HOUSING_STARTS_M,美国新屋开工,U.S. Housing Starts,thousands of units,M,SA,level,1
+US_NONFARM_PAYROLLS_M,美国非农就业人数,U.S. Nonfarm Payrolls,thousands of persons,M,SA,level,1
+US_M2_MONEY_STOCK_M,美国M2货币存量,U.S. M2 Money Stock,billions of dollars,M,SA,level,1
+US_10Y_TREASURY_RATE_M,美国10年期国债收益率,U.S. 10-Year Treasury Rate,%,M,NSA,level,1
+US_2Y_TREASURY_RATE_M,美国2年期国债收益率,U.S. 2-Year Treasury Rate,%,M,NSA,level,1
+CN_CPI_YOY_M,中国居民消费价格指数同比,China CPI YoY,%,M,NSA,YoY,1
+CN_PPI_YOY_M,中国工业生产者出厂价格指数同比,China PPI YoY,%,M,NSA,YoY,1
+CN_INDUSTRIAL_VALUE_ADDED_YOY_M,中国规模以上工业增加值同比,China industrial value added YoY,%,M,NSA,YoY,1
+PPI_YOY_M,生产者价格指数同比,Producer Price Index YoY,%,M,NSA,YoY,2
+PPI_YOY_A,生产者价格指数同比,Producer Price Index YoY,%,A,NSA,annual_average,2
+INDUSTRIAL_OUTPUT_YOY_M,工业生产同比,Industrial Output YoY,%,M,NSA,YoY,2
+INDUSTRIAL_OUTPUT_YOY_A,工业生产同比,Industrial Output YoY,%,A,NSA,annual_average,2
+EXCHANGE_RATE_USD_M,本币兑美元汇率,Exchange rates against USD,local currency per USD,M,NSA,period_average,2
+EXCHANGE_RATE_USD_A,本币兑美元汇率,Exchange rates against USD,local currency per USD,A,NSA,period_average,2

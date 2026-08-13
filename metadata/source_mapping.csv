@@ -1,0 +1,93 @@
+﻿source,source_dataset,source_indicator_code,indicator_code
+World Bank,World Development Indicators,NY.GDP.MKTP.CD,GDP_NOMINAL_USD_A
+IMF,World Economic Outlook,NGDPD,GDP_NOMINAL_USD_A
+World Bank,World Development Indicators,NY.GDP.MKTP.KD.ZG,GDP_REAL_GROWTH_YOY_A
+IMF,World Economic Outlook,NGDP_RPCH,GDP_REAL_GROWTH_YOY_A
+World Bank,World Development Indicators,NY.GDP.PCAP.CD,GDP_PER_CAPITA_USD_A
+IMF,World Economic Outlook,NGDPDPC,GDP_PER_CAPITA_USD_A
+World Bank,World Development Indicators,FP.CPI.TOTL.ZG,CPI_YOY_A
+IMF,World Economic Outlook,PCPIPCH,CPI_YOY_A
+FRED,Federal Reserve Economic Data (annualized from CPIAUCSL.YOY),CPIAUCSL.YOY.AAVG,CPI_YOY_A
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (annualized),NBS.CPI.YOY.M.ALIGNED.AAVG,CPI_YOY_A
+World Bank,World Development Indicators,SL.UEM.TOTL.ZS,UNEMPLOYMENT_RATE_A
+IMF,World Economic Outlook,LUR,UNEMPLOYMENT_RATE_A
+FRED,Federal Reserve Economic Data (annual average from UNRATE),UNRATE.AAVG,UNEMPLOYMENT_RATE_A
+World Bank,World Development Indicators,NE.EXP.GNFS.CD,EXPORTS_USD_A
+IMF,World Economic Outlook,BX,EXPORTS_USD_A
+World Bank,World Development Indicators,NE.IMP.GNFS.CD,IMPORTS_USD_A
+IMF,World Economic Outlook,BM,IMPORTS_USD_A
+World Bank,World Development Indicators,FI.RES.TOTL.CD,RESERVES_USD_A
+World Bank,World Development Indicators,GC.DOD.TOTL.GD.ZS,GOV_DEBT_GDP_A
+IMF,World Economic Outlook,GGXWDG_NGDP,GOV_DEBT_GDP_A
+World Bank,World Development Indicators,BN.CAB.XOKA.GD.ZS,CURRENT_ACCOUNT_GDP_A
+IMF,World Economic Outlook,BCA_NGDPD,CURRENT_ACCOUNT_GDP_A
+OECD,Prices: Consumer prices,DF_PRICES_ALL.CPI.GY,CPI_YOY_M
+Eurostat,HICP monthly annual rate of change,prc_hicp_manr.CP00,CPI_YOY_M
+FRED,Federal Reserve Economic Data (derived from CPIAUCSL),CPIAUCSL.YOY,CPI_YOY_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.CPI.YOY.M.ALIGNED,CPI_YOY_M
+ECB,Euro foreign exchange reference rates,EXR.D.USD.EUR.SP00.A,EUR_USD_EXCHANGE_RATE_D
+BIS,Exchange rates,WS_XRU.D,EXCHANGE_RATE_USD_D
+ECB,Euro foreign exchange reference rates (inverted),EXR.D.USD.EUR.SP00.A.INV,EXCHANGE_RATE_USD_D
+World Bank,World Development Indicators,NY.GDP.MKTP.CN,GDP_CURRENT_LCU_A
+IMF,World Economic Outlook,NGDP,GDP_CURRENT_LCU_A
+World Bank,World Development Indicators,NY.GDP.MKTP.KN,GDP_REAL_LCU_A
+IMF,World Economic Outlook,NGDP_R,GDP_REAL_LCU_A
+World Bank,World Development Indicators,NY.GDP.DEFL.ZS,GDP_DEFLATOR_INDEX_A
+IMF,World Economic Outlook,NGDP_D,GDP_DEFLATOR_INDEX_A
+World Bank,World Development Indicators,NY.GNS.ICTR.ZS,GROSS_SAVINGS_GDP_A
+IMF,World Economic Outlook,NGSD_NGDP,GROSS_SAVINGS_GDP_A
+World Bank,World Development Indicators,NE.GDI.TOTL.ZS,GROSS_CAPITAL_FORMATION_GDP_A
+IMF,World Economic Outlook,NID_NGDP,GROSS_CAPITAL_FORMATION_GDP_A
+World Bank,World Development Indicators,GC.REV.XGRT.GD.ZS,GOV_REVENUE_GDP_A
+IMF,World Economic Outlook,GGR_NGDP,GOV_REVENUE_GDP_A
+World Bank,World Development Indicators,GC.XPN.TOTL.GD.ZS,GOV_EXPENSE_GDP_A
+IMF,World Economic Outlook,GGX_NGDP,GOV_EXPENSE_GDP_A
+World Bank,World Development Indicators,GC.NLD.TOTL.GD.ZS,GOV_NET_LENDING_GDP_A
+IMF,World Economic Outlook,GGXCNL_NGDP,GOV_NET_LENDING_GDP_A
+World Bank,World Development Indicators,SP.POP.TOTL,POPULATION_TOTAL_A
+IMF,World Economic Outlook,LP,POPULATION_TOTAL_A
+World Bank,World Development Indicators,SP.POP.GROW,POPULATION_GROWTH_A
+World Bank,World Development Indicators,SP.URB.TOTL.IN.ZS,URBAN_POPULATION_RATE_A
+World Bank,World Development Indicators,NY.GNP.MKTP.CD,GNI_CURRENT_USD_A
+World Bank,World Development Indicators,NY.GNP.PCAP.CD,GNI_PER_CAPITA_USD_A
+World Bank,World Development Indicators,BX.KLT.DINV.WD.GD.ZS,FDI_NET_INFLOWS_GDP_A
+World Bank,World Development Indicators,NE.TRD.GNFS.ZS,TRADE_GDP_A
+World Bank,World Development Indicators,NE.EXP.GNFS.KD.ZG,EXPORTS_GROWTH_A
+World Bank,World Development Indicators,NE.IMP.GNFS.KD.ZG,IMPORTS_GROWTH_A
+World Bank,World Development Indicators,NY.GDP.DEFL.KD.ZG,GDP_DEFLATOR_GROWTH_A
+World Bank,World Development Indicators,FM.LBL.BMNY.GD.ZS,BROAD_MONEY_GDP_A
+World Bank,World Development Indicators,FS.AST.PRVT.GD.ZS,DOMESTIC_CREDIT_PRIVATE_GDP_A
+World Bank,World Development Indicators,GC.TAX.TOTL.GD.ZS,TAX_REVENUE_GDP_A
+World Bank,World Development Indicators,MS.MIL.XPND.GD.ZS,MILITARY_EXPENDITURE_GDP_A
+World Bank,World Development Indicators,EG.USE.PCAP.KG.OE,ENERGY_USE_PER_CAPITA_A
+World Bank,World Development Indicators,EG.USE.ELEC.KH.PC,ELECTRIC_POWER_CONSUMPTION_A
+World Bank,World Development Indicators,IT.NET.USER.ZS,INTERNET_USERS_RATE_A
+World Bank,World Development Indicators,SP.DYN.LE00.IN,LIFE_EXPECTANCY_A
+World Bank,World Development Indicators,SE.TER.ENRR,SCHOOL_ENROLLMENT_TERTIARY_A
+FRED,Federal Reserve Economic Data,CPIAUCSL,US_CPI_INDEX_M
+FRED,Federal Reserve Economic Data,UNRATE,US_UNEMPLOYMENT_RATE_M
+FRED,Federal Reserve Economic Data,INDPRO,US_INDUSTRIAL_PRODUCTION_M
+FRED,Federal Reserve Economic Data,FEDFUNDS,US_FED_FUNDS_RATE_M
+FRED,Federal Reserve Economic Data,PPIACO,US_PPI_INDEX_M
+FRED,Federal Reserve Economic Data,CPILFESL,US_CORE_CPI_INDEX_M
+FRED,Federal Reserve Economic Data,RSAFS,US_RETAIL_SALES_M
+FRED,Federal Reserve Economic Data,HOUST,US_HOUSING_STARTS_M
+FRED,Federal Reserve Economic Data,PAYEMS,US_NONFARM_PAYROLLS_M
+FRED,Federal Reserve Economic Data,M2SL,US_M2_MONEY_STOCK_M
+FRED,Federal Reserve Economic Data,GS10,US_10Y_TREASURY_RATE_M
+FRED,Federal Reserve Economic Data,GS2,US_2Y_TREASURY_RATE_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.CPI.YOY.M,CN_CPI_YOY_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.PPI.YOY.M,CN_PPI_YOY_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.IVA.YOY.M,CN_INDUSTRIAL_VALUE_ADDED_YOY_M
+FRED,Federal Reserve Economic Data (derived from PPIACO),PPIACO.YOY,PPI_YOY_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.PPI.YOY.M.ALIGNED,PPI_YOY_M
+FRED,Federal Reserve Economic Data (annualized from PPIACO.YOY),PPIACO.YOY.AAVG,PPI_YOY_A
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (annualized),NBS.PPI.YOY.M.ALIGNED.AAVG,PPI_YOY_A
+FRED,Federal Reserve Economic Data (derived from INDPRO),INDPRO.YOY,INDUSTRIAL_OUTPUT_YOY_M
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.INDUSTRIAL.VALUE.ADDED.YOY.M.ALIGNED,INDUSTRIAL_OUTPUT_YOY_M
+FRED,Federal Reserve Economic Data (annualized from INDPRO.YOY),INDPRO.YOY.AAVG,INDUSTRIAL_OUTPUT_YOY_A
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (annualized),NBS.INDUSTRIAL.VALUE.ADDED.YOY.M.ALIGNED.AAVG,INDUSTRIAL_OUTPUT_YOY_A
+BIS,Exchange rates (monthly average),WS_XRU.D.MAVG,EXCHANGE_RATE_USD_M
+ECB,"Euro foreign exchange reference rates (monthly average, inverted)",EXR.D.USD.EUR.SP00.A.INV.MAVG,EXCHANGE_RATE_USD_M
+BIS,Exchange rates (annual average),WS_XRU.D.AAVG,EXCHANGE_RATE_USD_A
+ECB,"Euro foreign exchange reference rates (annual average, inverted)",EXR.D.USD.EUR.SP00.A.INV.AAVG,EXCHANGE_RATE_USD_A

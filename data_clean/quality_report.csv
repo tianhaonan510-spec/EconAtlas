@@ -1,0 +1,12 @@
+﻿check_item,value,status
+row_count,66002,info
+missing_value_count,1896,warning
+duplicate_key_count,0,ok
+missing_source_url_count,0,ok
+country_count,18,info
+indicator_count,61,info
+source_count,8,info
+frequency_count,3,info
+coverage_rows,90,info
+multi_source_warning_count,555,warning
+outlier_count,314,warning

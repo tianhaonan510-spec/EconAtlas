@@ -1,0 +1,4393 @@
+{
+  "request_count": 23,
+  "success_count": 23,
+  "results": [
+    {
+      "request": {
+        "country": "US",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "US.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "美国",
+          "country_name_en": "United States",
+          "country_code": "US",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.121,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 1.267,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 2.131,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 2.439,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.813,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 1.253,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 4.681,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 7.991,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 4.127,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.952,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "US.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "美国",
+          "country_name_en": "United States",
+          "country_code": "US",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/US/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.118627135552451,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 1.26158320570536,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 2.13011000365961,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 2.44258329692817,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.81221007526021,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 1.23358439630629,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 4.69785886363742,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 8.00279982052121,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 4.11633838374488,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.94952520485207,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:22:43",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "CN",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "CN.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "中国",
+          "country_name_en": "China",
+          "country_code": "CN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 1.442,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 1.996,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.579,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 2.092,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 2.905,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 2.49,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 0.919,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 1.976,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 0.228,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 0.212,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "CN.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "中国",
+          "country_name_en": "China",
+          "country_code": "CN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/CN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 1.43702380935654,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 2.00000182191943,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.59313600071435,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 2.07479039965576,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 2.89923416358226,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 2.41942189457782,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 0.981015135544881,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 1.9735755573905,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 0.23483682889305,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 0.218128938439177,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:54",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "JP",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "JP.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "日本",
+          "country_name_en": "Japan",
+          "country_code": "JP",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.799,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": -0.124,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 0.486,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 0.989,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 0.468,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -0.027,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": -0.235,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 2.496,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.268,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.739,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "JP.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "日本",
+          "country_name_en": "Japan",
+          "country_code": "JP",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/JP/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.795279630579839,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": -0.127258844489754,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 0.484199796126385,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 0.989094598021848,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 0.46877615938395,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -0.024995834027731,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": -0.233352779398264,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 2.49770278172255,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.26813365933163,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.73853681635241,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:03",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "DE",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "DE.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "德国",
+          "country_name_en": "Germany",
+          "country_code": "DE",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.697,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 0.341,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.731,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.884,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.395,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 0.365,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 3.219,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 8.673,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.999,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.481,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "DE.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "德国",
+          "country_name_en": "Germany",
+          "country_code": "DE",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/DE/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.514426137125456,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 0.491747008445174,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.50949485109628,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.73216879766941,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.44565976888253,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 0.144877925813981,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 3.06666666666673,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 6.87257438551096,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.94643667725823,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.2564981433876,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:13",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "GB",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "GB.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "英国",
+          "country_name_en": "United Kingdom",
+          "country_code": "GB",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.04,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 0.66,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 2.683,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 2.478,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.791,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 0.851,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 2.588,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 9.067,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 7.303,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.53,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "GB.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "英国",
+          "country_name_en": "United Kingdom",
+          "country_code": "GB",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/GB/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.36804684232536,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 1.0084173681141,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 2.55775577557747,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 2.29283990345938,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.73810460086513,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 0.989486703772491,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 2.51837109614213,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 7.92204883147902,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 6.79396706793963,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 3.2715729463592,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:53",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "IN",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "IN.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "印度",
+          "country_name_en": "India",
+          "country_code": "IN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 4.885,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 4.518,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.606,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 3.387,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 4.806,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 6.154,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 5.512,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 6.634,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.37,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 4.639,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "IN.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "印度",
+          "country_name_en": "India",
+          "country_code": "IN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/IN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 4.90697344127256,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 4.94821634062141,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.32817337461298,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 3.9388264669163,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 3.72950573539129,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 6.62343677628535,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 5.13140747176369,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 6.69903414079852,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.64914318907925,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 4.95303550973656,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:03",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "VN",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "VN.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "越南",
+          "country_name_en": "Vietnam",
+          "country_code": "VN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.631,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 2.668,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.521,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 3.54,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 2.796,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 3.221,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 1.835,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 3.157,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.253,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 3.621,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "VN.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "越南",
+          "country_name_en": "Vietnam",
+          "country_code": "VN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/VN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 0.631200905175754,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 2.66824816969082,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.52025688811617,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 3.53962805942641,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 2.7958236745225,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 3.22093436652514,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 1.83471554810444,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 3.15650749963129,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.25289282667662,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 3.62109273885843,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:45",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "ID",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "ID.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "印度尼西亚",
+          "country_name_en": "Indonesia",
+          "country_code": "ID",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 6.36,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 3.53,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.807,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 3.291,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 2.822,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 2.031,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 1.561,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 4.139,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.713,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.3,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "ID.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "印度尼西亚",
+          "country_name_en": "Indonesia",
+          "country_code": "ID",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/ID/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 6.36312061196646,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 3.52580452815451,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.80879857691949,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 3.19834755924996,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 3.03058460941661,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 1.91983527270793,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 1.56007882983334,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 4.20946463714784,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.66938654859761,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.18151273615189,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:56",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "MX",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "MX.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "墨西哥",
+          "country_name_en": "Mexico",
+          "country_code": "MX",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 2.719,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 2.82,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 6.042,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 4.897,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 3.635,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 3.397,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 5.691,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 7.896,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.526,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 4.723,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "MX.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "墨西哥",
+          "country_name_en": "Mexico",
+          "country_code": "MX",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/MX/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 2.72064064964023,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 2.8217078474766,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 6.04145724018986,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 4.89935015356551,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 3.63596142127046,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 3.39683415570006,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 5.68920847683753,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 7.8962761916855,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.52796087314389,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 4.72225588452932,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:31",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "BR",
+        "indicator_code": "CPI_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "BR.CPI_YOY_A.IMF",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "巴西",
+          "country_name_en": "Brazil",
+          "country_code": "BR",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "PCPIPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 9.03,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 8.74,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.446,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 3.665,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 3.733,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 3.212,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 8.302,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 9.28,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 4.594,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 4.367,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "BR.CPI_YOY_A",
+          "indicator_code": "CPI_YOY_A",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "巴西",
+          "country_name_en": "Brazil",
+          "country_code": "BR",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "FP.CPI.TOTL.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/BR/indicator/FP.CPI.TOTL.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 9.02990102416136,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 8.73914352329393,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.44637335032669,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 3.66485028376728,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 3.73297621216893,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 3.21176803803376,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 8.30165975585673,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 9.28010608956872,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 4.59356282283203,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 4.36746407652336,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:41",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "US",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "US.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "美国",
+          "country_name_en": "United States",
+          "country_code": "US",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 2.946,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 1.82,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 2.458,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 2.967,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 2.584,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -2.081,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 6.152,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 2.524,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 2.935,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.793,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "US.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "美国",
+          "country_name_en": "United States",
+          "country_code": "US",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/US/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 2.94555045484053,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 1.81945147788167,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 2.45762229852507,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 2.96650506901305,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 2.58382533412825,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -2.16302914036166,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 6.05505293244555,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 2.51237531986017,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 2.88755600749487,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 2.79300127716779,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:49",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "CN",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "CN.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "中国",
+          "country_name_en": "China",
+          "country_code": "CN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 7.018,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 6.776,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 6.891,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 6.759,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 6.065,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 2.337,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 8.556,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 3.112,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.377,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 5.003,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "CN.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "中国",
+          "country_name_en": "China",
+          "country_code": "CN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/CN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 6.97878002657477,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 6.77555562837017,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 6.8912663621211,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 6.75671800166833,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 6.06850235053705,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 2.34018843078414,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 8.57008513166322,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 3.1341888719577,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.41484330099675,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 4.9773565917572,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:23:58",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "JP",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "JP.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "日本",
+          "country_name_en": "Japan",
+          "country_code": "JP",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 1.8,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 0.705,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.623,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 0.834,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": -0.308,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -4.283,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 3.564,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 1.332,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 0.721,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": -0.242,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "JP.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "日本",
+          "country_name_en": "Japan",
+          "country_code": "JP",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/JP/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 1.56062669680782,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 0.753826745789127,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.67533175173359,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 0.643391023533141,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": -0.402169200894946,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -4.16876457146743,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 2.69657404187188,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 0.941998775483285,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 1.47503481053384,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 0.104309021773304,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:08",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "DE",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "DE.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "德国",
+          "country_name_en": "Germany",
+          "country_code": "DE",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 1.663,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 2.217,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 2.806,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.133,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 0.973,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -4.127,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 3.913,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 1.807,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": -0.872,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": -0.496,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "DE.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "德国",
+          "country_name_en": "Germany",
+          "country_code": "DE",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/DE/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 1.66300602334775,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 2.22222216259371,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 2.797906720551,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.13569604599849,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 0.977734697038784,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -4.13191443239947,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 3.90999994204108,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 1.8092581243061,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": -0.869647578573321,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": -0.495851897260366,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:49",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "GB",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "GB.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "英国",
+          "country_name_en": "United Kingdom",
+          "country_code": "GB",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 2.14,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 2.207,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.023,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.551,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.256,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -10.048,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 8.543,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 5.15,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 0.272,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 1.088,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "GB.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "英国",
+          "country_name_en": "United Kingdom",
+          "country_code": "GB",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/GB/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 2.14040560033371,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 2.20652020635357,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 3.02322219840339,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.55133095078786,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.25629899760824,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -10.047896637362,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 8.5431118453255,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 5.14970388522993,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 0.271650048355255,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 1.1264226705118,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:24:58",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "IN",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "IN.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "印度",
+          "country_name_en": "India",
+          "country_code": "IN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 7.996,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 8.256,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 6.795,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 6.454,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 3.871,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -5.778,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 9.69,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 7.609,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 7.21,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 7.099,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "IN.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "印度",
+          "country_name_en": "India",
+          "country_code": "IN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/IN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 7.99625378571471,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 8.25630550179086,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 6.79538341897911,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 6.45385134497769,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 3.87143694070356,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -5.77772470686801,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 9.68959249192875,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 7.60936497768895,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 9.19075493028345,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 6.49476552383821,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:08",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "VN",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "VN.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "越南",
+          "country_name_en": "Vietnam",
+          "country_code": "VN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 6.987,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 6.69,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 6.94,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 7.465,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 7.359,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 2.865,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 2.554,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 8.538,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.065,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 6.952,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "VN.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "越南",
+          "country_name_en": "Vietnam",
+          "country_code": "VN",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/VN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 6.98715430598611,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 6.69000892660424,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 6.94019037359206,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 7.46500685572751,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 7.35926270105006,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": 2.86541320912272,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 2.55372852648131,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 8.53750046755788,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.06502391455075,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 7.09118746633975,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:25:51",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "ID",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "ID.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "印度尼西亚",
+          "country_name_en": "Indonesia",
+          "country_code": "ID",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 4.876,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 5.033,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 5.07,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 5.174,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 5.019,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -2.066,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 3.703,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 5.307,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.049,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 5.033,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "ID.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "印度尼西亚",
+          "country_name_en": "Indonesia",
+          "country_code": "ID",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/ID/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 4.87632230022123,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 5.03306918280177,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 5.06978590134916,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 5.17429153955024,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 5.01928768046282,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -2.06551182934165,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 3.70288562827751,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 5.30719722664799,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 5.04902331835997,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 5.03034469419038,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:00",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "MX",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "MX.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "墨西哥",
+          "country_name_en": "Mexico",
+          "country_code": "MX",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 2.702,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 1.772,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.872,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.972,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": -0.393,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -8.354,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 6.048,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 3.71,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.107,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 1.351,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "MX.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "墨西哥",
+          "country_name_en": "Mexico",
+          "country_code": "MX",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/MX/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": 2.70232342550646,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": 1.77249323845399,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.87172853327193,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.97208209405635,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": -0.392690505066824,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -8.35403458167995,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 6.0484834621255,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 3.70975709163623,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.35354140652768,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 1.42742769080466,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:36",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "BR",
+        "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+        "start_date": "2015",
+        "end_date": "2024",
+        "frequency": "A",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "BR.GDP_REAL_GROWTH_YOY_A.IMF",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "巴西",
+          "country_name_en": "Brazil",
+          "country_code": "BR",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "IMF",
+            "dataset": "World Economic Outlook",
+            "source_series_code": "NGDP_RPCH",
+            "source_url": "https://data.imf.org/en/datasets/IMF.RES:WEO"
+          },
+          "last_updated": "2026-04-15T13:00:00Z",
+          "observations": [
+            {
+              "date": "2015",
+              "value": -3.546,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": -3.276,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.323,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.784,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.221,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -3.277,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 4.763,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 3.017,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.242,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 3.419,
+              "status": "official",
+              "retrieved_at": null,
+              "data_version": null
+            }
+          ]
+        },
+        {
+          "series_id": "BR.GDP_REAL_GROWTH_YOY_A",
+          "indicator_code": "GDP_REAL_GROWTH_YOY_A",
+          "indicator_name_zh": "实际GDP增速",
+          "indicator_name_en": "Real GDP Growth",
+          "country_name_zh": "巴西",
+          "country_name_en": "Brazil",
+          "country_code": "BR",
+          "frequency": "A",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "World Bank",
+            "dataset": "World Development Indicators",
+            "source_series_code": "NY.GDP.MKTP.KD.ZG",
+            "source_url": "https://api.worldbank.org/v2/country/BR/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=20000&date=2015:2025"
+          },
+          "last_updated": "2026-05-22",
+          "observations": [
+            {
+              "date": "2015",
+              "value": -3.54576339347278,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            },
+            {
+              "date": "2016",
+              "value": -3.2759169063211,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            },
+            {
+              "date": "2017",
+              "value": 1.32286905390815,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            },
+            {
+              "date": "2018",
+              "value": 1.78366676137003,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            },
+            {
+              "date": "2019",
+              "value": 1.22077782271943,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            },
+            {
+              "date": "2020",
+              "value": -3.27675879612903,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            },
+            {
+              "date": "2021",
+              "value": 4.7626043797061,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            },
+            {
+              "date": "2022",
+              "value": 3.01669435408112,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            },
+            {
+              "date": "2023",
+              "value": 3.24165532813583,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            },
+            {
+              "date": "2024",
+              "value": 3.41931516597739,
+              "status": "final",
+              "retrieved_at": "2026-05-22 16:26:46",
+              "data_version": null
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "DE",
+        "indicator_code": "CPI_YOY_M",
+        "start_date": "2024-01",
+        "end_date": "2024-12",
+        "frequency": "M",
+        "source": null
+      },
+      "series": [
+        {
+          "series_id": "DE.CPI_YOY_M.EUROSTAT",
+          "indicator_code": "CPI_YOY_M",
+          "indicator_name_zh": "调和居民消费价格指数同比",
+          "indicator_name_en": "HICP annual rate of change",
+          "country_name_zh": "德国",
+          "country_name_en": "Germany",
+          "country_code": "DE",
+          "frequency": "M",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "Eurostat",
+            "dataset": "prc_hicp_manr",
+            "source_series_code": "prc_hicp_manr.CP00",
+            "source_url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr/default/table"
+          },
+          "last_updated": "2026-02-06T23:00:00+0100",
+          "observations": [
+            {
+              "date": "2024-01",
+              "value": 3.1,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-02",
+              "value": 2.7,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-03",
+              "value": 2.3,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-04",
+              "value": 2.4,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-05",
+              "value": 2.8,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-06",
+              "value": 2.5,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-07",
+              "value": 2.6,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-08",
+              "value": 2.0,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-09",
+              "value": 1.8,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-10",
+              "value": 2.4,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-11",
+              "value": 2.4,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            },
+            {
+              "date": "2024-12",
+              "value": 2.8,
+              "status": "final",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-02-06T23:00:00+0100"
+            }
+          ]
+        },
+        {
+          "series_id": "DE.CPI_YOY_M.OECD",
+          "indicator_code": "CPI_YOY_M",
+          "indicator_name_zh": "居民消费价格指数同比",
+          "indicator_name_en": "Consumer Price Index YoY",
+          "country_name_zh": "德国",
+          "country_name_en": "Germany",
+          "country_code": "DE",
+          "frequency": "M",
+          "unit": "%",
+          "seasonal_adjustment": "NSA",
+          "calculation": "YoY",
+          "source": {
+            "organization": "OECD",
+            "dataset": "Prices: Consumer prices",
+            "source_series_code": "DF_PRICES_ALL.CPI.GY",
+            "source_url": "https://sdmx.oecd.org/public/rest/v1/data/OECD.SDD.TPS,DSD_PRICES@DF_PRICES_ALL/.M.N.CPI.PA._T.N.GY?startPeriod=2015-01&dimensionAtObservation=AllDimensions"
+          },
+          "last_updated": "2026-06-05",
+          "observations": [
+            {
+              "date": "2024-01",
+              "value": 2.887139,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-02",
+              "value": 2.517361,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-03",
+              "value": 2.153316,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-04",
+              "value": 2.229846,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-05",
+              "value": 2.403434,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-06",
+              "value": 2.226027,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-07",
+              "value": 2.305722,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-08",
+              "value": 1.87234,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-09",
+              "value": 1.612903,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-10",
+              "value": 2.037351,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-11",
+              "value": 2.216539,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            },
+            {
+              "date": "2024-12",
+              "value": 2.640545,
+              "status": "A",
+              "retrieved_at": "2026-06-05 18:25:31",
+              "data_version": "2026-06-05"
+            }
+          ]
+        }
+      ],
+      "series_count": 2,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "EA",
+        "indicator_code": "CPI_YOY_M",
+        "start_date": "2024-01",
+        "end_date": "2024-12",
+        "frequency": "M",
+        "source": "Eurostat"
+      },
+      "series": {
+        "series_id": "EA.CPI_YOY_M.EUROSTAT",
+        "indicator_code": "CPI_YOY_M",
+        "indicator_name_zh": "调和居民消费价格指数同比",
+        "indicator_name_en": "HICP annual rate of change",
+        "country_name_zh": "欧元区",
+        "country_name_en": "Euro area",
+        "country_code": "EA",
+        "frequency": "M",
+        "unit": "%",
+        "seasonal_adjustment": "NSA",
+        "calculation": "YoY",
+        "source": {
+          "organization": "Eurostat",
+          "dataset": "prc_hicp_manr",
+          "source_series_code": "prc_hicp_manr.CP00",
+          "source_url": "https://ec.europa.eu/eurostat/databrowser/view/prc_hicp_manr/default/table"
+        },
+        "last_updated": "2026-02-06T23:00:00+0100",
+        "observations": [
+          {
+            "date": "2024-01",
+            "value": 2.8,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-02",
+            "value": 2.6,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-03",
+            "value": 2.4,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-04",
+            "value": 2.4,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-05",
+            "value": 2.6,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-06",
+            "value": 2.5,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-07",
+            "value": 2.6,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-08",
+            "value": 2.2,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-09",
+            "value": 1.7,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-10",
+            "value": 2.0,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-11",
+            "value": 2.2,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          },
+          {
+            "date": "2024-12",
+            "value": 2.4,
+            "status": "final",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-02-06T23:00:00+0100"
+          }
+        ]
+      },
+      "series_count": 1,
+      "error": null
+    },
+    {
+      "request": {
+        "country": "EA",
+        "indicator_code": "EUR_USD_EXCHANGE_RATE_D",
+        "start_date": "2024-01-02",
+        "end_date": "2024-01-10",
+        "frequency": "D",
+        "source": "ECB"
+      },
+      "series": {
+        "series_id": "EA.EUR_USD_EXCHANGE_RATE_D.ECB",
+        "indicator_code": "EUR_USD_EXCHANGE_RATE_D",
+        "indicator_name_zh": "欧元兑美元参考汇率",
+        "indicator_name_en": "Euro foreign exchange reference rate: USD",
+        "country_name_zh": "欧元区",
+        "country_name_en": "Euro area",
+        "country_code": "EA",
+        "frequency": "D",
+        "unit": "USD per EUR",
+        "seasonal_adjustment": "NSA",
+        "calculation": "level",
+        "source": {
+          "organization": "ECB",
+          "dataset": "Euro foreign exchange reference rates",
+          "source_series_code": "EXR.D.USD.EUR.SP00.A",
+          "source_url": "https://data.ecb.europa.eu/data/datasets/EXR/D.USD.EUR.SP00.A"
+        },
+        "last_updated": "2026-06-05",
+        "observations": [
+          {
+            "date": "2024-01-02",
+            "value": 1.0956,
+            "status": "A",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-06-05"
+          },
+          {
+            "date": "2024-01-03",
+            "value": 1.0919,
+            "status": "A",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-06-05"
+          },
+          {
+            "date": "2024-01-04",
+            "value": 1.0953,
+            "status": "A",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-06-05"
+          },
+          {
+            "date": "2024-01-05",
+            "value": 1.0921,
+            "status": "A",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-06-05"
+          },
+          {
+            "date": "2024-01-08",
+            "value": 1.0946,
+            "status": "A",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-06-05"
+          },
+          {
+            "date": "2024-01-09",
+            "value": 1.094,
+            "status": "A",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-06-05"
+          },
+          {
+            "date": "2024-01-10",
+            "value": 1.0946,
+            "status": "A",
+            "retrieved_at": "2026-06-05 18:25:31",
+            "data_version": "2026-06-05"
+          }
+        ]
+      },
+      "series_count": 1,
+      "error": null
+    }
+  ]
+}

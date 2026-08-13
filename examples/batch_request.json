@@ -1,0 +1,9 @@
+{
+  "queries": [
+    {"country": "US", "indicator": "CPI_YOY_A", "start": "2020", "end": "2024", "frequency": "A"},
+    {"country": "CN", "indicator": "GDP_REAL_GROWTH_YOY_A", "start": "2020", "end": "2024", "frequency": "A"},
+    {"country": "US", "indicator": "US_UNEMPLOYMENT_RATE_M", "start": "2024-01", "end": "2024-12", "frequency": "M", "source": "FRED"},
+    {"country": "DE", "indicator": "CPI_YOY_M", "start": "2024-01", "end": "2024-12", "frequency": "M"},
+    {"country": "EA", "indicator": "EUR_USD_EXCHANGE_RATE_D", "start": "2024-01-02", "end": "2024-01-10", "frequency": "D", "source": "ECB"}
+  ]
+}
