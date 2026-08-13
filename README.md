@@ -114,6 +114,14 @@ streamlit run dashboard/full_platform_app.py
 
 完整平台包含指标查询、指标字典、数据质量、JSON 输出、一致性分析、治理驾驶舱、指标血缘、治理规则、API 服务中心、数据资产目录、风险预警、智能分析、智能报告、资产评级和指标对齐审核等模块。
 
+## Render 在线部署与自定义域名
+
+项目根目录的 `render.yaml` 已声明生产 Web Service：使用 Python 3.11 安装依赖，以 Streamlit 根入口启动，并通过 `/_stcore/health` 执行健康检查。连接 GitHub 仓库后，Render 会随 `main` 分支的新提交自动部署。
+
+推荐正式地址为 `data.shiwenbrief.com`。首次部署取得 `econatlas.onrender.com` 地址后，在 Render 服务的 `Settings → Custom Domains` 添加该域名，再在 Cloudflare DNS 添加 Render 要求的 CNAME 记录。初次验证应使用 `DNS only`，待 HTTPS 签发完成后再决定是否启用 Cloudflare 代理。
+
+生产环境中的 `DEEPSEEK_API_KEY`、飞书 Webhook 和邮箱授权码必须使用 Render Environment Variables 或 GitHub Actions Secrets，不得写入代码库。
+
 ## 半自动指标对齐审核
 
 正式映射关系以 `metadata/source_mapping.csv` 为准，同时可使用候选推荐脚本生成审核结果：
