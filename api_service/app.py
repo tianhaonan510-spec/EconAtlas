@@ -3,9 +3,12 @@ from typing import Any, Optional
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 
 from config import DB_PATH
+from api_service.workspace import WORKSPACE_HTML
+from services.ai_qa_service import ask_deepseek, build_messages, prepare_evidence, resolve_query_intent
 from services.query_service import build_batch_response, build_query_response, read_sql
 
 
@@ -20,6 +23,11 @@ class QueryItem(BaseModel):
 
 class BatchQueryRequest(BaseModel):
     queries: list[QueryItem]
+
+
+class ChatRequest(BaseModel):
+    question: str = Field(..., min_length=2, max_length=1000)
+    context: Optional[dict[str, Any]] = None
 
 
 app = FastAPI(
@@ -37,8 +45,8 @@ app.add_middleware(
 )
 
 
-@app.get("/")
-def home() -> dict[str, Any]:
+@app.get("/api")
+def api_home() -> dict[str, Any]:
     return {
         "name": "EconAtlas",
         "description": "全球宏观经济指标数据要素采集、标准化治理与结构化服务平台",
@@ -52,6 +60,35 @@ def home() -> dict[str, Any]:
             "health": "/health",
         },
     }
+
+
+@app.get("/", response_class=HTMLResponse)
+def workspace() -> HTMLResponse:
+    return HTMLResponse(WORKSPACE_HTML)
+
+
+@app.post("/chat")
+def chat(payload: ChatRequest) -> dict[str, Any]:
+    try:
+        observations = read_sql("SELECT * FROM macro_observations")
+        observations["date_year"] = observations["date"].astype(str).str[:4].astype("Int64")
+        intent = resolve_query_intent(payload.question, observations, payload.context)
+        subset = observations[
+            (observations["country_code"] == intent["country"])
+            & (observations["indicator_code"] == intent["indicator"])
+            & (observations["date_year"].between(intent["start_year"], intent["end_year"]))
+        ].copy()
+        evidence, evidence_text = prepare_evidence(subset)
+        if evidence.empty:
+            return {"answer": "当前标准库中没有检索到与该问题匹配的数据，请调整国家、指标或年份。", "context": intent, "evidence": []}
+        first = subset.iloc[0]
+        country_label = str(first.get("country_name_zh") or intent["country"])
+        indicator_label = str(first.get("indicator_name_zh") or intent["indicator"])
+        answer = ask_deepseek(build_messages(payload.question, country_label, indicator_label, evidence_text))
+        records = evidence.where(evidence.notna(), None).to_dict(orient="records")
+        return {"answer": answer.text, "model": answer.model, "context": intent, "evidence": records}
+    except Exception as exc:
+        return {"answer": None, "error": str(exc), "context": payload.context or {}, "evidence": []}
 
 
 @app.get("/health")

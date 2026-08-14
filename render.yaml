@@ -7,8 +7,8 @@ services:
     branch: main
     autoDeployTrigger: commit
     buildCommand: pip install -r requirements.txt
-    startCommand: streamlit run streamlit_app.py --server.address 0.0.0.0 --server.port $PORT --server.headless true
-    healthCheckPath: /_stcore/health
+    startCommand: uvicorn api_service.app:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.13
