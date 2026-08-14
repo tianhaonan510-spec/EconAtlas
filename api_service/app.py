@@ -1,5 +1,8 @@
 ﻿# -*- coding: utf-8 -*-
 from typing import Any, Literal, Optional
+import os
+
+import pandas as pd
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -7,7 +10,7 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel, Field
 
 from config import DB_PATH
-from api_service.workspace import WORKSPACE_HTML
+from api_service.panel import PANEL_HTML
 from services.ai_qa_service import ask_deepseek, build_messages, prepare_evidence, resolve_query_intent, route_with_deepseek
 from services.query_service import build_batch_response, build_query_response, read_sql
 
@@ -70,7 +73,61 @@ def api_home() -> dict[str, Any]:
 
 @app.get("/", response_class=HTMLResponse)
 def workspace() -> HTMLResponse:
-    return HTMLResponse(WORKSPACE_HTML)
+    return HTMLResponse(PANEL_HTML)
+
+
+@app.get("/dashboard-summary")
+def dashboard_summary() -> dict[str, Any]:
+    try:
+        totals = read_sql(
+            """
+            SELECT COUNT(*) AS rows,
+                   SUM(CASE WHEN value IS NOT NULL THEN 1 ELSE 0 END) AS valid_rows,
+                   COUNT(DISTINCT country_code) AS countries,
+                   COUNT(DISTINCT indicator_code) AS indicators,
+                   COUNT(DISTINCT source_organization) AS sources,
+                   MIN(date) AS earliest_date, MAX(date) AS latest_date,
+                   SUM(CASE WHEN observation_type = 'forecast' THEN 1 ELSE 0 END) AS forecasts
+            FROM macro_observations
+            """
+        ).iloc[0]
+        source_counts = read_sql(
+            """SELECT source_organization AS source, COUNT(*) AS rows
+               FROM macro_observations GROUP BY source_organization ORDER BY rows DESC"""
+        )
+        frequency_counts = read_sql(
+            """SELECT frequency, COUNT(*) AS rows FROM macro_observations
+               GROUP BY frequency ORDER BY rows DESC"""
+        )
+        return {
+            "totals": {key: (None if pd.isna(value) else value.item() if hasattr(value, "item") else value) for key, value in totals.items()},
+            "source_counts": source_counts.to_dict(orient="records"),
+            "frequency_counts": frequency_counts.to_dict(orient="records"),
+            "deepseek_configured": bool(os.environ.get("DEEPSEEK_API_KEY", "").strip()),
+        }
+    except Exception as exc:
+        return {"error": str(exc)}
+
+
+@app.get("/assets")
+def assets(limit: int = Query(80, ge=1, le=300)) -> dict[str, Any]:
+    try:
+        data = read_sql(
+            """
+            SELECT country_code, country_name_zh, indicator_code, indicator_name_zh,
+                   frequency, unit, source_organization,
+                   COUNT(*) AS observations, MIN(date) AS start_date, MAX(date) AS end_date,
+                   SUM(CASE WHEN value IS NOT NULL THEN 1 ELSE 0 END) AS valid_observations
+            FROM macro_observations
+            GROUP BY country_code, country_name_zh, indicator_code, indicator_name_zh,
+                     frequency, unit, source_organization
+            ORDER BY observations DESC LIMIT ?
+            """,
+            [limit],
+        )
+        return {"assets": data.where(data.notna(), None).to_dict(orient="records"), "count": len(data)}
+    except Exception as exc:
+        return {"assets": [], "count": 0, "error": str(exc)}
 
 
 @app.post("/chat")
