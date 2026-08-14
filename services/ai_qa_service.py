@@ -82,6 +82,13 @@ class AIAnswer:
     completion_tokens: int | None = None
 
 
+@dataclass(frozen=True)
+class ConversationDecision:
+    route: str
+    answer: str = ""
+    reason: str = ""
+
+
 def resolve_query_intent(
     question: str,
     observations: pd.DataFrame,
@@ -182,7 +189,10 @@ def build_messages(question: str, country_label: str, indicator_label: str, evid
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
 
 
-def ask_deepseek(messages: list[dict]) -> AIAnswer:
+def _deepseek_completion(
+    messages: list[dict], *, temperature: float = 0.2,
+    max_tokens: int = 1200, json_output: bool = False,
+) -> AIAnswer:
     api_key = os.environ.get("DEEPSEEK_API_KEY", "").strip()
     if not api_key:
         raise RuntimeError("尚未配置 DEEPSEEK_API_KEY")
@@ -192,10 +202,12 @@ def ask_deepseek(messages: list[dict]) -> AIAnswer:
         "model": model,
         "messages": messages,
         "thinking": {"type": "disabled"},
-        "temperature": 0.2,
-        "max_tokens": 1200,
+        "temperature": temperature,
+        "max_tokens": max_tokens,
         "stream": False,
     }
+    if json_output:
+        payload["response_format"] = {"type": "json_object"}
     request = urllib.request.Request(
         f"{base_url}/chat/completions",
         data=json.dumps(payload, ensure_ascii=False).encode("utf-8"),
@@ -221,3 +233,76 @@ def ask_deepseek(messages: list[dict]) -> AIAnswer:
         prompt_tokens=usage.get("prompt_tokens"),
         completion_tokens=usage.get("completion_tokens"),
     )
+
+
+def ask_deepseek(messages: list[dict]) -> AIAnswer:
+    """Generate a grounded answer from EconAtlas evidence."""
+    return _deepseek_completion(messages)
+
+
+def _history_messages(history: list[dict] | None, limit: int = 10) -> list[dict]:
+    cleaned = []
+    for item in (history or [])[-limit:]:
+        role = str(item.get("role", ""))
+        content = str(item.get("content", "")).strip()[:3000]
+        if role in {"user", "assistant"} and content:
+            cleaned.append({"role": role, "content": content})
+    return cleaned
+
+
+def _strong_data_signal(question: str, previous: dict | None = None) -> bool:
+    text = question.lower()
+    metric = re.search(r"(cpi|gdp|ppi|失业率|通胀|物价|汇率|人口|债务|出口|进口|工业生产|利率|经济增长)", text)
+    numeric = re.search(r"(多少|数值|数据|趋势|变化|走势|最新|近.{0,4}年|比较|相比|同比|环比|预测)", text)
+    follow_up = previous and re.search(r"(那|那么|相比|比较|呢|同期|换成).{0,12}(美国|中国|日本|德国|英国|欧元区|us|cn|jp|de|gb|ea)", text)
+    return bool((metric and numeric) or follow_up)
+
+
+def route_with_deepseek(
+    question: str, history: list[dict] | None = None, previous: dict | None = None,
+) -> ConversationDecision:
+    """Use DeepSeek for normal conversation and route only data requests to RAG."""
+    system = (
+        "你是 EconAtlas 智能问答平台的对话中枢，由 DeepSeek 提供语言能力。"
+        "你既能正常聊天和回答一般知识，也要识别何时必须查询 EconAtlas 宏观数据库。"
+        "只返回 JSON 对象，不要代码块；字段为 route、answer、reason。"
+        "route 只能是 general、data、clarify。"
+        "寒暄、感谢、一般知识、写作、概念解释及与具体宏观数值无关的问题用 general，answer 直接自然回答。"
+        "要求宏观指标具体数值、时间趋势、最新水平或跨国比较时用 data，answer 留空。"
+        "明确想查数据但缺少国家/地区或指标时用 clarify，answer 只追问缺失信息。"
+        "结合历史理解‘那美国呢’等追问，但绝不能把‘谢谢你’等普通消息强行解释为上一轮数据问题。"
+    )
+    messages = [{"role": "system", "content": system}]
+    messages.extend(_history_messages(history))
+    context = json.dumps(previous or {}, ensure_ascii=False)
+    messages.append({"role": "user", "content": f"当前数据上下文：{context}\n当前消息：{question}"})
+    try:
+        result = _deepseek_completion(messages, temperature=0.1, max_tokens=500, json_output=True)
+    except RuntimeError:
+        # Some OpenAI-compatible gateways omit JSON-mode support. The system
+        # prompt still enforces the same JSON contract without response_format.
+        result = _deepseek_completion(messages, temperature=0.1, max_tokens=500)
+    try:
+        raw = result.text.strip()
+        if raw.startswith("```"):
+            raw = re.sub(r"^```(?:json)?\s*|\s*```$", "", raw, flags=re.I)
+        payload = json.loads(raw)
+        route = str(payload.get("route", "")).lower()
+        answer = str(payload.get("answer", "")).strip()
+        reason = str(payload.get("reason", "")).strip()
+        if route not in {"general", "data", "clarify"}:
+            raise ValueError("invalid route")
+        if _strong_data_signal(question, previous):
+            route, answer = "data", ""
+        if route in {"general", "clarify"} and not answer:
+            raise ValueError("missing answer")
+        return ConversationDecision(route, answer, reason)
+    except (TypeError, ValueError, json.JSONDecodeError):
+        if _strong_data_signal(question, previous):
+            return ConversationDecision("data", reason="deterministic fallback")
+        fallback = _deepseek_completion(
+            [{"role": "system", "content": "你是 EconAtlas 智能问答助手，请自然、准确、简洁地回答用户。"}]
+            + _history_messages(history) + [{"role": "user", "content": question}],
+            temperature=0.5, max_tokens=1000,
+        )
+        return ConversationDecision("general", fallback.text, "general fallback")

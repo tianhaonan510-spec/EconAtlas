@@ -1,8 +1,9 @@
 import unittest
+from unittest.mock import patch
 
 import pandas as pd
 
-from services.ai_qa_service import build_messages, prepare_evidence, resolve_query_intent, route_question
+from services.ai_qa_service import AIAnswer, build_messages, prepare_evidence, resolve_query_intent, route_question, route_with_deepseek
 
 
 class AIQAServiceTests(unittest.TestCase):
@@ -13,6 +14,27 @@ class AIQAServiceTests(unittest.TestCase):
         routed = route_question("最近五年的 CPI 趋势", self.catalog)
         self.assertEqual(routed["route"], "clarify")
         self.assertIn("国家", routed["message"])
+
+    @patch("services.ai_qa_service._deepseek_completion")
+    def test_general_conversation_is_answered_by_deepseek(self, completion):
+        completion.return_value = AIAnswer(
+            text='{"route":"general","answer":"不客气，很高兴帮到你。","reason":"感谢"}',
+            model="deepseek-test",
+        )
+        decision = route_with_deepseek("谢谢你", [{"role": "assistant", "content": "此前回答"}], {"country": "CN"})
+        self.assertEqual(decision.route, "general")
+        self.assertIn("不客气", decision.answer)
+        self.assertTrue(completion.called)
+
+    @patch("services.ai_qa_service._deepseek_completion")
+    def test_explicit_macro_data_request_is_forced_to_retrieval(self, completion):
+        completion.return_value = AIAnswer(
+            text='{"route":"general","answer":"错误分类","reason":""}',
+            model="deepseek-test",
+        )
+        decision = route_with_deepseek("中国近五年的 CPI 趋势", [], None)
+        self.assertEqual(decision.route, "data")
+        self.assertEqual(decision.answer, "")
     def setUp(self):
         self.catalog = pd.DataFrame({
             "country_code": ["CN", "CN", "US"],
