@@ -1,6 +1,8 @@
 ﻿# -*- coding: utf-8 -*-
 from typing import Any, Literal, Optional
 import os
+from datetime import date
+from pathlib import Path
 
 import pandas as pd
 
@@ -37,6 +39,15 @@ class ChatRequest(BaseModel):
     question: str = Field(..., min_length=2, max_length=1000)
     context: Optional[dict[str, Any]] = None
     history: list[ChatTurn] = Field(default_factory=list, max_length=20)
+
+
+class ReportRequest(BaseModel):
+    country: str = Field(..., min_length=2, max_length=8)
+    indicator: str = Field(..., min_length=2, max_length=120)
+
+
+def _records(frame: pd.DataFrame) -> list[dict[str, Any]]:
+    return frame.astype(object).where(frame.notna(), None).to_dict(orient="records")
 
 
 app = FastAPI(
@@ -86,21 +97,29 @@ def dashboard_summary() -> dict[str, Any]:
                    COUNT(DISTINCT country_code) AS countries,
                    COUNT(DISTINCT indicator_code) AS indicators,
                    COUNT(DISTINCT source_organization) AS sources,
-                   MIN(date) AS earliest_date, MAX(date) AS latest_date,
-                   SUM(CASE WHEN observation_type = 'forecast' THEN 1 ELSE 0 END) AS forecasts
+                   MIN(date) AS earliest_date, MAX(date) AS latest_date
             FROM macro_observations
+            WHERE observation_type != 'forecast'
             """
+        ).iloc[0]
+        forecast = read_sql(
+            """SELECT COUNT(*) AS rows, MIN(date) AS earliest_date, MAX(date) AS latest_date
+               FROM macro_observations WHERE observation_type = 'forecast'"""
         ).iloc[0]
         source_counts = read_sql(
             """SELECT source_organization AS source, COUNT(*) AS rows
-               FROM macro_observations GROUP BY source_organization ORDER BY rows DESC"""
+               FROM macro_observations WHERE observation_type != 'forecast'
+               GROUP BY source_organization ORDER BY rows DESC"""
         )
         frequency_counts = read_sql(
             """SELECT frequency, COUNT(*) AS rows FROM macro_observations
+               WHERE observation_type != 'forecast'
                GROUP BY frequency ORDER BY rows DESC"""
         )
         return {
             "totals": {key: (None if pd.isna(value) else value.item() if hasattr(value, "item") else value) for key, value in totals.items()},
+            "forecast_scenario": {key: (None if pd.isna(value) else value.item() if hasattr(value, "item") else value) for key, value in forecast.items()},
+            "as_of_date": date.today().isoformat(),
             "source_counts": source_counts.to_dict(orient="records"),
             "frequency_counts": frequency_counts.to_dict(orient="records"),
             "deepseek_configured": bool(os.environ.get("DEEPSEEK_API_KEY", "").strip()),
@@ -119,6 +138,7 @@ def assets(limit: int = Query(80, ge=1, le=300)) -> dict[str, Any]:
                    COUNT(*) AS observations, MIN(date) AS start_date, MAX(date) AS end_date,
                    SUM(CASE WHEN value IS NOT NULL THEN 1 ELSE 0 END) AS valid_observations
             FROM macro_observations
+            WHERE observation_type != 'forecast'
             GROUP BY country_code, country_name_zh, indicator_code, indicator_name_zh,
                      frequency, unit, source_organization
             ORDER BY observations DESC LIMIT ?
@@ -128,6 +148,111 @@ def assets(limit: int = Query(80, ge=1, le=300)) -> dict[str, Any]:
         return {"assets": data.where(data.notna(), None).to_dict(orient="records"), "count": len(data)}
     except Exception as exc:
         return {"assets": [], "count": 0, "error": str(exc)}
+
+
+@app.get("/catalog")
+def catalog() -> dict[str, Any]:
+    countries = read_sql(
+        """SELECT country_code, COALESCE(MAX(country_name_zh), country_code) AS name
+           FROM macro_observations WHERE observation_type != 'forecast'
+           GROUP BY country_code ORDER BY country_code"""
+    )
+    indicators = read_sql(
+        """SELECT indicator_code, COALESCE(MAX(indicator_name_zh), indicator_code) AS name,
+                  COALESCE(MAX(unit), '') AS unit, COUNT(*) AS observations
+           FROM macro_observations WHERE observation_type != 'forecast'
+           GROUP BY indicator_code ORDER BY indicator_code"""
+    )
+    return {"countries": _records(countries), "indicators": _records(indicators)}
+
+
+@app.get("/quality-status")
+def quality_status() -> dict[str, Any]:
+    base = Path(DB_PATH).parent
+    files = {
+        "checks": base / "quality_report.csv",
+        "consistency": base / "quality_consistency_report.csv",
+        "coverage": base / "quality_coverage_report.csv",
+        "outliers": base / "quality_outlier_report.csv",
+    }
+    result: dict[str, Any] = {}
+    for key, path in files.items():
+        frame = pd.read_csv(path) if path.exists() else pd.DataFrame()
+        result[key] = _records(frame.head(200))
+        result[f"{key}_count"] = int(len(frame))
+        result[f"{key}_warnings"] = int((frame.get("status", pd.Series(dtype=str)).astype(str).str.lower() == "warning").sum())
+    return result
+
+
+@app.get("/risk-alerts")
+def risk_alerts() -> dict[str, Any]:
+    quality = quality_status()
+    outliers = pd.DataFrame(quality["outliers"])
+    consistency = pd.DataFrame(quality["consistency"])
+    warnings = consistency[consistency.get("status", pd.Series(index=consistency.index, dtype=str)).astype(str).str.lower() == "warning"] if not consistency.empty else consistency
+    return {
+        "quality_warnings": quality["checks_warnings"],
+        "consistency_warnings": quality["consistency_warnings"],
+        "outlier_count": quality["outliers_count"],
+        "alerts": _records(warnings.head(100)),
+        "outliers": _records(outliers.head(100)),
+    }
+
+
+@app.post("/reports/generate")
+def generate_report(payload: ReportRequest) -> dict[str, Any]:
+    data = read_sql(
+        """SELECT date, value, unit, frequency, source_organization, source_dataset,
+                  country_name_zh, indicator_name_zh, observation_type
+           FROM macro_observations
+           WHERE country_code = ? AND indicator_code = ? AND observation_type != 'forecast'
+                 AND value IS NOT NULL
+           ORDER BY date""",
+        [payload.country.upper(), payload.indicator],
+    )
+    if data.empty:
+        return {"error": "当前条件没有可生成报告的历史或已发布数据。"}
+    recent = data.tail(24).copy()
+    latest = float(recent.iloc[-1]["value"])
+    first = float(recent.iloc[0]["value"])
+    trend = "上升" if latest > first else "下降" if latest < first else "平稳"
+    country_name = str(recent.iloc[-1]["country_name_zh"] or payload.country)
+    indicator_name = str(recent.iloc[-1]["indicator_name_zh"] or payload.indicator)
+    unit = str(recent.iloc[-1]["unit"] or "")
+    sources = sorted(recent["source_organization"].dropna().astype(str).unique().tolist())
+    summary = (
+        f"{country_name}的{indicator_name}在最近{len(recent)}条已发布观测中整体呈{trend}态势。"
+        f"最新值为{latest:g}{unit}，样本均值为{float(recent['value'].mean()):g}{unit}。"
+        "本结论仅使用历史值和截至当前日期已发布的数据，不使用预测值。"
+    )
+    markdown = f"""# {country_name} {indicator_name}分析报告
+
+## 报告摘要
+
+{summary}
+
+## 核心统计
+
+- 指标代码：{payload.indicator}
+- 时间范围：{recent.iloc[0]['date']}—{recent.iloc[-1]['date']}
+- 有效观测：{len(recent)} 条
+- 最新值：{latest:g}{unit}
+- 均值：{float(recent['value'].mean()):g}{unit}
+- 最大值：{float(recent['value'].max()):g}{unit}
+- 最小值：{float(recent['value'].min()):g}{unit}
+- 数据来源：{'、'.join(sources)}
+
+## 数据治理说明
+
+报告基于 EconAtlas 标准库生成，已排除 observation_type=forecast 的预测记录，并保留来源与口径字段。
+"""
+    return {
+        "country": payload.country.upper(), "country_name": country_name,
+        "indicator": payload.indicator, "indicator_name": indicator_name,
+        "summary": summary, "markdown": markdown,
+        "stats": {"count": len(recent), "latest": latest, "mean": float(recent["value"].mean()), "min": float(recent["value"].min()), "max": float(recent["value"].max()), "unit": unit, "start": str(recent.iloc[0]["date"]), "end": str(recent.iloc[-1]["date"])},
+        "sources": sources, "series": _records(recent), "forecast_excluded": True,
+    }
 
 
 @app.post("/chat")
@@ -169,7 +294,10 @@ def health_check() -> dict[str, Any]:
 @app.get("/metadata")
 def metadata() -> dict[str, Any]:
     try:
-        df = read_sql("SELECT * FROM macro_observations")
+        df = read_sql("SELECT * FROM macro_observations WHERE observation_type != 'forecast'")
+        forecast_count = int(read_sql(
+            "SELECT COUNT(*) AS rows FROM macro_observations WHERE observation_type = 'forecast'"
+        ).iloc[0]["rows"])
         frequencies = sorted(df["frequency"].dropna().astype(str).unique().tolist())
         return {
             "data_asset": {
@@ -179,6 +307,8 @@ def metadata() -> dict[str, Any]:
                 "indicators": int(df["indicator_code"].nunique()),
                 "sources": int(df["source_organization"].nunique()),
                 "frequencies": frequencies,
+                "as_of_date": date.today().isoformat(),
+                "forecast_rows_excluded": forecast_count,
             },
             "sources": sorted(df["source_organization"].dropna().unique().tolist()),
             "indicators": sorted(df["indicator_code"].dropna().unique().tolist()),
