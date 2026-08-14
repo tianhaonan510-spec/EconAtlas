@@ -722,23 +722,61 @@ def render_module_page(
             <div class="qa-shell-marker"></div>
             <style>
             .stApp:has(.qa-shell-marker) {
-                background: #f7f9fc !important; color: #1f2937 !important;
+                background: #ffffff !important; color: #1f2937 !important;
             }
             .stApp:has(.qa-shell-marker) .topbar,
             .stApp:has(.qa-shell-marker) .event-ticker,
             .stApp:has(.qa-shell-marker) .module-dock { display: none !important; }
-            .stApp:has(.qa-shell-marker) .block-container { padding: 0 !important; }
-            .qa-brand { padding: 18px 8px 12px; border-bottom: 1px solid #e5e7eb; }
-            .qa-brand strong { color:#315efb; font-size:22px; }
-            .qa-brand span { color:#94a3b8; font-size:12px; margin-left:9px; }
-            .qa-welcome { text-align:center; padding: 7vh 1rem 2rem; }
-            .qa-welcome h2 { color:#111827; font-size:32px; margin-bottom:12px; }
-            .qa-welcome p { color:#64748b; font-size:16px; }
+            .stApp:has(.qa-shell-marker) .block-container { padding: 0 !important; max-width:100% !important; }
+            .stApp:has(.qa-shell-marker) div[data-testid="stVerticalBlock"] { gap:.75rem; }
+            .qa-topbar { height:72px; display:flex; align-items:center; border-bottom:1px solid #e7ebf2;
+                box-shadow:0 1px 7px rgba(28,42,72,.05); padding:0 28px; background:#fff; }
+            .qa-logo { min-width:270px; display:flex; align-items:center; gap:11px; }
+            .qa-logo-mark { width:34px; height:34px; border-radius:11px; background:linear-gradient(135deg,#27c3ff,#5468ff);
+                box-shadow:0 6px 16px rgba(72,97,255,.24); position:relative; }
+            .qa-logo-mark:before,.qa-logo-mark:after { content:""; position:absolute; width:8px; height:8px;
+                border:3px solid #fff; border-radius:50%; }
+            .qa-logo-mark:before { left:5px; top:5px; } .qa-logo-mark:after { right:5px; bottom:5px; }
+            .qa-logo strong { font-size:21px; color:#243b64; letter-spacing:-.3px; }
+            .qa-logo small { color:#9aa7bb; font-size:10px; letter-spacing:4px; display:block; margin-top:-2px; }
+            .qa-nav { display:flex; align-items:center; gap:5px; height:100%; }
+            .qa-nav a { height:100%; padding:0 18px; display:flex; align-items:center; color:#53627a;
+                text-decoration:none; font-weight:650; font-size:15px; border-bottom:3px solid transparent; }
+            .qa-nav a:hover { color:#4058ff; background:#fafbff; }
+            .qa-nav a.active { color:#4058ff; border-bottom-color:#5268ff; }
+            .qa-top-actions { margin-left:auto; display:flex; align-items:center; gap:10px; color:#8090a9; }
+            .qa-search { width:230px; height:38px; border:1px solid #dce2ec; border-radius:7px;
+                display:flex; align-items:center; padding:0 13px; color:#a8b1c2; font-size:13px; background:#fbfcfe; }
+            div[data-testid="stHorizontalBlock"]:has(.qa-brand) { gap:0 !important; min-height:calc(100vh - 72px); }
+            div[data-testid="stColumn"]:has(.qa-brand) { background:#f8faff; border-right:1px solid #e7ebf2;
+                padding:14px 13px 24px !important; min-width:280px; }
+            div[data-testid="stColumn"]:has(.qa-main-marker) { background:#fff; padding:18px 5.5vw 40px !important; }
+            .qa-brand { padding:3px 2px 14px; }
+            .qa-brand strong { color:#4058ff; font-size:16px; }
+            .qa-brand span { color:#94a3b8; font-size:11px; margin-left:8px; }
+            .qa-side-title { color:#8a99b0; font-size:12px; font-weight:600; margin:22px 0 6px; }
+            .qa-main-head { display:flex; align-items:center; justify-content:space-between; color:#94a3b8;
+                font-size:13px; border-bottom:1px solid #f0f2f6; padding:0 0 14px; }
+            .qa-main-head strong { color:#4058ff; font-size:16px; }
+            .qa-welcome { text-align:center; padding: 16vh 1rem 2rem; }
+            .qa-welcome h2 { color:#111827; font-size:31px; margin-bottom:12px; font-weight:750; letter-spacing:-.5px; }
+            .qa-welcome p { color:#8995a8; font-size:15px; }
             .qa-context { display:inline-block; padding:5px 10px; border-radius:999px;
                 background:#eef2ff; color:#4f46e5; font-size:12px; margin:3px 0 10px; }
             div[data-testid="stChatMessage"] { background:#fff; border:1px solid #e8edf5;
                 border-radius:14px; padding:10px 14px; box-shadow:0 4px 16px rgba(15,23,42,.04); }
-            div[data-testid="stChatInput"] { border-color:#cbd5e1; background:#fff; }
+            div[data-testid="stChatInput"] { max-width:900px; margin:18px auto 8px; border:1px solid #dce3ef;
+                background:#fff; border-radius:14px; box-shadow:0 12px 32px rgba(39,55,91,.12); }
+            div[data-testid="stChatInput"] textarea { min-height:64px; color:#1f2937 !important; font-size:15px; }
+            div[data-testid="stChatInput"] button { background:#5368ff !important; border-radius:9px !important; color:#fff !important; }
+            .stApp:has(.qa-shell-marker) div[data-testid="stButton"] button { border-color:#dce3ee;
+                background:#fff; color:#52627a; box-shadow:none; min-height:42px; }
+            .stApp:has(.qa-shell-marker) div[data-testid="stButton"] button:hover { border-color:#7d8cff;
+                color:#4058ff; background:#f6f7ff; }
+            div[data-testid="stColumn"]:has(.qa-brand) div[data-testid="stButton"]:first-of-type button {
+                background:#eef2ff !important; color:#4058ff !important; border-color:#e0e5ff !important; font-weight:700; }
+            .stApp:has(.qa-shell-marker) div[data-testid="stTextInput"] input { background:#fff; border-color:#dce3ee;
+                color:#334155; border-radius:7px; }
             .stApp:has(.qa-shell-marker) p, .stApp:has(.qa-shell-marker) label,
             .stApp:has(.qa-shell-marker) h1, .stApp:has(.qa-shell-marker) h2,
             .stApp:has(.qa-shell-marker) h3 { color:#1f2937; }
@@ -754,22 +792,39 @@ def render_module_page(
         if "qa_title" not in st.session_state:
             st.session_state.qa_title = "新对话"
 
+        st.markdown(
+            """
+            <div class="qa-topbar">
+              <div class="qa-logo"><div class="qa-logo-mark"></div><div><strong>EconAtlas KMS</strong><small>智能数据知识管理</small></div></div>
+              <nav class="qa-nav">
+                <a href="?page=platform" target="_self">首页</a>
+                <a href="?page=platform&amp;module=数据资产目录" target="_self">数据资产</a>
+                <a href="?page=platform&amp;module=指标字典" target="_self">指标百科</a>
+                <a href="?page=platform&amp;module=指标血缘" target="_self">知识图谱</a>
+                <a class="active" href="?page=platform&amp;module=智能问答" target="_self">智能问答</a>
+              </nav>
+              <div class="qa-top-actions"><div class="qa-search">搜索指标、国家或功能　⌕</div><span>◌</span><span>◉</span></div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+
         sidebar, chat_area = st.columns([0.24, 0.76], gap="small")
         with sidebar:
-            st.markdown('<div class="qa-brand"><strong>EconAtlas AI</strong><span>数据知识问答</span></div>', unsafe_allow_html=True)
+            st.markdown('<div class="qa-brand"><strong>▣　对话</strong><span>AI 工作台</span></div>', unsafe_allow_html=True)
             if st.button("＋ 新建对话", type="primary", width="stretch"):
                 st.session_state.qa_messages = []
                 st.session_state.qa_context = {}
                 st.session_state.qa_title = "新对话"
                 st.rerun()
             st.text_input("搜索会话", placeholder="搜索会话标题", label_visibility="collapsed", disabled=True)
-            st.caption("最近对话")
+            st.markdown('<div class="qa-side-title">最近 30 天</div>', unsafe_allow_html=True)
             st.button(st.session_state.qa_title, width="stretch", disabled=True)
             st.markdown("---")
             st.caption("回答基于 EconAtlas 标准库与可追溯官方来源，不使用模型记忆补写数据。")
 
         with chat_area:
-            st.markdown("### 智能问答")
+            st.markdown('<div class="qa-main-marker"></div><div class="qa-main-head"><strong>智能问答</strong><span>知识库已连接　·　deepseek-v4-flash</span></div>', unsafe_allow_html=True)
             if not st.session_state.qa_messages:
                 st.markdown(
                     """<div class="qa-welcome"><h2>基于宏观数据知识库的 AI 问答</h2>
