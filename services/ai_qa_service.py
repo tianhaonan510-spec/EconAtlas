@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -14,6 +15,25 @@ import pandas as pd
 DEFAULT_BASE_URL = "https://api.deepseek.com"
 DEFAULT_MODEL = "deepseek-v4-flash"
 
+COUNTRY_ALIASES = {
+    "中国": "CN", "我国": "CN", "美国": "US", "日本": "JP", "德国": "DE",
+    "英国": "GB", "印度": "IN", "法国": "FR", "意大利": "IT", "西班牙": "ES",
+    "欧元区": "EA", "巴西": "BR", "南非": "ZA", "土耳其": "TR", "越南": "VN",
+    "印度尼西亚": "ID", "印尼": "ID", "墨西哥": "MX", "阿根廷": "AR", "沙特": "SA",
+}
+
+INDICATOR_ALIASES = {
+    "通胀": ["CPI_YOY_M", "CPI_YOY_A"], "物价": ["CPI_YOY_M", "CPI_YOY_A"],
+    "cpi": ["CPI_YOY_M", "CPI_YOY_A"], "失业": ["UNEMPLOYMENT_RATE_M", "UNEMPLOYMENT_RATE_A"],
+    "gdp增速": ["GDP_REAL_GROWTH_YOY_Q", "GDP_REAL_GROWTH_YOY_A"],
+    "经济增长": ["GDP_REAL_GROWTH_YOY_Q", "GDP_REAL_GROWTH_YOY_A"],
+    "gdp": ["GDP_NOMINAL_USD_A", "GDP_REAL_GROWTH_YOY_A"],
+    "工业生产": ["INDUSTRIAL_PRODUCTION_INDEX_M", "INDUSTRIAL_OUTPUT_YOY_M"],
+    "汇率": ["EXCHANGE_RATE_USD_M", "EXCHANGE_RATE_USD_A", "EXCHANGE_RATE_USD_D"],
+    "出口": ["EXPORTS_USD_A", "EXPORTS_GROWTH_A"], "进口": ["IMPORTS_USD_A", "IMPORTS_GROWTH_A"],
+    "人口": ["POPULATION_TOTAL_A", "POPULATION_GROWTH_A"], "债务": ["GOV_DEBT_GDP_A"],
+}
+
 
 @dataclass(frozen=True)
 class AIAnswer:
@@ -21,6 +41,63 @@ class AIAnswer:
     model: str
     prompt_tokens: int | None = None
     completion_tokens: int | None = None
+
+
+def resolve_query_intent(
+    question: str,
+    observations: pd.DataFrame,
+    previous: dict | None = None,
+    current_year: int = 2026,
+) -> dict:
+    """Resolve common Chinese macro questions to an available country/indicator pair."""
+    text = question.strip()
+    lowered = text.lower()
+    previous = previous or {}
+    available_countries = set(observations["country_code"].dropna().astype(str))
+    country = next((code for alias, code in COUNTRY_ALIASES.items() if alias in text and code in available_countries), None)
+    if not country:
+        for code in available_countries:
+            if re.search(rf"\b{re.escape(code.lower())}\b", lowered):
+                country = code
+                break
+    country = country or previous.get("country") or ("CN" if "CN" in available_countries else sorted(available_countries)[0])
+
+    country_rows = observations[observations["country_code"] == country]
+    available_indicators = set(country_rows["indicator_code"].dropna().astype(str))
+    indicator = None
+    # Exact indicator names/codes take precedence over broad aliases.
+    for row in country_rows[["indicator_code", "indicator_name_zh", "indicator_name_en"]].drop_duplicates().itertuples(index=False):
+        names = [str(row.indicator_code), str(row.indicator_name_zh), str(row.indicator_name_en)]
+        if any(name and name.lower() in lowered for name in names):
+            indicator = str(row.indicator_code)
+            break
+    if not indicator:
+        for alias, candidates in INDICATOR_ALIASES.items():
+            if alias in lowered:
+                indicator = next((candidate for candidate in candidates if candidate in available_indicators), None)
+                if indicator:
+                    break
+    if not indicator and previous.get("country") == country and previous.get("indicator") in available_indicators:
+        indicator = previous["indicator"]
+    if not indicator:
+        preferred = ["CPI_YOY_M", "CPI_YOY_A", "GDP_REAL_GROWTH_YOY_A"]
+        indicator = next((item for item in preferred if item in available_indicators), sorted(available_indicators)[0])
+
+    years = [int(value) for value in re.findall(r"(?<!\d)(19\d{2}|20\d{2}|2100)(?!\d)", text)]
+    relative = re.search(r"(?:近|最近|过去)([一二三四五六七八九十\d]+)年", text)
+    chinese_numbers = {"一": 1, "二": 2, "三": 3, "四": 4, "五": 5, "六": 6, "七": 7, "八": 8, "九": 9, "十": 10}
+    if relative:
+        token = relative.group(1)
+        count = int(token) if token.isdigit() else chinese_numbers.get(token, 5)
+        start_year, end_year = current_year - count + 1, current_year
+    elif len(years) >= 2:
+        start_year, end_year = min(years), max(years)
+    elif len(years) == 1:
+        start_year = end_year = years[0]
+    else:
+        start_year = int(previous.get("start_year", current_year - 5))
+        end_year = int(previous.get("end_year", current_year))
+    return {"country": country, "indicator": indicator, "start_year": start_year, "end_year": end_year}
 
 
 def prepare_evidence(df: pd.DataFrame, max_rows: int = 36) -> tuple[pd.DataFrame, str]:

@@ -2,10 +2,27 @@ import unittest
 
 import pandas as pd
 
-from services.ai_qa_service import build_messages, prepare_evidence
+from services.ai_qa_service import build_messages, prepare_evidence, resolve_query_intent
 
 
 class AIQAServiceTests(unittest.TestCase):
+    def setUp(self):
+        self.catalog = pd.DataFrame({
+            "country_code": ["CN", "CN", "US"],
+            "indicator_code": ["CPI_YOY_M", "GDP_REAL_GROWTH_YOY_A", "CPI_YOY_M"],
+            "indicator_name_zh": ["居民消费价格指数同比", "实际GDP增速", "居民消费价格指数同比"],
+            "indicator_name_en": ["Consumer Price Index YoY", "Real GDP Growth", "Consumer Price Index YoY"],
+        })
+
+    def test_resolves_natural_language_and_relative_years(self):
+        intent = resolve_query_intent("分析中国近五年通胀趋势", self.catalog, current_year=2026)
+        self.assertEqual(intent, {"country": "CN", "indicator": "CPI_YOY_M", "start_year": 2022, "end_year": 2026})
+
+    def test_follow_up_reuses_previous_context(self):
+        previous = {"country": "CN", "indicator": "GDP_REAL_GROWTH_YOY_A", "start_year": 2020, "end_year": 2026}
+        intent = resolve_query_intent("为什么会这样？", self.catalog, previous, current_year=2026)
+        self.assertEqual(intent["indicator"], "GDP_REAL_GROWTH_YOY_A")
+
     def test_evidence_is_limited_and_traceable(self):
         data = pd.DataFrame(
             {

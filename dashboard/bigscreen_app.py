@@ -23,7 +23,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
-from services.ai_qa_service import ask_deepseek, build_messages, prepare_evidence
+from services.ai_qa_service import ask_deepseek, build_messages, prepare_evidence, resolve_query_intent
 
 try:
     from reportlab.lib import colors
@@ -713,69 +713,127 @@ def render_module_page(
         "资产评级": "综合完整性、覆盖度、来源、规模和新鲜度评估资产等级。",
         "指标对齐审核": "展示半自动指标候选对齐、置信等级和人工复核结果。",
     }
-    module_title(module, descriptions.get(module, "EconAtlas 大屏风格业务模块。"))
+    if module != "智能问答":
+        module_title(module, descriptions.get(module, "EconAtlas 大屏风格业务模块。"))
 
     if module == "智能问答":
-        countries = sorted(df_all["country_code"].dropna().unique().tolist())
-        c1, c2 = st.columns([1, 1.7])
-        country = c1.selectbox(
-            "国家/地区", countries,
-            index=countries.index("CN") if "CN" in countries else 0,
-            format_func=country_label,
-            key="qa_country",
+        st.markdown(
+            """
+            <div class="qa-shell-marker"></div>
+            <style>
+            .stApp:has(.qa-shell-marker) {
+                background: #f7f9fc !important; color: #1f2937 !important;
+            }
+            .stApp:has(.qa-shell-marker) .topbar,
+            .stApp:has(.qa-shell-marker) .event-ticker,
+            .stApp:has(.qa-shell-marker) .module-dock { display: none !important; }
+            .stApp:has(.qa-shell-marker) .block-container { padding: 0 !important; }
+            .qa-brand { padding: 18px 8px 12px; border-bottom: 1px solid #e5e7eb; }
+            .qa-brand strong { color:#315efb; font-size:22px; }
+            .qa-brand span { color:#94a3b8; font-size:12px; margin-left:9px; }
+            .qa-welcome { text-align:center; padding: 7vh 1rem 2rem; }
+            .qa-welcome h2 { color:#111827; font-size:32px; margin-bottom:12px; }
+            .qa-welcome p { color:#64748b; font-size:16px; }
+            .qa-context { display:inline-block; padding:5px 10px; border-radius:999px;
+                background:#eef2ff; color:#4f46e5; font-size:12px; margin:3px 0 10px; }
+            div[data-testid="stChatMessage"] { background:#fff; border:1px solid #e8edf5;
+                border-radius:14px; padding:10px 14px; box-shadow:0 4px 16px rgba(15,23,42,.04); }
+            div[data-testid="stChatInput"] { border-color:#cbd5e1; background:#fff; }
+            .stApp:has(.qa-shell-marker) p, .stApp:has(.qa-shell-marker) label,
+            .stApp:has(.qa-shell-marker) h1, .stApp:has(.qa-shell-marker) h2,
+            .stApp:has(.qa-shell-marker) h3 { color:#1f2937; }
+            .stApp:has(.qa-shell-marker) button { border-radius:8px; }
+            </style>
+            """,
+            unsafe_allow_html=True,
         )
-        available = df_all.loc[df_all["country_code"] == country, "indicator_code"].dropna().unique().tolist()
-        indicators = sorted(available)
-        indicator = c2.selectbox(
-            "指标", indicators,
-            index=indicators.index("CPI_YOY_M") if "CPI_YOY_M" in indicators else 0,
-            format_func=indicator_label,
-            key="qa_indicator",
-        )
-        c3, c4 = st.columns(2)
-        start_year = c3.number_input("开始年份", min_value=1960, max_value=2100, value=2020, step=1)
-        end_year = c4.number_input("结束年份", min_value=1960, max_value=2100, value=datetime.now().year, step=1)
-        question = st.text_area(
-            "你的问题",
-            value="请总结这个指标的最新水平、近年趋势和需要注意的数据口径。",
-            height=105,
-            max_chars=500,
-        )
-        subset = df_all[
-            (df_all["country_code"] == country)
-            & (df_all["indicator_code"] == indicator)
-            & (df_all["date_year"].between(start_year, end_year))
-        ].copy()
-        evidence, evidence_text = prepare_evidence(subset)
+        if "qa_messages" not in st.session_state:
+            st.session_state.qa_messages = []
+        if "qa_context" not in st.session_state:
+            st.session_state.qa_context = {}
+        if "qa_title" not in st.session_state:
+            st.session_state.qa_title = "新对话"
+
+        sidebar, chat_area = st.columns([0.24, 0.76], gap="small")
+        with sidebar:
+            st.markdown('<div class="qa-brand"><strong>EconAtlas AI</strong><span>数据知识问答</span></div>', unsafe_allow_html=True)
+            if st.button("＋ 新建对话", type="primary", width="stretch"):
+                st.session_state.qa_messages = []
+                st.session_state.qa_context = {}
+                st.session_state.qa_title = "新对话"
+                st.rerun()
+            st.text_input("搜索会话", placeholder="搜索会话标题", label_visibility="collapsed", disabled=True)
+            st.caption("最近对话")
+            st.button(st.session_state.qa_title, width="stretch", disabled=True)
+            st.markdown("---")
+            st.caption("回答基于 EconAtlas 标准库与可追溯官方来源，不使用模型记忆补写数据。")
+
+        with chat_area:
+            st.markdown("### 智能问答")
+            if not st.session_state.qa_messages:
+                st.markdown(
+                    """<div class="qa-welcome"><h2>基于宏观数据知识库的 AI 问答</h2>
+                    <p>直接输入问题，系统将自动识别国家、指标与时间范围并检索数据。</p></div>""",
+                    unsafe_allow_html=True,
+                )
+                st.caption("试试这些问题")
+                examples = ["分析中国近五年通胀趋势", "美国失业率最近有什么变化？", "比较德国近年的经济增长表现"]
+                example_columns = st.columns(3)
+                for column, example in zip(example_columns, examples):
+                    if column.button(example, width="stretch"):
+                        st.session_state.qa_pending = example
+                        st.rerun()
+
+            for message in st.session_state.qa_messages:
+                with st.chat_message(message["role"]):
+                    st.markdown(message["content"])
+                    if message.get("context_label"):
+                        st.markdown(f'<span class="qa-context">{message["context_label"]}</span>', unsafe_allow_html=True)
+                    if message.get("evidence"):
+                        with st.expander(f"查看回答依据（{len(message['evidence'])} 条）"):
+                            evidence_frame = pd.DataFrame(message["evidence"])
+                            st.dataframe(evidence_frame, width="stretch", hide_index=True)
+                            if {"source_organization", "source_dataset", "source_url"}.issubset(evidence_frame.columns):
+                                for row in evidence_frame[["source_organization", "source_dataset", "source_url"]].drop_duplicates().itertuples(index=False):
+                                    url = str(row.source_url or "")
+                                    label = f"{row.source_organization} · {row.source_dataset}"
+                                    st.markdown(f"- [{label}]({url})" if url.startswith(("http://", "https://")) else f"- {label}")
+            prompt = st.chat_input("直接向 EconAtlas 提问，例如：分析中国近五年通胀趋势")
+
+        prompt = prompt or st.session_state.pop("qa_pending", None)
         configured = bool(os.environ.get("DEEPSEEK_API_KEY", "").strip())
-        if not configured:
-            st.info("智能问答界面已启用；管理员配置 DEEPSEEK_API_KEY 后即可生成 AI 回答。证据检索与展示不受影响。")
-        if st.button("检索数据并生成回答", type="primary", disabled=not configured or evidence.empty):
-            with st.spinner("正在检索证据并生成回答……"):
-                try:
-                    answer = ask_deepseek(build_messages(question.strip(), country_label(country), indicator_label(indicator), evidence_text))
-                    st.markdown("### AI 回答")
-                    st.markdown(answer.text)
-                    st.caption(f"模型：{answer.model} · 输入 {answer.prompt_tokens or '-'} tokens · 输出 {answer.completion_tokens or '-'} tokens")
-                except Exception as exc:
-                    st.error(f"智能问答暂时不可用：{exc}")
-        st.markdown('<div class="panel module-panel">', unsafe_allow_html=True)
-        section_title("回答依据", f"{len(evidence)} 条可追溯观测")
-        if evidence.empty:
-            st.warning("当前国家、指标和时间范围内没有有效观测。")
-        else:
-            st.dataframe(evidence, width="stretch", height=320, hide_index=True)
-            source_links = evidence[["source_organization", "source_dataset", "source_url"]].drop_duplicates()
-            st.markdown("#### 数据来源")
-            for row in source_links.itertuples(index=False):
-                source_url = str(row.source_url or "")
-                label = f"{row.source_organization} · {row.source_dataset}"
-                if source_url.startswith(("https://", "http://")):
-                    st.markdown(f"- [{label}]({source_url})")
-                else:
-                    st.markdown(f"- {label}")
-        st.caption("AI 仅用于解释检索结果；数值、时期和来源以本页证据及官方链接为准。")
-        st.markdown("</div>", unsafe_allow_html=True)
+        if prompt:
+            st.session_state.qa_messages.append({"role": "user", "content": prompt})
+            if st.session_state.qa_title == "新对话":
+                st.session_state.qa_title = short_text(prompt, 16)
+            intent = resolve_query_intent(prompt, df_all, st.session_state.qa_context, datetime.now().year)
+            st.session_state.qa_context = intent
+            subset = df_all[
+                (df_all["country_code"] == intent["country"])
+                & (df_all["indicator_code"] == intent["indicator"])
+                & (df_all["date_year"].between(intent["start_year"], intent["end_year"]))
+            ].copy()
+            evidence, evidence_text = prepare_evidence(subset)
+            context_label = (
+                f"{country_label(intent['country'])} · {indicator_label(intent['indicator'])} · "
+                f"{intent['start_year']}—{intent['end_year']}"
+            )
+            if not configured:
+                content = "智能问答密钥尚未配置，请联系管理员。"
+            elif evidence.empty:
+                content = f"当前标准库在识别出的范围（{context_label}）内没有有效观测，请换一种问法或扩大时间范围。"
+            else:
+                with st.spinner("正在理解问题、检索数据并生成回答……"):
+                    try:
+                        answer = ask_deepseek(build_messages(prompt, country_label(intent["country"]), indicator_label(intent["indicator"]), evidence_text))
+                        content = answer.text + f"\n\n*模型：{answer.model}*"
+                    except Exception as exc:
+                        content = f"智能问答暂时不可用：{exc}"
+            st.session_state.qa_messages.append({
+                "role": "assistant", "content": content, "context_label": context_label,
+                "evidence": evidence.to_dict("records") if not evidence.empty else [],
+            })
+            st.rerun()
         return
 
     if module == "指标查询":
