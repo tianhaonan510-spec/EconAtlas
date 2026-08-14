@@ -16,3 +16,7 @@ services:
         value: "false"
       - key: STREAMLIT_SERVER_HEADLESS
         value: "true"
+      - key: DEEPSEEK_BASE_URL
+        value: https://api.deepseek.com
+      - key: DEEPSEEK_MODEL
+        value: deepseek-v4-flash

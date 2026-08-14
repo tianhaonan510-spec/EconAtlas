@@ -122,6 +122,8 @@ streamlit run dashboard/full_platform_app.py
 
 生产环境中的 `DEEPSEEK_API_KEY`、飞书 Webhook 和邮箱授权码必须使用 Render Environment Variables 或 GitHub Actions Secrets，不得写入代码库。
 
+智能问答采用“数据库检索增强”方式：用户选择国家、指标与时间范围后，平台从标准库提取可追溯观测，再调用 DeepSeek 生成解释。默认模型为 `deepseek-v4-flash`，回答必须引用页面证据编号；未配置 `DEEPSEEK_API_KEY` 时，其余平台功能与证据检索仍可正常使用。
+
 ## 半自动指标对齐审核
 
 正式映射关系以 `metadata/source_mapping.csv` 为准，同时可使用候选推荐脚本生成审核结果：
