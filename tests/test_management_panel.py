@@ -7,6 +7,7 @@ from api_service.app import (
     asset_ratings,
     dashboard_summary,
     generate_report,
+    landing_page,
     lineage,
     quality_contracts,
     quality_status,
@@ -14,12 +15,21 @@ from api_service.app import (
     revision_history,
     risk_alerts,
     source_center,
+    workspace,
 )
 from api_service.panel import PANEL_HTML
 from services.query_service import build_query_response
 
 
 class ManagementPanelTests(unittest.TestCase):
+    def test_landing_page_precedes_platform_workspace(self):
+        landing = landing_page()
+        self.assertTrue(str(landing.path).endswith("showcase/index.html"))
+        self.assertTrue(landing.path.exists())
+        self.assertIn("EconAtlas", landing.path.read_text(encoding="utf-8"))
+        self.assertIn('href="/platform"', landing.path.read_text(encoding="utf-8"))
+        self.assertIn("EconAtlas", workspace().body.decode("utf-8"))
+
     def test_current_summary_excludes_forecast_scenarios(self):
         summary = dashboard_summary()
         self.assertNotIn("forecasts", summary["totals"])

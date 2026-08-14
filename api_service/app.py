@@ -12,13 +12,19 @@ import pandas as pd
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, Response
+from fastapi.responses import FileResponse, HTMLResponse, Response
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from config import DB_PATH
 from api_service.panel import PANEL_HTML
 from services.ai_qa_service import ask_deepseek, build_messages, prepare_evidence, resolve_query_intent, route_with_deepseek
 from services.query_service import build_batch_response, build_query_response, read_sql
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+SHOWCASE_DIR = PROJECT_ROOT / "showcase"
+SHOWCASE_ASSETS_DIR = SHOWCASE_DIR / "assets"
 
 try:
     from reportlab.lib import colors
@@ -94,6 +100,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.mount(
+    "/portal-assets",
+    StaticFiles(directory=str(SHOWCASE_ASSETS_DIR)),
+    name="portal-assets",
+)
+
 
 @app.get("/api")
 def api_home() -> dict[str, Any]:
@@ -120,9 +132,35 @@ def api_home() -> dict[str, Any]:
     }
 
 
-@app.get("/", response_class=HTMLResponse)
+@app.get("/", response_class=FileResponse)
+def landing_page() -> FileResponse:
+    """Public-facing product portal; the operational system lives at /platform."""
+    return FileResponse(SHOWCASE_DIR / "index.html", media_type="text/html; charset=utf-8")
+
+
+@app.get("/platform", response_class=HTMLResponse)
 def workspace() -> HTMLResponse:
     return HTMLResponse(PANEL_HTML)
+
+
+@app.get("/manual", response_class=FileResponse)
+def platform_manual() -> FileResponse:
+    return FileResponse(
+        SHOWCASE_ASSETS_DIR / "econatlas-manual.pdf",
+        media_type="application/pdf",
+        filename="EconAtlas平台使用手册.pdf",
+        content_disposition_type="inline",
+    )
+
+
+@app.get("/project-brief", response_class=FileResponse)
+def project_brief() -> FileResponse:
+    return FileResponse(
+        SHOWCASE_ASSETS_DIR / "econatlas-project-brief.pdf",
+        media_type="application/pdf",
+        filename="EconAtlas项目说明.pdf",
+        content_disposition_type="inline",
+    )
 
 
 @app.get("/dashboard-summary")

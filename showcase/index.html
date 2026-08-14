@@ -308,7 +308,7 @@
       border-radius: 12px 12px 0 0;
       background:
         linear-gradient(90deg, rgba(0, 0, 0, 0.62), transparent 52%),
-        url("assets/report-result.png") center / cover no-repeat;
+        url("/portal-assets/report-result.png") center / cover no-repeat;
     }
 
     .video-stage::before {
@@ -988,8 +988,8 @@
         <a href="#contact">关于平台</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn btn-ghost" href="assets/econatlas-manual.pdf" target="_blank" rel="noreferrer">平台使用手册</a>
-        <a class="btn btn-primary" href="http://localhost:8508/" target="_blank" rel="noreferrer">进入平台</a>
+        <a class="btn btn-ghost" href="/manual" target="_blank" rel="noreferrer">平台使用手册</a>
+        <a class="btn btn-primary" href="/platform">进入平台</a>
       </div>
     </div>
   </header>
@@ -1013,7 +1013,7 @@
           <button class="play" type="button" aria-label="播放宣传视频" data-open-video></button>
           <div class="video-caption">
             <b>EconAtlas 平台能力演示</b>
-            <span>点击播放，展示数据资产治理、智能分析与大屏指挥中心。</span>
+            <span>点击播放，了解数据采集、标准化治理与智能服务能力。</span>
           </div>
         </div>
       </div>
@@ -1022,8 +1022,8 @@
     <section class="section after-hero" id="features">
       <div class="shell">
         <div class="section-head">
-          <div class="en">Data Governance + Intelligent Analytics = Data Asset Service</div>
-          <h2>数据治理 + 智能分析 = 数据要素服务平台</h2>
+          <div class="en">Data Governance + Intelligent Services = Data Asset Service</div>
+          <h2>数据治理 + 智能服务 = 数据要素服务平台</h2>
           <p>把分散的宏观经济数据，转化为可查询、可解释、可展示的数据资产。</p>
         </div>
 
@@ -1040,14 +1040,14 @@
             </ul>
           </article>
           <article class="mode-card primary-card">
-            <h3>智能分析服务</h3>
-            <b>“洞察模式” + “报告模式”</b>
+            <h3>智能问答与研报</h3>
+            <b>“DeepSeek 问答” + “EconAtlas 数据增强”</b>
             <ul>
               <li>跨国家、跨来源指标趋势对比</li>
               <li>指标对齐候选关系识别</li>
               <li>异常波动与风险预警提示</li>
-              <li>面向业务决策的智能报告生成</li>
-              <li>大屏可视化联动展示</li>
+              <li>可追溯证据增强的智能研报生成</li>
+              <li>PDF、Markdown、JSON 与 CSV 下载</li>
             </ul>
           </article>
         </div>
@@ -1065,9 +1065,9 @@
         <div class="feature-row">
           <div class="feature-copy">
             <h3>NO1.<br>可信数据资产总览</h3>
-            <p>平台汇聚 66,002 条有效宏观观测记录，覆盖 18 个国家和地区、61 个标准指标与 8 类数据来源，为宏观研究提供统一入口。</p>
+            <p>平台当前发布 <strong id="releasedRows">65,272</strong> 条宏观观测记录，覆盖 <strong id="countryCount">18</strong> 个国家和地区、<strong id="indicatorCount">64</strong> 个已观测标准指标与 <strong id="sourceCount">8</strong> 类数据来源；预测情景与当前发布数据严格隔离。</p>
           </div>
-          <div class="feature-shot" style="--image: url('assets/web-global-network.jpg');"></div>
+          <div class="feature-shot" style="--image: url('/portal-assets/web-global-network.jpg');"></div>
         </div>
 
         <div class="feature-row">
@@ -1075,15 +1075,15 @@
             <h3>NO2.<br>质量诊断与风险预警</h3>
             <p>自动识别缺失观测、重复主键、来源覆盖不足等问题，并通过风险预警中心把治理问题转化为可跟踪的运营指标。</p>
           </div>
-          <div class="feature-shot" style="--image: url('assets/web-data-dashboard.jpg');"></div>
+          <div class="feature-shot" style="--image: url('/portal-assets/web-data-dashboard.jpg');"></div>
         </div>
 
         <div class="feature-row">
           <div class="feature-copy">
-            <h3>NO3.<br>智能报告与可视化呈现</h3>
-            <p>将数据资产概览、质量状态、指标变化和治理建议组织成可阅读报告，同时联动大屏完成更直观的数据服务展示。</p>
+            <h3>NO3.<br>智能问答与智能研报</h3>
+            <p>普通问题由 DeepSeek 回答，宏观数据问题先检索 EconAtlas；指标变化、来源证据和治理建议可组织成可下载的智能研报。</p>
           </div>
-          <div class="feature-shot" style="--image: url('assets/web-ai-analytics.jpg');"></div>
+          <div class="feature-shot" style="--image: url('/portal-assets/web-ai-analytics.jpg');"></div>
         </div>
       </div>
     </section>
@@ -1112,7 +1112,7 @@
           <article class="scenario">
             <h3>行业应用展示</h3>
             <div class="en-title">Industry Showcase</div>
-            <p>通过宣传页、视频展厅和数据大屏串联平台价值，帮助客户、合作伙伴和管理者快速理解平台能力与应用场景。</p>
+            <p>通过官网门户、视频展厅和在线管理面板串联平台价值，帮助客户、合作伙伴和评委快速理解并验证平台能力。</p>
             <div class="scenario-icon" data-icon="A"></div>
           </article>
         </div>
@@ -1124,7 +1124,7 @@
         <div class="section-head">
           <div class="en">A Concise And Smooth Usage Process</div>
           <h2>简洁顺畅的使用流程</h2>
-          <p>从数据进入平台，到形成报告和大屏展示，流程清晰、快速体验。</p>
+          <p>从数据进入平台，到形成标准 JSON 与智能研报，流程清晰、结果可验证。</p>
         </div>
 
         <div class="process">
@@ -1148,15 +1148,15 @@
           </article>
           <article class="process-step">
             <div class="process-icon">析</div>
-            <h3>智能分析</h3>
+            <h3>智能服务</h3>
             <div class="process-num">04</div>
-            <p>围绕指标趋势、国家比较和数据资产状态生成洞察结果。</p>
+            <p>通过 DeepSeek 问答和 EconAtlas 数据检索生成可追溯洞察与智能研报。</p>
           </article>
           <article class="process-step">
             <div class="process-icon">屏</div>
-            <h3>大屏展示</h3>
+            <h3>平台交付</h3>
             <div class="process-num">05</div>
-            <p>进入 EconAtlas 大屏，完成运营监测、业务展示和数据服务交付。</p>
+            <p>通过管理面板、标准 JSON、开放 API 与多格式报告完成服务交付。</p>
           </article>
         </div>
       </div>
@@ -1165,10 +1165,10 @@
     <section class="cta">
       <div class="shell">
         <h2>现在进入 EconAtlas 平台</h2>
-        <p>宣传页负责讲清价值，平台负责展示实力。点击下方按钮可以跳转到本地已搭建的 EconAtlas 数据资产大屏，或打开平台使用手册了解操作流程。</p>
+        <p>门户负责呈现项目价值，平台负责提供真实查询、治理、问答和研报能力。点击下方按钮即可进入在线系统。</p>
         <div class="hero-actions">
-          <a class="btn btn-primary pill-btn" href="http://localhost:8508/" target="_blank" rel="noreferrer">进入平台 <span class="arrow-dot">→</span></a>
-          <a class="btn btn-ghost pill-btn" href="assets/econatlas-manual.pdf" target="_blank" rel="noreferrer">平台使用手册 <span class="arrow-dot">→</span></a>
+          <a class="btn btn-primary pill-btn" href="/platform">进入平台 <span class="arrow-dot">→</span></a>
+          <a class="btn btn-ghost pill-btn" href="/manual" target="_blank" rel="noreferrer">平台使用手册 <span class="arrow-dot">→</span></a>
         </div>
       </div>
     </section>
@@ -1178,19 +1178,19 @@
     <div class="shell footer-grid">
       <div>
         <h3>EconAtlas</h3>
-        <p>全球宏观经济数据要素服务平台，面向数据采集、标准化治理、质量诊断、智能分析与可视化展示。</p>
+        <p>全球宏观经济数据要素服务平台，面向数据采集、标准化治理、质量诊断、智能问答与研报交付。</p>
       </div>
       <div>
         <h3>平台能力</h3>
         <a href="#features">数据资产治理 ↗</a>
         <a href="#features">指标查询与字典 ↗</a>
-        <a href="#features">智能报告生成 ↗</a>
-        <a href="#process">大屏展示中心 ↗</a>
+        <a href="#features">智能问答与研报 ↗</a>
+        <a href="/api" target="_blank" rel="noreferrer">标准 JSON API ↗</a>
       </div>
       <div>
         <h3>平台链接</h3>
-        <a href="http://localhost:8508/" target="_blank" rel="noreferrer">EconAtlas 平台 ↗</a>
-        <a href="assets/econatlas-manual.pdf" target="_blank" rel="noreferrer">平台使用手册 ↗</a>
+        <a href="/platform">EconAtlas 平台 ↗</a>
+        <a href="/manual" target="_blank" rel="noreferrer">平台使用手册 ↗</a>
         <a href="#top">宣传页首页 ↗</a>
       </div>
       <div>
@@ -1198,12 +1198,12 @@
         <p>适用于宏观经济研究、数据资产治理、业务运营监测、平台介绍、视频演示和客户入口承接。</p>
       </div>
     </div>
-    <div class="shell copyright">Copyright © 2026 EconAtlas Project. Local demonstration page.</div>
+    <div class="shell copyright">Copyright © 2026 EconAtlas Project. Online competition demonstration.</div>
   </footer>
 
   <div class="float-tools" aria-label="快捷工具">
     <button type="button" data-open-video>视频</button>
-    <a href="http://localhost:8508/" target="_blank" rel="noreferrer">平台</a>
+    <a href="/platform">平台</a>
     <a href="#top">顶部</a>
   </div>
 
@@ -1218,12 +1218,29 @@
         controls
         playsinline
         preload="metadata"
-        data-video-src="assets/econatlas-promo.mp4"
+        data-video-src="/portal-assets/econatlas-promo.mp4"
       ></video>
     </div>
   </div>
 
   <script>
+    fetch('/dashboard-summary')
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((summary) => {
+        if (!summary.totals) return;
+        const values = {
+          releasedRows: Number(summary.totals.valid_rows || summary.totals.rows || 0).toLocaleString('zh-CN'),
+          countryCount: summary.totals.countries,
+          indicatorCount: summary.totals.indicators,
+          sourceCount: summary.totals.sources,
+        };
+        Object.entries(values).forEach(([id, value]) => {
+          const node = document.getElementById(id);
+          if (node && value !== undefined && value !== null) node.textContent = value;
+        });
+      })
+      .catch(() => {});
+
     const modal = document.querySelector("#videoModal");
     const video = document.querySelector("#demoVideo");
     const openButtons = document.querySelectorAll("[data-open-video]");
