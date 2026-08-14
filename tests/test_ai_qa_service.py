@@ -2,10 +2,17 @@ import unittest
 
 import pandas as pd
 
-from services.ai_qa_service import build_messages, prepare_evidence, resolve_query_intent
+from services.ai_qa_service import build_messages, prepare_evidence, resolve_query_intent, route_question
 
 
 class AIQAServiceTests(unittest.TestCase):
+    def test_greeting_does_not_default_to_china_cpi(self):
+        self.assertEqual(route_question("你好", self.catalog)["route"], "greeting")
+
+    def test_incomplete_data_question_requests_country(self):
+        routed = route_question("最近五年的 CPI 趋势", self.catalog)
+        self.assertEqual(routed["route"], "clarify")
+        self.assertIn("国家", routed["message"])
     def setUp(self):
         self.catalog = pd.DataFrame({
             "country_code": ["CN", "CN", "US"],

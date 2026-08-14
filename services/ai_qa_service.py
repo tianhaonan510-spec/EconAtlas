@@ -34,6 +34,45 @@ INDICATOR_ALIASES = {
     "人口": ["POPULATION_TOTAL_A", "POPULATION_GROWTH_A"], "债务": ["GOV_DEBT_GDP_A"],
 }
 
+GREETING_PATTERNS = re.compile(r"^(你好|您好|嗨|hi|hello|早上好|下午好|晚上好)[！!。.\s]*$", re.I)
+CAPABILITY_PATTERNS = re.compile(r"(你是谁|你能做什么|有什么功能|怎么使用|如何使用|帮助|介绍一下)", re.I)
+
+
+def route_question(question: str, observations: pd.DataFrame, previous: dict | None = None) -> dict:
+    """Route conversation before retrieval so vague chat never defaults to CN CPI."""
+    text = question.strip()
+    lowered = text.lower()
+    previous = previous or {}
+    if GREETING_PATTERNS.search(text):
+        return {"route": "greeting"}
+    if CAPABILITY_PATTERNS.search(text):
+        return {"route": "capability"}
+
+    countries = set(observations["country_code"].dropna().astype(str))
+    has_country = any(alias in text and code in countries for alias, code in COUNTRY_ALIASES.items())
+    has_country = has_country or any(re.search(rf"\b{re.escape(code.lower())}\b", lowered) for code in countries)
+    has_indicator = any(alias in lowered for alias in INDICATOR_ALIASES)
+    if not has_indicator:
+        names = observations[["indicator_code", "indicator_name_zh", "indicator_name_en"]].drop_duplicates()
+        has_indicator = any(
+            str(value).strip() and str(value).lower() in lowered
+            for value in names.to_numpy().ravel()
+            if pd.notna(value)
+        )
+
+    inherited_country = bool(previous.get("country"))
+    inherited_indicator = bool(previous.get("indicator"))
+    if not has_country and not inherited_country and has_indicator:
+        return {"route": "clarify", "message": "请补充需要查询的国家或地区，例如中国、美国或欧元区。"}
+    if not has_indicator and not inherited_indicator and has_country:
+        return {"route": "clarify", "message": "请补充需要分析的宏观指标，例如 CPI、GDP 增速或失业率。"}
+    if not (has_country or inherited_country) and not (has_indicator or inherited_indicator):
+        return {
+            "route": "clarify",
+            "message": "我可以基于 EconAtlas 数据库回答宏观数据问题。请告诉我国家/地区、指标和大致时间范围。",
+        }
+    return {"route": "data"}
+
 
 @dataclass(frozen=True)
 class AIAnswer:

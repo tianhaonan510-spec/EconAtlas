@@ -8,7 +8,7 @@ from pydantic import BaseModel, Field
 
 from config import DB_PATH
 from api_service.workspace import WORKSPACE_HTML
-from services.ai_qa_service import ask_deepseek, build_messages, prepare_evidence, resolve_query_intent
+from services.ai_qa_service import ask_deepseek, build_messages, prepare_evidence, resolve_query_intent, route_question
 from services.query_service import build_batch_response, build_query_response, read_sql
 
 
@@ -72,6 +72,19 @@ def chat(payload: ChatRequest) -> dict[str, Any]:
     try:
         observations = read_sql("SELECT * FROM macro_observations")
         observations["date_year"] = observations["date"].astype(str).str[:4].astype("Int64")
+        routing = route_question(payload.question, observations, payload.context)
+        if routing["route"] == "greeting":
+            return {
+                "answer": "你好，我是 EconAtlas 智能数据助手。我可以基于平台标准库查询宏观指标、分析趋势、比较国家，并给出可追溯的数据证据。你可以问我：‘中国近五年的通胀趋势如何？’",
+                "route": "greeting", "context": payload.context or {}, "evidence": [],
+            }
+        if routing["route"] == "capability":
+            return {
+                "answer": "我可以完成四类任务：\n\n**1. 指标查询**：查询 CPI、GDP、失业率、汇率等指标。\n\n**2. 趋势分析**：总结指定时期的变化、拐点与数据口径。\n\n**3. 国家比较**：在统一指标口径下比较不同国家或地区。\n\n**4. 证据追溯**：展示来源机构、数据集和证据记录。",
+                "route": "capability", "context": payload.context or {}, "evidence": [],
+            }
+        if routing["route"] == "clarify":
+            return {"answer": routing["message"], "route": "clarify", "context": payload.context or {}, "evidence": []}
         intent = resolve_query_intent(payload.question, observations, payload.context)
         subset = observations[
             (observations["country_code"] == intent["country"])
@@ -86,7 +99,7 @@ def chat(payload: ChatRequest) -> dict[str, Any]:
         indicator_label = str(first.get("indicator_name_zh") or intent["indicator"])
         answer = ask_deepseek(build_messages(payload.question, country_label, indicator_label, evidence_text))
         records = evidence.where(evidence.notna(), None).to_dict(orient="records")
-        return {"answer": answer.text, "model": answer.model, "context": intent, "evidence": records}
+        return {"answer": answer.text, "model": answer.model, "route": "data", "context": intent, "evidence": records}
     except Exception as exc:
         return {"answer": None, "error": str(exc), "context": payload.context or {}, "evidence": []}
 
