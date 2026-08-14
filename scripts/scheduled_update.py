@@ -50,13 +50,27 @@ def data_summary() -> dict:
     if not data_file.exists():
         return {"data_file_exists": False}
     df = pd.read_csv(data_file, encoding="utf-8-sig", low_memory=False)
+    forecast_mask = df.get("observation_type", pd.Series("historical", index=df.index)).astype(str).eq("forecast")
+    current = df[~forecast_mask]
+    gate_path = DATA_CLEAN / "quality_gate.json"
+    try:
+        gate_status = json.loads(gate_path.read_text(encoding="utf-8-sig")).get("status", "unknown") if gate_path.exists() else "not_run"
+    except Exception:
+        gate_status = "unreadable"
+    candidates_path = METADATA_DIR / "alignment_candidates.csv"
+    candidates = pd.read_csv(candidates_path, encoding="utf-8-sig") if candidates_path.exists() else pd.DataFrame()
+    review_pending = int(candidates.get("review_status", pd.Series(dtype=str)).astype(str).eq("待人工复核").sum())
     return {
         "data_file_exists": True,
         "row_count": int(len(df)),
-        "source_count": int(df["source_organization"].nunique()) if "source_organization" in df.columns else 0,
-        "indicator_count": int(df["indicator_code"].nunique()) if "indicator_code" in df.columns else 0,
-        "country_count": int(df["country_code"].nunique()) if "country_code" in df.columns else 0,
-        "frequency_count": int(df["frequency"].nunique()) if "frequency" in df.columns else 0,
+        "current_row_count": int(len(current)),
+        "forecast_row_count": int(forecast_mask.sum()),
+        "source_count": int(current["source_organization"].nunique()) if "source_organization" in current.columns else 0,
+        "indicator_count": int(current["indicator_code"].nunique()) if "indicator_code" in current.columns else 0,
+        "country_count": int(current["country_code"].nunique()) if "country_code" in current.columns else 0,
+        "frequency_count": int(current["frequency"].nunique()) if "frequency" in current.columns else 0,
+        "quality_gate": gate_status,
+        "alignment_review_pending": review_pending,
     }
 
 

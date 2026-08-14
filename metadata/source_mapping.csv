@@ -1,105 +1,105 @@
-﻿source,source_dataset,source_indicator_code,indicator_code
-World Bank,World Development Indicators,NY.GDP.MKTP.CD,GDP_NOMINAL_USD_A
-IMF,World Economic Outlook,NGDPD,GDP_NOMINAL_USD_A
-World Bank,World Development Indicators,NY.GDP.MKTP.KD.ZG,GDP_REAL_GROWTH_YOY_A
-IMF,World Economic Outlook,NGDP_RPCH,GDP_REAL_GROWTH_YOY_A
-World Bank,World Development Indicators,NY.GDP.PCAP.CD,GDP_PER_CAPITA_USD_A
-IMF,World Economic Outlook,NGDPDPC,GDP_PER_CAPITA_USD_A
-World Bank,World Development Indicators,FP.CPI.TOTL.ZG,CPI_YOY_A
-IMF,World Economic Outlook,PCPIPCH,CPI_YOY_A
-FRED,Federal Reserve Economic Data (annualized from CPIAUCSL.YOY),CPIAUCSL.YOY.AAVG,CPI_YOY_A
-National Bureau of Statistics of China,National Bureau of Statistics monthly data (annualized),NBS.CPI.YOY.M.ALIGNED.AAVG,CPI_YOY_A
-World Bank,World Development Indicators,SL.UEM.TOTL.ZS,UNEMPLOYMENT_RATE_A
-IMF,World Economic Outlook,LUR,UNEMPLOYMENT_RATE_A
-FRED,Federal Reserve Economic Data (annual average from UNRATE),UNRATE.AAVG,UNEMPLOYMENT_RATE_A
-World Bank,World Development Indicators,NE.EXP.GNFS.CD,EXPORTS_USD_A
-IMF,World Economic Outlook,BX,EXPORTS_USD_A
-World Bank,World Development Indicators,NE.IMP.GNFS.CD,IMPORTS_USD_A
-IMF,World Economic Outlook,BM,IMPORTS_USD_A
-World Bank,World Development Indicators,FI.RES.TOTL.CD,RESERVES_USD_A
-World Bank,World Development Indicators,GC.DOD.TOTL.GD.ZS,GOV_DEBT_GDP_A
-IMF,World Economic Outlook,GGXWDG_NGDP,GOV_DEBT_GDP_A
-World Bank,World Development Indicators,BN.CAB.XOKA.GD.ZS,CURRENT_ACCOUNT_GDP_A
-IMF,World Economic Outlook,BCA_NGDPD,CURRENT_ACCOUNT_GDP_A
-OECD,Prices: Consumer prices,DF_PRICES_ALL.CPI.GY,CPI_YOY_M
-Eurostat,HICP monthly annual rate of change,prc_hicp_manr.CP00,CPI_YOY_M
-FRED,Federal Reserve Economic Data (derived from CPIAUCSL),CPIAUCSL.YOY,CPI_YOY_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.CPI.YOY.M.ALIGNED,CPI_YOY_M
-Eurostat,Unemployment by sex and age - monthly data,une_rt_m.M.SA.TOTAL.PC_ACT.T,UNEMPLOYMENT_RATE_M
-Eurostat,Production in industry - monthly data,sts_inpr_m.M.PRD.B-D.SCA.I21,INDUSTRIAL_PRODUCTION_INDEX_M
-Eurostat,GDP and main components - quarterly data,namq_10_gdp.Q.CLV_PCH_SM.SCA.B1GQ,GDP_REAL_GROWTH_YOY_Q
-ECB,Euro foreign exchange reference rates,EXR.D.USD.EUR.SP00.A,EUR_USD_EXCHANGE_RATE_D
-BIS,Exchange rates,WS_XRU.D,EXCHANGE_RATE_USD_D
-ECB,Euro foreign exchange reference rates (inverted),EXR.D.USD.EUR.SP00.A.INV,EXCHANGE_RATE_USD_D
-World Bank,World Development Indicators,NY.GDP.MKTP.CN,GDP_CURRENT_LCU_A
-IMF,World Economic Outlook,NGDP,GDP_CURRENT_LCU_A
-World Bank,World Development Indicators,NY.GDP.MKTP.KN,GDP_REAL_LCU_A
-IMF,World Economic Outlook,NGDP_R,GDP_REAL_LCU_A
-World Bank,World Development Indicators,NY.GDP.DEFL.ZS,GDP_DEFLATOR_INDEX_A
-IMF,World Economic Outlook,NGDP_D,GDP_DEFLATOR_INDEX_A
-World Bank,World Development Indicators,NY.GNS.ICTR.ZS,GROSS_SAVINGS_GDP_A
-IMF,World Economic Outlook,NGSD_NGDP,GROSS_SAVINGS_GDP_A
-World Bank,World Development Indicators,NE.GDI.TOTL.ZS,GROSS_CAPITAL_FORMATION_GDP_A
-IMF,World Economic Outlook,NID_NGDP,GROSS_CAPITAL_FORMATION_GDP_A
-World Bank,World Development Indicators,GC.REV.XGRT.GD.ZS,GOV_REVENUE_GDP_A
-IMF,World Economic Outlook,GGR_NGDP,GOV_REVENUE_GDP_A
-World Bank,World Development Indicators,GC.XPN.TOTL.GD.ZS,GOV_EXPENSE_GDP_A
-IMF,World Economic Outlook,GGX_NGDP,GOV_EXPENSE_GDP_A
-World Bank,World Development Indicators,GC.NLD.TOTL.GD.ZS,GOV_NET_LENDING_GDP_A
-IMF,World Economic Outlook,GGXCNL_NGDP,GOV_NET_LENDING_GDP_A
-World Bank,World Development Indicators,SP.POP.TOTL,POPULATION_TOTAL_A
-IMF,World Economic Outlook,LP,POPULATION_TOTAL_A
-World Bank,World Development Indicators,SP.POP.GROW,POPULATION_GROWTH_A
-World Bank,World Development Indicators,SP.URB.TOTL.IN.ZS,URBAN_POPULATION_RATE_A
-World Bank,World Development Indicators,NY.GNP.MKTP.CD,GNI_CURRENT_USD_A
-World Bank,World Development Indicators,NY.GNP.PCAP.CD,GNI_PER_CAPITA_USD_A
-World Bank,World Development Indicators,BX.KLT.DINV.WD.GD.ZS,FDI_NET_INFLOWS_GDP_A
-World Bank,World Development Indicators,NE.TRD.GNFS.ZS,TRADE_GDP_A
-World Bank,World Development Indicators,NE.EXP.GNFS.KD.ZG,EXPORTS_GROWTH_A
-World Bank,World Development Indicators,NE.IMP.GNFS.KD.ZG,IMPORTS_GROWTH_A
-World Bank,World Development Indicators,NY.GDP.DEFL.KD.ZG,GDP_DEFLATOR_GROWTH_A
-World Bank,World Development Indicators,FM.LBL.BMNY.GD.ZS,BROAD_MONEY_GDP_A
-World Bank,World Development Indicators,FS.AST.PRVT.GD.ZS,DOMESTIC_CREDIT_PRIVATE_GDP_A
-World Bank,World Development Indicators,GC.TAX.TOTL.GD.ZS,TAX_REVENUE_GDP_A
-World Bank,World Development Indicators,MS.MIL.XPND.GD.ZS,MILITARY_EXPENDITURE_GDP_A
-World Bank,World Development Indicators,EG.USE.PCAP.KG.OE,ENERGY_USE_PER_CAPITA_A
-World Bank,World Development Indicators,EG.USE.ELEC.KH.PC,ELECTRIC_POWER_CONSUMPTION_A
-World Bank,World Development Indicators,IT.NET.USER.ZS,INTERNET_USERS_RATE_A
-World Bank,World Development Indicators,SP.DYN.LE00.IN,LIFE_EXPECTANCY_A
-World Bank,World Development Indicators,SE.TER.ENRR,SCHOOL_ENROLLMENT_TERTIARY_A
-FRED,Federal Reserve Economic Data,CPIAUCSL,US_CPI_INDEX_M
-FRED,Federal Reserve Economic Data,UNRATE,US_UNEMPLOYMENT_RATE_M
-FRED,Federal Reserve Economic Data,INDPRO,US_INDUSTRIAL_PRODUCTION_M
-FRED,Federal Reserve Economic Data,FEDFUNDS,US_FED_FUNDS_RATE_M
-FRED,Federal Reserve Economic Data,PPIACO,US_PPI_INDEX_M
-FRED,Federal Reserve Economic Data,CPILFESL,US_CORE_CPI_INDEX_M
-FRED,Federal Reserve Economic Data,RSAFS,US_RETAIL_SALES_M
-FRED,Federal Reserve Economic Data,HOUST,US_HOUSING_STARTS_M
-FRED,Federal Reserve Economic Data,PAYEMS,US_NONFARM_PAYROLLS_M
-FRED,Federal Reserve Economic Data,M2SL,US_M2_MONEY_STOCK_M
-FRED,Federal Reserve Economic Data,GS10,US_10Y_TREASURY_RATE_M
-FRED,Federal Reserve Economic Data,GS2,US_2Y_TREASURY_RATE_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.CPI.YOY.M,CN_CPI_YOY_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.PPI.YOY.M,CN_PPI_YOY_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.IVA.YOY.M,CN_INDUSTRIAL_VALUE_ADDED_YOY_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.RETAIL.SALES.YOY.M,CN_RETAIL_SALES_YOY_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.FAI.YTD.YOY.M,CN_FIXED_ASSET_INVESTMENT_YTD_YOY_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.URBAN.UNEMPLOYMENT.M,CN_URBAN_SURVEYED_UNEMPLOYMENT_RATE_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.MANUFACTURING.PMI.M,CN_MANUFACTURING_PMI_M
-National Bureau of Statistics of China,People's Bank of China financial statistics,PBOC.M1.YOY.M,CN_M1_YOY_M
-National Bureau of Statistics of China,People's Bank of China financial statistics,PBOC.M2.YOY.M,CN_M2_YOY_M
-National Bureau of Statistics of China,People's Bank of China aggregate financing statistics,PBOC.TSF.FLOW.M,CN_TOTAL_SOCIAL_FINANCING_FLOW_M
-National Bureau of Statistics of China,General Administration of Customs monthly trade data,GACC.EXPORTS.USD.YOY.M,CN_EXPORTS_USD_YOY_M
-National Bureau of Statistics of China,General Administration of Customs monthly trade data,GACC.IMPORTS.USD.YOY.M,CN_IMPORTS_USD_YOY_M
-FRED,Federal Reserve Economic Data (derived from PPIACO),PPIACO.YOY,PPI_YOY_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.PPI.YOY.M.ALIGNED,PPI_YOY_M
-FRED,Federal Reserve Economic Data (annualized from PPIACO.YOY),PPIACO.YOY.AAVG,PPI_YOY_A
-National Bureau of Statistics of China,National Bureau of Statistics monthly data (annualized),NBS.PPI.YOY.M.ALIGNED.AAVG,PPI_YOY_A
-FRED,Federal Reserve Economic Data (derived from INDPRO),INDPRO.YOY,INDUSTRIAL_OUTPUT_YOY_M
-National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.INDUSTRIAL.VALUE.ADDED.YOY.M.ALIGNED,INDUSTRIAL_OUTPUT_YOY_M
-FRED,Federal Reserve Economic Data (annualized from INDPRO.YOY),INDPRO.YOY.AAVG,INDUSTRIAL_OUTPUT_YOY_A
-National Bureau of Statistics of China,National Bureau of Statistics monthly data (annualized),NBS.INDUSTRIAL.VALUE.ADDED.YOY.M.ALIGNED.AAVG,INDUSTRIAL_OUTPUT_YOY_A
-BIS,Exchange rates (monthly average),WS_XRU.D.MAVG,EXCHANGE_RATE_USD_M
-ECB,"Euro foreign exchange reference rates (monthly average, inverted)",EXR.D.USD.EUR.SP00.A.INV.MAVG,EXCHANGE_RATE_USD_M
-BIS,Exchange rates (annual average),WS_XRU.D.AAVG,EXCHANGE_RATE_USD_A
-ECB,"Euro foreign exchange reference rates (annual average, inverted)",EXR.D.USD.EUR.SP00.A.INV.AAVG,EXCHANGE_RATE_USD_A
+﻿source,source_dataset,source_indicator_code,indicator_code,standard_unit,standard_frequency,standard_seasonal_adjustment,standard_calculation,transform_rule,mapping_status,mapping_version,reviewed_by,semantic_signature
+World Bank,World Development Indicators,NY.GDP.MKTP.CD,GDP_NOMINAL_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|currency|current_price|not_specified|USD|A|NSA
+IMF,World Economic Outlook,NGDPD,GDP_NOMINAL_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|currency|current_price|not_specified|USD|A|NSA
+World Bank,World Development Indicators,NY.GDP.MKTP.KD.ZG,GDP_REAL_GROWTH_YOY_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|year_on_year_growth|percent|constant_price|not_specified|NA|A|NSA
+IMF,World Economic Outlook,NGDP_RPCH,GDP_REAL_GROWTH_YOY_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|year_on_year_growth|percent|constant_price|not_specified|NA|A|NSA
+World Bank,World Development Indicators,NY.GDP.PCAP.CD,GDP_PER_CAPITA_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|currency|current_price|not_specified|USD|A|NSA
+IMF,World Economic Outlook,NGDPDPC,GDP_PER_CAPITA_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|currency|current_price|not_specified|USD|A|NSA
+World Bank,World Development Indicators,FP.CPI.TOTL.ZG,CPI_YOY_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA
+IMF,World Economic Outlook,PCPIPCH,CPI_YOY_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA
+FRED,Federal Reserve Economic Data (annualized from CPIAUCSL.YOY),CPIAUCSL.YOY.AAVG,CPI_YOY_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (annualized),NBS.CPI.YOY.M.ALIGNED.AAVG,CPI_YOY_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,SL.UEM.TOTL.ZS,UNEMPLOYMENT_RATE_A,% of labor force,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,labour|unemployment|rate|percent|not_applicable|not_specified|NA|A|NSA
+IMF,World Economic Outlook,LUR,UNEMPLOYMENT_RATE_A,% of labor force,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,labour|unemployment|rate|percent|not_applicable|not_specified|NA|A|NSA
+FRED,Federal Reserve Economic Data (annual average from UNRATE),UNRATE.AAVG,UNEMPLOYMENT_RATE_A,% of labor force,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,labour|unemployment|rate|percent|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,NE.EXP.GNFS.CD,EXPORTS_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exports|level|currency|current_price|flow|USD|A|NSA
+IMF,World Economic Outlook,BX,EXPORTS_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exports|level|currency|current_price|flow|USD|A|NSA
+World Bank,World Development Indicators,NE.IMP.GNFS.CD,IMPORTS_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|imports|level|currency|current_price|flow|USD|A|NSA
+IMF,World Economic Outlook,BM,IMPORTS_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|imports|level|currency|current_price|flow|USD|A|NSA
+World Bank,World Development Indicators,FI.RES.TOTL.CD,RESERVES_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|reserves|level|currency|current_price|stock|USD|A|NSA
+World Bank,World Development Indicators,GC.DOD.TOTL.GD.ZS,GOV_DEBT_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|stock|NA|A|NSA
+IMF,World Economic Outlook,GGXWDG_NGDP,GOV_DEBT_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|stock|NA|A|NSA
+World Bank,World Development Indicators,BN.CAB.XOKA.GD.ZS,CURRENT_ACCOUNT_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|current_price|not_specified|NA|A|NSA
+IMF,World Economic Outlook,BCA_NGDPD,CURRENT_ACCOUNT_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|current_price|not_specified|NA|A|NSA
+OECD,Prices: Consumer prices,DF_PRICES_ALL.CPI.GY,CPI_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+Eurostat,HICP monthly annual rate of change,prc_hicp_manr.CP00,CPI_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+FRED,Federal Reserve Economic Data (derived from CPIAUCSL),CPIAUCSL.YOY,CPI_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.CPI.YOY.M.ALIGNED,CPI_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+Eurostat,Unemployment by sex and age - monthly data,une_rt_m.M.SA.TOTAL.PC_ACT.T,UNEMPLOYMENT_RATE_M,%,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,labour|unemployment|rate|percent|not_applicable|not_specified|NA|M|SA
+Eurostat,Production in industry - monthly data,sts_inpr_m.M.PRD.B-D.SCA.I21,INDUSTRIAL_PRODUCTION_INDEX_M,index (2021=100),M,SCA,level,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|industrial_production|level|index|not_applicable|not_specified|NA|M|SCA
+Eurostat,GDP and main components - quarterly data,namq_10_gdp.Q.CLV_PCH_SM.SCA.B1GQ,GDP_REAL_GROWTH_YOY_Q,%,Q,SCA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|year_on_year_growth|percent|constant_price|not_specified|NA|Q|SCA
+ECB,Euro foreign exchange reference rates,EXR.D.USD.EUR.SP00.A,EUR_USD_EXCHANGE_RATE_D,USD per EUR,D,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,other|exchange_rate|level|exchange_rate|not_applicable|not_specified|USD|D|NSA
+BIS,Exchange rates,WS_XRU.D,EXCHANGE_RATE_USD_D,local currency per USD,D,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exchange_rate|level|exchange_rate|not_applicable|not_specified|USD|D|NSA
+ECB,Euro foreign exchange reference rates (inverted),EXR.D.USD.EUR.SP00.A.INV,EXCHANGE_RATE_USD_D,local currency per USD,D,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exchange_rate|level|exchange_rate|not_applicable|not_specified|USD|D|NSA
+World Bank,World Development Indicators,NY.GDP.MKTP.CN,GDP_CURRENT_LCU_A,current LCU,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|currency|current_price|not_specified|LCU|A|NSA
+IMF,World Economic Outlook,NGDP,GDP_CURRENT_LCU_A,current LCU,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|currency|current_price|not_specified|LCU|A|NSA
+World Bank,World Development Indicators,NY.GDP.MKTP.KN,GDP_REAL_LCU_A,constant LCU,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|currency|constant_price|not_specified|LCU|A|NSA
+IMF,World Economic Outlook,NGDP_R,GDP_REAL_LCU_A,constant LCU,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|currency|constant_price|not_specified|LCU|A|NSA
+World Bank,World Development Indicators,NY.GDP.DEFL.ZS,GDP_DEFLATOR_INDEX_A,index,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|index|not_applicable|not_specified|NA|A|NSA
+IMF,World Economic Outlook,NGDP_D,GDP_DEFLATOR_INDEX_A,index,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|index|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,NY.GNS.ICTR.ZS,GROSS_SAVINGS_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA
+IMF,World Economic Outlook,NGSD_NGDP,GROSS_SAVINGS_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,NE.GDI.TOTL.ZS,GROSS_CAPITAL_FORMATION_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA
+IMF,World Economic Outlook,NID_NGDP,GROSS_CAPITAL_FORMATION_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,GC.REV.XGRT.GD.ZS,GOV_REVENUE_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA
+IMF,World Economic Outlook,GGR_NGDP,GOV_REVENUE_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA
+World Bank,World Development Indicators,GC.XPN.TOTL.GD.ZS,GOV_EXPENSE_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA
+IMF,World Economic Outlook,GGX_NGDP,GOV_EXPENSE_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA
+World Bank,World Development Indicators,GC.NLD.TOTL.GD.ZS,GOV_NET_LENDING_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA
+IMF,World Economic Outlook,GGXCNL_NGDP,GOV_NET_LENDING_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,SP.POP.TOTL,POPULATION_TOTAL_A,persons,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,population_social|population|level|persons|not_applicable|stock|NA|A|NSA
+IMF,World Economic Outlook,LP,POPULATION_TOTAL_A,persons,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,population_social|population|level|persons|not_applicable|stock|NA|A|NSA
+World Bank,World Development Indicators,SP.POP.GROW,POPULATION_GROWTH_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,population_social|population|year_on_year_growth|percent|not_applicable|stock|NA|A|NSA
+World Bank,World Development Indicators,SP.URB.TOTL.IN.ZS,URBAN_POPULATION_RATE_A,% of total population,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,population_social|population|rate|percent|not_applicable|stock|NA|A|NSA
+World Bank,World Development Indicators,NY.GNP.MKTP.CD,GNI_CURRENT_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gni|level|currency|current_price|not_specified|USD|A|NSA
+World Bank,World Development Indicators,NY.GNP.PCAP.CD,GNI_PER_CAPITA_USD_A,current USD,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gni|level|currency|current_price|not_specified|USD|A|NSA
+World Bank,World Development Indicators,BX.KLT.DINV.WD.GD.ZS,FDI_NET_INFLOWS_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA
+World Bank,World Development Indicators,NE.TRD.GNFS.ZS,TRADE_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,NE.EXP.GNFS.KD.ZG,EXPORTS_GROWTH_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exports|year_on_year_growth|percent|constant_price|flow|NA|A|NSA
+World Bank,World Development Indicators,NE.IMP.GNFS.KD.ZG,IMPORTS_GROWTH_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|imports|year_on_year_growth|percent|constant_price|flow|NA|A|NSA
+World Bank,World Development Indicators,NY.GDP.DEFL.KD.ZG,GDP_DEFLATOR_GROWTH_A,%,A,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,FM.LBL.BMNY.GD.ZS,BROAD_MONEY_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|stock|NA|A|NSA
+World Bank,World Development Indicators,FS.AST.PRVT.GD.ZS,DOMESTIC_CREDIT_PRIVATE_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,GC.TAX.TOTL.GD.ZS,TAX_REVENUE_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA
+World Bank,World Development Indicators,MS.MIL.XPND.GD.ZS,MILITARY_EXPENDITURE_GDP_A,% of GDP,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,EG.USE.PCAP.KG.OE,ENERGY_USE_PER_CAPITA_A,kg of oil equivalent per capita,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,energy|energy_use_per|level|physical|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,EG.USE.ELEC.KH.PC,ELECTRIC_POWER_CONSUMPTION_A,kWh per capita,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,energy|electric_power_consumption|level|physical|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,IT.NET.USER.ZS,INTERNET_USERS_RATE_A,% of population,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,population_social|internet_users_rate|rate|percent|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,SP.DYN.LE00.IN,LIFE_EXPECTANCY_A,years,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,population_social|life_expectancy|level|years|not_applicable|not_specified|NA|A|NSA
+World Bank,World Development Indicators,SE.TER.ENRR,SCHOOL_ENROLLMENT_TERTIARY_A,% gross,A,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,population_social|school_enrollment_tertiary|level|percent|not_applicable|not_specified|NA|A|NSA
+FRED,Federal Reserve Economic Data,CPIAUCSL,US_CPI_INDEX_M,index 1982-1984=100,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|level|index|not_applicable|not_specified|NA|M|SA
+FRED,Federal Reserve Economic Data,UNRATE,US_UNEMPLOYMENT_RATE_M,%,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,labour|unemployment|rate|percent|not_applicable|not_specified|NA|M|SA
+FRED,Federal Reserve Economic Data,INDPRO,US_INDUSTRIAL_PRODUCTION_M,index 2017=100,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|industrial_production|level|index|not_applicable|not_specified|NA|M|SA
+FRED,Federal Reserve Economic Data,FEDFUNDS,US_FED_FUNDS_RATE_M,%,M,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,other|fed_funds_rate|rate|percent|not_applicable|not_specified|NA|M|NSA
+FRED,Federal Reserve Economic Data,PPIACO,US_PPI_INDEX_M,index 1982=100,M,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,prices|ppi|level|index|not_applicable|not_specified|NA|M|NSA
+FRED,Federal Reserve Economic Data,CPILFESL,US_CORE_CPI_INDEX_M,index 1982-1984=100,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|level|index|not_applicable|not_specified|NA|M|SA
+FRED,Federal Reserve Economic Data,RSAFS,US_RETAIL_SALES_M,millions of dollars,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|retail_sales|level|currency|not_applicable|not_specified|NA|M|SA
+FRED,Federal Reserve Economic Data,HOUST,US_HOUSING_STARTS_M,thousands of units,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|housing_starts|level|thousands of units|not_applicable|not_specified|NA|M|SA
+FRED,Federal Reserve Economic Data,PAYEMS,US_NONFARM_PAYROLLS_M,thousands of persons,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,labour|nonfarm_payrolls|level|persons|not_applicable|not_specified|NA|M|SA
+FRED,Federal Reserve Economic Data,M2SL,US_M2_MONEY_STOCK_M,billions of dollars,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,money_finance|m2|level|currency|not_applicable|stock|NA|M|SA
+FRED,Federal Reserve Economic Data,GS10,US_10Y_TREASURY_RATE_M,%,M,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,money_finance|10y_treasury_rate|rate|percent|not_applicable|not_specified|NA|M|NSA
+FRED,Federal Reserve Economic Data,GS2,US_2Y_TREASURY_RATE_M,%,M,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,money_finance|2y_treasury_rate|rate|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.CPI.YOY.M,CN_CPI_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.PPI.YOY.M,CN_PPI_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|ppi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.IVA.YOY.M,CN_INDUSTRIAL_VALUE_ADDED_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|industrial_value_added|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.RETAIL.SALES.YOY.M,CN_RETAIL_SALES_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|retail_sales|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.FAI.YTD.YOY.M,CN_FIXED_ASSET_INVESTMENT_YTD_YOY_M,%,M,NSA,YTD_YoY,identity,approved,2.1.0,EconAtlas baseline registry,investment|fixed_asset_investment|ytd_growth|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.URBAN.UNEMPLOYMENT.M,CN_URBAN_SURVEYED_UNEMPLOYMENT_RATE_M,%,M,NSA,level,identity,approved,2.1.0,EconAtlas baseline registry,labour|unemployment|rate|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data,NBS.MANUFACTURING.PMI.M,CN_MANUFACTURING_PMI_M,index,M,SA,level,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|pmi|level|index|not_applicable|not_specified|NA|M|SA
+National Bureau of Statistics of China,People's Bank of China financial statistics,PBOC.M1.YOY.M,CN_M1_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,money_finance|m1|year_on_year_growth|percent|not_applicable|stock|NA|M|NSA
+National Bureau of Statistics of China,People's Bank of China financial statistics,PBOC.M2.YOY.M,CN_M2_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,money_finance|m2|year_on_year_growth|percent|not_applicable|stock|NA|M|NSA
+National Bureau of Statistics of China,People's Bank of China aggregate financing statistics,PBOC.TSF.FLOW.M,CN_TOTAL_SOCIAL_FINANCING_FLOW_M,100 million CNY,M,NSA,flow,identity,approved,2.1.0,EconAtlas baseline registry,money_finance|total_social_financing|flow|currency|constant_price|flow|CNY|M|NSA
+National Bureau of Statistics of China,General Administration of Customs monthly trade data,GACC.EXPORTS.USD.YOY.M,CN_EXPORTS_USD_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exports|year_on_year_growth|percent|not_applicable|flow|NA|M|NSA
+National Bureau of Statistics of China,General Administration of Customs monthly trade data,GACC.IMPORTS.USD.YOY.M,CN_IMPORTS_USD_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|imports|year_on_year_growth|percent|not_applicable|flow|NA|M|NSA
+FRED,Federal Reserve Economic Data (derived from PPIACO),PPIACO.YOY,PPI_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|ppi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.PPI.YOY.M.ALIGNED,PPI_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,prices|ppi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+FRED,Federal Reserve Economic Data (annualized from PPIACO.YOY),PPIACO.YOY.AAVG,PPI_YOY_A,%,A,NSA,annual_average,identity,approved,2.1.0,EconAtlas baseline registry,prices|ppi|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (annualized),NBS.PPI.YOY.M.ALIGNED.AAVG,PPI_YOY_A,%,A,NSA,annual_average,identity,approved,2.1.0,EconAtlas baseline registry,prices|ppi|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA
+FRED,Federal Reserve Economic Data (derived from INDPRO),INDPRO.YOY,INDUSTRIAL_OUTPUT_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|industrial_output|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (aligned),NBS.INDUSTRIAL.VALUE.ADDED.YOY.M.ALIGNED,INDUSTRIAL_OUTPUT_YOY_M,%,M,NSA,YoY,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|industrial_output|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA
+FRED,Federal Reserve Economic Data (annualized from INDPRO.YOY),INDPRO.YOY.AAVG,INDUSTRIAL_OUTPUT_YOY_A,%,A,NSA,annual_average,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|industrial_output|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA
+National Bureau of Statistics of China,National Bureau of Statistics monthly data (annualized),NBS.INDUSTRIAL.VALUE.ADDED.YOY.M.ALIGNED.AAVG,INDUSTRIAL_OUTPUT_YOY_A,%,A,NSA,annual_average,identity,approved,2.1.0,EconAtlas baseline registry,industry_consumption|industrial_output|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA
+BIS,Exchange rates (monthly average),WS_XRU.D.MAVG,EXCHANGE_RATE_USD_M,local currency per USD,M,NSA,period_average,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exchange_rate|period_average|exchange_rate|not_applicable|not_specified|USD|M|NSA
+ECB,"Euro foreign exchange reference rates (monthly average, inverted)",EXR.D.USD.EUR.SP00.A.INV.MAVG,EXCHANGE_RATE_USD_M,local currency per USD,M,NSA,period_average,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exchange_rate|period_average|exchange_rate|not_applicable|not_specified|USD|M|NSA
+BIS,Exchange rates (annual average),WS_XRU.D.AAVG,EXCHANGE_RATE_USD_A,local currency per USD,A,NSA,period_average,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exchange_rate|period_average|exchange_rate|not_applicable|not_specified|USD|A|NSA
+ECB,"Euro foreign exchange reference rates (annual average, inverted)",EXR.D.USD.EUR.SP00.A.INV.AAVG,EXCHANGE_RATE_USD_A,local currency per USD,A,NSA,period_average,identity,approved,2.1.0,EconAtlas baseline registry,external_sector|exchange_rate|period_average|exchange_rate|not_applicable|not_specified|USD|A|NSA

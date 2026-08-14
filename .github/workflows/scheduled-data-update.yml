@@ -111,6 +111,10 @@ jobs:
             data_clean/quality_gate.json
             data_clean/quality_report.csv
             data_clean/quality_coverage_report.csv
+            metadata/indicator_master.csv
+            metadata/source_mapping.csv
+            metadata/alignment_candidates.csv
+            metadata/revision_events.csv
             audit/DATA_AUDIT.md
             logs/scheduled_update.log
 

@@ -3,7 +3,7 @@ from typing import Any, Literal, Optional
 import os
 import json
 import time
-from datetime import date
+from datetime import date, datetime
 from html import escape as html_escape
 from io import BytesIO
 from pathlib import Path
@@ -64,6 +64,13 @@ class ReportRequest(BaseModel):
     indicator: str = Field(..., min_length=2, max_length=120)
 
 
+class AlignmentReviewRequest(BaseModel):
+    candidate_id: str = Field(..., min_length=8, max_length=64)
+    decision: Literal["approved", "rejected", "needs_review"]
+    reviewer: str = Field("competition-reviewer", min_length=2, max_length=80)
+    note: str = Field("", max_length=500)
+
+
 # Reuse the just-generated report when the user immediately downloads its PDF.
 # This prevents a second DeepSeek request and keeps the PDF button responsive.
 REPORT_CACHE: dict[tuple[str, str], tuple[float, dict[str, Any]]] = {}
@@ -75,7 +82,7 @@ def _records(frame: pd.DataFrame) -> list[dict[str, Any]]:
 
 app = FastAPI(
     title="EconAtlas 全球宏观经济指标数据要素服务",
-    version="2.0.0",
+    version="2.2.0",
     description="面向全球宏观经济指标的数据采集、标准化治理与结构化 JSON API 服务。",
 )
 
@@ -93,13 +100,21 @@ def api_home() -> dict[str, Any]:
     return {
         "name": "EconAtlas",
         "description": "全球宏观经济指标数据要素采集、标准化治理与结构化服务平台",
-        "version": "2.0.0",
+        "version": "2.2.0",
         "db_path": str(DB_PATH),
         "db_exists": DB_PATH.exists(),
         "endpoints": {
             "query": "/query?country=US&indicator=CPI_YOY_A&start=2020&end=2024&frequency=A",
             "batch_query": "POST /batch_query",
             "metadata": "/metadata",
+            "source_center": "/source-center",
+            "quality_contracts": "/quality-contracts",
+            "revision_history": "/revision-history",
+            "acceptance_tests": "POST /acceptance-tests",
+            "alignment_review": "POST /alignment-reviews",
+            "chat": "POST /chat",
+            "smart_report": "POST /reports/generate",
+            "report_pdf": "/reports/pdf",
             "health": "/health",
         },
     }
@@ -235,8 +250,111 @@ def lineage() -> dict[str, Any]:
 def alignment_candidates() -> dict[str, Any]:
     path = Path(DB_PATH).parent.parent / "metadata" / "alignment_candidates.csv"
     frame = pd.read_csv(path) if path.exists() else pd.DataFrame()
+    review_path = Path(DB_PATH).parent.parent / "metadata" / "mapping_reviews.csv"
+    reviews = pd.read_csv(review_path, encoding="utf-8-sig") if review_path.exists() else pd.DataFrame()
+    if not frame.empty and not reviews.empty and "candidate_id" in frame and "candidate_id" in reviews:
+        latest = reviews.sort_values("reviewed_at").drop_duplicates("candidate_id", keep="last")
+        frame = frame.merge(latest[["candidate_id", "decision", "reviewer", "note", "reviewed_at"]], on="candidate_id", how="left")
+        labels = {"approved": "人工已批准", "rejected": "人工已驳回", "needs_review": "待人工复核"}
+        frame["review_status"] = frame["decision"].map(labels).fillna(frame["review_status"])
     distribution = frame.groupby("confidence_level", dropna=False).size().reset_index(name="count") if not frame.empty else pd.DataFrame()
-    return {"candidates": _records(frame), "distribution": _records(distribution), "count": len(frame)}
+    status_distribution = frame.groupby("review_status", dropna=False).size().reset_index(name="count") if not frame.empty else pd.DataFrame()
+    return {"candidates": _records(frame), "distribution": _records(distribution), "status_distribution": _records(status_distribution), "count": len(frame)}
+
+
+@app.post("/alignment-reviews")
+def alignment_review(payload: AlignmentReviewRequest) -> dict[str, Any]:
+    root = Path(DB_PATH).parent.parent
+    candidate_path = root / "metadata" / "alignment_candidates.csv"
+    candidates = pd.read_csv(candidate_path, encoding="utf-8-sig") if candidate_path.exists() else pd.DataFrame()
+    if candidates.empty or "candidate_id" not in candidates or payload.candidate_id not in set(candidates["candidate_id"].astype(str)):
+        return {"error": "Candidate not found", "candidate_id": payload.candidate_id}
+    selected = candidates[candidates["candidate_id"].astype(str).eq(payload.candidate_id)].iloc[0]
+    review_path = root / "metadata" / "mapping_reviews.csv"
+    columns = ["candidate_id", "source", "source_dataset", "source_indicator_code", "candidate_indicator_code", "decision", "reviewer", "note", "reviewed_at", "application_status"]
+    reviews = pd.read_csv(review_path, encoding="utf-8-sig") if review_path.exists() else pd.DataFrame(columns=columns)
+    row = {
+        "candidate_id": payload.candidate_id, "source": selected.get("source"),
+        "source_dataset": selected.get("source_dataset"), "source_indicator_code": selected.get("source_indicator_code"),
+        "candidate_indicator_code": selected.get("candidate_indicator_code"), "decision": payload.decision,
+        "reviewer": payload.reviewer, "note": payload.note, "reviewed_at": datetime.now().isoformat(timespec="seconds"),
+        "application_status": "pending_next_publication" if payload.decision == "approved" else "recorded",
+    }
+    reviews = pd.concat([reviews, pd.DataFrame([row])], ignore_index=True)
+    reviews.to_csv(review_path, index=False, encoding="utf-8-sig")
+    return {
+        "saved": True,
+        "review": row,
+        "message": "审核决定已记录；批准项仍需合并进正式映射并通过下一次质量门禁后才会生效，当前标准库不会被直接修改。",
+    }
+
+
+@app.get("/source-center")
+def source_center() -> dict[str, Any]:
+    frame = read_sql(
+        """SELECT source_organization AS source, COUNT(*) AS rows,
+                  COUNT(DISTINCT source_dataset) AS datasets,
+                  COUNT(DISTINCT source_indicator_code) AS source_series,
+                  COUNT(DISTINCT indicator_code) AS standard_indicators,
+                  MIN(date) AS earliest_date, MAX(date) AS latest_date,
+                  MAX(last_updated) AS last_updated,
+                  SUM(CASE WHEN observation_type = 'forecast' THEN 1 ELSE 0 END) AS forecast_rows
+           FROM macro_observations GROUP BY source_organization ORDER BY rows DESC"""
+    )
+    mapping_path = Path(DB_PATH).parent.parent / "metadata" / "source_mapping.csv"
+    mapping = pd.read_csv(mapping_path, encoding="utf-8-sig") if mapping_path.exists() else pd.DataFrame()
+    mapping_counts = mapping.groupby("source").size().to_dict() if not mapping.empty else {}
+    rows = _records(frame)
+    for row in rows:
+        row["registered_mappings"] = int(mapping_counts.get(row["source"], 0))
+        row["connection_status"] = "available"
+    return {"sources": rows, "count": len(rows), "as_of_date": date.today().isoformat(), "update_mode": "GitHub Actions scheduled pipeline + local cache fallback"}
+
+
+@app.get("/revision-history")
+def revision_history(limit: int = Query(200, ge=1, le=1000)) -> dict[str, Any]:
+    # FastAPI replaces Query with an int for HTTP calls; accepting a direct
+    # function call as well keeps tests and offline report tooling reliable.
+    limit_value = limit if isinstance(limit, int) else 200
+    root = Path(DB_PATH).parent.parent
+    path = root / "metadata" / "revision_events.csv"
+    events = pd.read_csv(path, encoding="utf-8-sig") if path.exists() else pd.DataFrame()
+    if not events.empty and "detected_at" in events:
+        events = events.sort_values("detected_at", ascending=False).head(limit_value)
+    status = read_sql("SELECT release_status, COUNT(*) AS rows FROM macro_observations GROUP BY release_status ORDER BY rows DESC")
+    versions = read_sql("SELECT data_version, COUNT(*) AS rows FROM macro_observations GROUP BY data_version ORDER BY rows DESC LIMIT 30")
+    return {"events": _records(events), "event_count": len(events), "release_status": _records(status), "data_versions": _records(versions), "method": "对比相邻发布快照的业务主键与数值，仅记录真实变化"}
+
+
+@app.get("/quality-contracts")
+def quality_contracts() -> dict[str, Any]:
+    path = Path(DB_PATH).parent / "quality_gate.json"
+    if not path.exists():
+        return {"status": "not_run", "checks": {}}
+    return json.loads(path.read_text(encoding="utf-8-sig"))
+
+
+@app.post("/acceptance-tests")
+def acceptance_tests() -> dict[str, Any]:
+    started = time.perf_counter()
+    samples = read_sql(
+        """SELECT country_code AS country, indicator_code AS indicator, frequency, source_organization AS source,
+                  COUNT(*) AS rows, MAX(date) AS latest_date
+           FROM macro_observations WHERE observation_type != 'forecast'
+           GROUP BY country_code, indicator_code, frequency, source_organization
+           ORDER BY rows DESC, country_code, indicator_code LIMIT 23"""
+    )
+    queries = [{"country": row.country, "indicator": row.indicator, "frequency": row.frequency, "source": row.source, "include_forecast": False} for row in samples.itertuples(index=False)]
+    result = build_batch_response(queries)
+    details = []
+    for query_item, response in zip(queries, result["results"]):
+        series = response.get("series")
+        series_list = series if isinstance(series, list) else [series] if series else []
+        observations = [observation for item in series_list for observation in item.get("observations", [])]
+        passed = response.get("error") is None and bool(observations) and all(item.get("observation_type") != "forecast" for item in observations)
+        details.append({**query_item, "passed": passed, "observation_count": len(observations), "error": response.get("error")})
+    passed_count = sum(1 for item in details if item["passed"])
+    return {"status": "passed" if passed_count == len(details) and details else "failed", "test_count": len(details), "passed_count": passed_count, "failed_count": len(details) - passed_count, "elapsed_ms": round((time.perf_counter() - started) * 1000, 2), "details": details}
 
 
 @app.get("/asset-ratings")

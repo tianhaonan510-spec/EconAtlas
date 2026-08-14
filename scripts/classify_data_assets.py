@@ -21,7 +21,10 @@ def main() -> None:
     df["value"] = pd.to_numeric(df["value"], errors="coerce")
     rows = []
     for indicator, group in df.groupby("indicator_code"):
-        historical = group[group["observation_type"].eq("historical")]
+        # Published current assets include directly standardized history and
+        # traceable derived observations, while forecast scenarios remain a
+        # separate tier and never inflate current coverage.
+        historical = group[group["observation_type"].ne("forecast")]
         forecast = group[group["observation_type"].eq("forecast")]
         raw = group[group["processing_level"].ne("derived")]
         countries = int(historical["country_code"].nunique())
@@ -47,6 +50,7 @@ def main() -> None:
                 "asset_tier": tier,
                 "classification_reason": reason,
                 "historical_rows": historical_rows,
+                "current_published_rows": historical_rows,
                 "forecast_rows": int(forecast["value"].notna().sum()),
                 "raw_standardized_rows": int(raw["value"].notna().sum()),
                 "country_count": countries,
@@ -66,7 +70,7 @@ def main() -> None:
                 "frequency": item.frequency,
                 "asset_tier": "pending",
                 "classification_reason": "已登记元数据，尚无通过质量门禁的正式观测",
-                "historical_rows": 0, "forecast_rows": 0, "raw_standardized_rows": 0,
+                "historical_rows": 0, "current_published_rows": 0, "forecast_rows": 0, "raw_standardized_rows": 0,
                 "country_count": 0, "source_count": 0, "start_date": "", "end_date": "",
             }
         )

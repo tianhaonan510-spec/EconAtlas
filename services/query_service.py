@@ -23,8 +23,11 @@ def _date_filter(value: Optional[str]) -> Optional[str]:
 
 
 def read_sql(query: str, params: Optional[list[Any]] = None) -> pd.DataFrame:
-    with sqlite3.connect(DB_PATH) as conn:
+    conn = sqlite3.connect(DB_PATH)
+    try:
         return pd.read_sql_query(query, conn, params=params or [])
+    finally:
+        conn.close()
 
 
 def query_observations(
@@ -76,6 +79,7 @@ def _series_from_group(group: pd.DataFrame) -> dict[str, Any]:
                 "date": str(row.get("date")),
                 "value": _clean_value(row.get("value")),
                 "status": row.get("status") or "final",
+                "release_status": row.get("release_status") or row.get("status") or "unknown",
                 "observation_type": row.get("observation_type") or "historical",
                 "processing_level": row.get("processing_level") or "standardized",
                 "source_status": _clean_value(row.get("source_status")),

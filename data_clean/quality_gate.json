@@ -6,25 +6,53 @@
       "passed": true,
       "detail": []
     },
-    "no_null_observations": {
+    "values_are_numeric": {
       "passed": true,
       "detail": 0
     },
-    "no_duplicate_business_keys": {
+    "business_keys_are_unique": {
       "passed": true,
       "detail": 0
     },
-    "all_indicators_registered": {
+    "indicators_are_registered": {
       "passed": true,
       "detail": []
     },
-    "forecast_semantics_valid": {
+    "observation_type_enum": {
       "passed": true,
-      "detail": 0
+      "detail": []
+    },
+    "processing_level_enum": {
+      "passed": true,
+      "detail": []
+    },
+    "release_status_enum": {
+      "passed": true,
+      "detail": []
+    },
+    "frequency_enum": {
+      "passed": true,
+      "detail": []
     },
     "source_urls_complete": {
       "passed": true,
       "detail": 0
+    },
+    "future_rows_are_forecast": {
+      "passed": true,
+      "detail": 0
+    },
+    "derived_rows_are_marked": {
+      "passed": true,
+      "detail": 0
+    },
+    "indicator_semantics_complete": {
+      "passed": true,
+      "detail": []
+    },
+    "source_series_registered": {
+      "passed": true,
+      "detail": []
     }
   }
 }

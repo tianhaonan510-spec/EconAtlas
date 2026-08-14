@@ -2,6 +2,7 @@
 import pandas as pd
 
 from config import DATA_RAW, DATA_CLEAN, METADATA_DIR, INDICATOR_MAP, COUNTRIES
+from governance.semantic_model import semantic_dimensions, semantic_signature
 
 DATA_CLEAN.mkdir(parents=True, exist_ok=True)
 METADATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -9,7 +10,16 @@ METADATA_DIR.mkdir(parents=True, exist_ok=True)
 def build_indicator_master() -> pd.DataFrame:
     rows = []
     for code, meta in INDICATOR_MAP.items():
-        rows.append({
+        dimensions = semantic_dimensions(
+            code,
+            meta["indicator_name_zh"],
+            meta["indicator_name_en"],
+            meta["unit"],
+            meta["frequency"],
+            meta["seasonal_adjustment"],
+            meta["calculation"],
+        )
+        row = {
             "indicator_code": code,
             "indicator_name_zh": meta["indicator_name_zh"],
             "indicator_name_en": meta["indicator_name_en"],
@@ -18,7 +28,12 @@ def build_indicator_master() -> pd.DataFrame:
             "seasonal_adjustment": meta["seasonal_adjustment"],
             "calculation": meta["calculation"],
             "source_count": len(meta.get("sources", [])),
-        })
+            **dimensions,
+        }
+        row["semantic_signature"] = semantic_signature(dimensions)
+        row["definition_status"] = "registered"
+        row["standard_version"] = "2.1.0"
+        rows.append(row)
     df = pd.DataFrame(rows)
     df.to_csv(METADATA_DIR / "indicator_master.csv", index=False, encoding="utf-8-sig")
     return df
@@ -27,11 +42,29 @@ def build_source_mapping() -> pd.DataFrame:
     rows = []
     for code, meta in INDICATOR_MAP.items():
         for src in meta["sources"]:
+            dimensions = semantic_dimensions(
+                code,
+                meta["indicator_name_zh"],
+                meta["indicator_name_en"],
+                meta["unit"],
+                meta["frequency"],
+                meta["seasonal_adjustment"],
+                meta["calculation"],
+            )
             rows.append({
                 "source": src["organization"],
                 "source_dataset": src["dataset"],
                 "source_indicator_code": src["source_series_code"],
                 "indicator_code": code,
+                "standard_unit": meta["unit"],
+                "standard_frequency": meta["frequency"],
+                "standard_seasonal_adjustment": meta["seasonal_adjustment"],
+                "standard_calculation": meta["calculation"],
+                "transform_rule": src.get("transform_rule", "identity"),
+                "mapping_status": "approved",
+                "mapping_version": "2.1.0",
+                "reviewed_by": "EconAtlas baseline registry",
+                "semantic_signature": semantic_signature(dimensions),
             })
     df = pd.DataFrame(rows)
     df.to_csv(METADATA_DIR / "source_mapping.csv", index=False, encoding="utf-8-sig")
@@ -86,4 +119,3 @@ def standardize_worldbank() -> pd.DataFrame:
 
 if __name__ == "__main__":
     standardize_worldbank()
-

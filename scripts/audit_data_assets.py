@@ -61,7 +61,13 @@ def markdown_table(frame: pd.DataFrame) -> str:
 def main() -> None:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     generated = pd.Timestamp.now(tz="Asia/Shanghai")
-    df = read_csv(DATA_FILE)
+    all_df = read_csv(DATA_FILE)
+    if "observation_type" in all_df.columns:
+        forecast_df = all_df[all_df["observation_type"].astype(str).eq("forecast")].copy()
+        df = all_df[all_df["observation_type"].astype(str).ne("forecast")].copy()
+    else:
+        forecast_df = all_df.iloc[0:0].copy()
+        df = all_df.copy()
     indicators = read_csv(INDICATOR_FILE)
     df["date"] = df["date"].astype(str)
     df["date_year"] = df["date"].map(safe_year)
@@ -197,6 +203,8 @@ def main() -> None:
         "zero_valid_series_count": int((series_df["valid_rows"] == 0).sum()),
         "future_record_count": int((df["date_year"] > current_year).sum()),
         "future_source_count": int(df.loc[df["date_year"] > current_year, "source_organization"].nunique()),
+        "forecast_scenario_count": int(len(forecast_df)),
+        "forecast_source_count": int(forecast_df["source_organization"].nunique()) if not forecast_df.empty else 0,
         "status_code_count": int(df["status"].nunique(dropna=True)),
     }
 
@@ -207,10 +215,15 @@ def main() -> None:
     field_completeness.to_csv(OUT_DIR / "field_completeness.csv", index=False, encoding="utf-8-sig")
     coverage.to_csv(OUT_DIR / "country_indicator_matrix.csv", encoding="utf-8-sig")
     series_df[series_df["valid_rows"] == 0].to_csv(OUT_DIR / "zero_valid_series.csv", index=False, encoding="utf-8-sig")
-    df.loc[df["date_year"] > current_year, [
-        "country_code", "indicator_code", "date", "value", "source_organization", "source_dataset", "status"
-    ]].to_csv(OUT_DIR / "future_records.csv", index=False, encoding="utf-8-sig")
-    df.groupby(["source_organization", "status"], dropna=False).size().reset_index(name="row_count").to_csv(
+    forecast_columns = [
+        "country_code", "indicator_code", "date", "value", "source_organization",
+        "source_dataset", "source_status", "release_status", "observation_type",
+    ]
+    forecast_df[[column for column in forecast_columns if column in forecast_df]].to_csv(
+        OUT_DIR / "future_records.csv", index=False, encoding="utf-8-sig"
+    )
+    semantic_columns = [column for column in ["source_organization", "source_status", "release_status", "observation_type"] if column in all_df]
+    all_df.groupby(semantic_columns, dropna=False).size().reset_index(name="row_count").to_csv(
         OUT_DIR / "status_semantics.csv", index=False, encoding="utf-8-sig"
     )
     (OUT_DIR / "audit_summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -235,8 +248,8 @@ def main() -> None:
         f"- 仅覆盖单一国家（地区）的指标：{summary['single_country_indicator_count']} 个。",
         f"- 有效记录少于 100 条的来源：{summary['low_volume_source_count']} 个。",
         f"- 完全无有效值的序列：{summary['zero_valid_series_count']} 条，不应计入有效覆盖。",
-        f"- 当前年份之后的记录：{summary['future_record_count']:,} 条，需显式标记为预测值，不能与历史实绩混合。",
-        f"- `status` 字段存在 {summary['status_code_count']} 种值，当前混合数据性质和来源状态码，需拆分语义。",
+        f"- 当前数据层中的未来记录：{summary['future_record_count']:,} 条；预测情景层独立保存 {summary['forecast_scenario_count']:,} 条，不与历史实绩混合。",
+        "- 数据性质、来源状态和发布状态已经拆分为 `observation_type`、`source_status` 与 `release_status`。",
         "- 完整性不能只用总缺失值衡量，还需结合指标的预期发布频率和适用国家建立预期时间轴。",
         "",
         "### 覆盖较弱的国家（地区）",

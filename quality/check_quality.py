@@ -96,7 +96,9 @@ def run_quality_checks() -> pd.DataFrame:
     if not path.exists():
         raise FileNotFoundError(f"Standardized data not found: {path}")
 
-    df = pd.read_csv(path, encoding="utf-8-sig", low_memory=False)
+    all_data = pd.read_csv(path, encoding="utf-8-sig", low_memory=False)
+    forecast_count = int(all_data.get("observation_type", pd.Series("", index=all_data.index)).eq("forecast").sum())
+    df = all_data[all_data.get("observation_type", pd.Series("historical", index=all_data.index)).ne("forecast")].copy()
     df["date"] = df["date"].astype(str)
     df["indicator_code"] = df["indicator_code"].astype(str)
     key_cols = ["country_code", "indicator_code", "date", "source_organization", "source_dataset"]
@@ -109,6 +111,8 @@ def run_quality_checks() -> pd.DataFrame:
         {"check_item": "indicator_count", "value": int(df["indicator_code"].nunique()), "status": "info"},
         {"check_item": "source_count", "value": int(df["source_organization"].nunique()), "status": "info"},
         {"check_item": "frequency_count", "value": int(df["frequency"].nunique()), "status": "info"},
+        {"check_item": "forecast_rows_excluded", "value": forecast_count, "status": "info"},
+        {"check_item": "unknown_release_status_count", "value": int(df.get("release_status", pd.Series("unknown", index=df.index)).eq("unknown").sum()), "status": "warning" if df.get("release_status", pd.Series("unknown", index=df.index)).eq("unknown").any() else "ok"},
     ]
 
     coverage = _coverage_report(df)
@@ -138,4 +142,3 @@ def run_quality_checks() -> pd.DataFrame:
 
 if __name__ == "__main__":
     run_quality_checks()
-

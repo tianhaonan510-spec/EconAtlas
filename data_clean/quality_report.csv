@@ -1,5 +1,5 @@
 ﻿check_item,value,status
-row_count,66627,info
+row_count,65272,info
 missing_value_count,0,ok
 duplicate_key_count,0,ok
 missing_source_url_count,0,ok
@@ -7,6 +7,8 @@ country_count,18,info
 indicator_count,64,info
 source_count,8,info
 frequency_count,4,info
+forecast_rows_excluded,1355,info
+unknown_release_status_count,0,ok
 coverage_rows,93,info
 multi_source_warning_count,535,warning
-outlier_count,359,warning
+outlier_count,316,warning

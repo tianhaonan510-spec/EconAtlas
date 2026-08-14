@@ -3,7 +3,17 @@ import sqlite3
 
 import pandas as pd
 
-from config import DATA_CLEAN, DB_PATH
+from config import DATA_CLEAN, DB_PATH, METADATA_DIR
+
+
+METADATA_TABLES = {
+    "indicator_master.csv": "indicator_master",
+    "country_master.csv": "country_master",
+    "source_mapping.csv": "source_mapping",
+    "alignment_candidates.csv": "alignment_candidates",
+    "mapping_reviews.csv": "mapping_reviews",
+    "revision_events.csv": "revision_events",
+}
 
 
 def init_db() -> None:
@@ -21,6 +31,11 @@ def init_db() -> None:
             ON macro_observations(country_code, indicator_code, frequency, date)
             """
         )
+        for filename, table in METADATA_TABLES.items():
+            path = METADATA_DIR / filename
+            if path.exists():
+                metadata = pd.read_csv(path, encoding="utf-8-sig", low_memory=False)
+                metadata.to_sql(table, conn, if_exists="replace", index=False)
         conn.execute(
             """
             CREATE INDEX IF NOT EXISTS idx_macro_source_query
@@ -52,4 +67,3 @@ def query_observations(country: str, indicator: str, start: str = None, end: str
 
 if __name__ == "__main__":
     init_db()
-

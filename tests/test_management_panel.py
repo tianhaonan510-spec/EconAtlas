@@ -2,14 +2,18 @@ import unittest
 
 from api_service.app import (
     ReportRequest,
+    acceptance_tests,
     alignment_candidates,
     asset_ratings,
     dashboard_summary,
     generate_report,
     lineage,
+    quality_contracts,
     quality_status,
     report_pdf,
+    revision_history,
     risk_alerts,
+    source_center,
 )
 from api_service.panel import PANEL_HTML
 from services.query_service import build_query_response
@@ -61,7 +65,7 @@ class ManagementPanelTests(unittest.TestCase):
         modules = [
             "指标查询", "指标字典", "数据质量", "JSON输出", "一致性分析", "治理驾驶舱",
             "指标血缘", "治理规则", "API服务中心", "数据资产目录", "风险预警", "智能问答",
-            "智能分析", "智能报告", "资产评级", "指标对齐审核",
+            "智能研报", "资产评级", "指标对齐审核",
         ]
         for module in modules:
             with self.subTest(module=module):
@@ -69,10 +73,27 @@ class ManagementPanelTests(unittest.TestCase):
         self.assertIn("'json-output':jsonOutput", PANEL_HTML)
         self.assertIn("'indicator-query':indicatorQuery", PANEL_HTML)
 
+    def test_analysis_and_report_are_one_functional_workspace(self):
+        self.assertIn('data-page="smart-report"', PANEL_HTML)
+        self.assertNotIn('data-page="analysis"', PANEL_HTML)
+        self.assertNotIn('data-page="report"', PANEL_HTML)
+        self.assertIn("'/reports/generate'", PANEL_HTML)
+        self.assertIn("'/reports/pdf'", PANEL_HTML)
+        self.assertIn("下载 PDF 报告", PANEL_HTML)
+
     def test_restored_governance_data_sources_exist(self):
         self.assertGreater(lineage()["count"], 0)
         self.assertGreater(alignment_candidates()["count"], 0)
         self.assertGreater(asset_ratings()["count"], 0)
+
+    def test_new_governance_workflows_are_live_not_placeholders(self):
+        self.assertGreater(source_center()["count"], 0)
+        self.assertEqual(quality_contracts()["status"], "passed")
+        self.assertIn("events", revision_history())
+        acceptance = acceptance_tests()
+        self.assertEqual(acceptance["status"], "passed")
+        self.assertEqual(acceptance["test_count"], 23)
+        self.assertEqual(acceptance["passed_count"], 23)
 
     def test_quality_scope_excludes_forecasts(self):
         quality = quality_status()

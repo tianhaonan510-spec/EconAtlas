@@ -1,74 +1,74 @@
-﻿indicator_code,indicator_name_zh,indicator_name_en,unit,frequency,seasonal_adjustment,calculation,source_count
-GDP_NOMINAL_USD_A,名义GDP,Nominal GDP,current USD,A,NSA,level,2
-GDP_REAL_GROWTH_YOY_A,实际GDP增速,Real GDP Growth,%,A,NSA,YoY,2
-GDP_PER_CAPITA_USD_A,人均GDP,GDP per capita,current USD,A,NSA,level,2
-CPI_YOY_A,居民消费价格指数同比,Consumer Price Index YoY,%,A,NSA,YoY,4
-UNEMPLOYMENT_RATE_A,失业率,Unemployment Rate,% of labor force,A,NSA,level,3
-EXPORTS_USD_A,货物和服务出口,Exports of goods and services,current USD,A,NSA,level,2
-IMPORTS_USD_A,货物和服务进口,Imports of goods and services,current USD,A,NSA,level,2
-RESERVES_USD_A,外汇储备,Total reserves,current USD,A,NSA,level,1
-GOV_DEBT_GDP_A,政府债务占GDP比重,"Central government debt, total",% of GDP,A,NSA,level,2
-CURRENT_ACCOUNT_GDP_A,经常账户余额占GDP比重,Current account balance,% of GDP,A,NSA,level,2
-CPI_YOY_M,居民消费价格指数同比,Consumer Price Index YoY,%,M,NSA,YoY,4
-UNEMPLOYMENT_RATE_M,月度失业率,Monthly unemployment rate,%,M,SA,level,1
-INDUSTRIAL_PRODUCTION_INDEX_M,工业生产指数,Industrial production index,index (2021=100),M,SCA,level,1
-GDP_REAL_GROWTH_YOY_Q,季度实际GDP同比增速,Quarterly real GDP growth YoY,%,Q,SCA,YoY,1
-EUR_USD_EXCHANGE_RATE_D,欧元兑美元参考汇率,Euro foreign exchange reference rate: USD,USD per EUR,D,NSA,level,1
-EXCHANGE_RATE_USD_D,本币兑美元汇率,Exchange rates against USD,local currency per USD,D,NSA,level,2
-GDP_CURRENT_LCU_A,本币计价名义GDP,Nominal GDP in local currency,current LCU,A,NSA,level,2
-GDP_REAL_LCU_A,本币计价实际GDP,Real GDP in local currency,constant LCU,A,NSA,level,2
-GDP_DEFLATOR_INDEX_A,GDP平减指数,GDP deflator index,index,A,NSA,level,2
-GROSS_SAVINGS_GDP_A,国民总储蓄占GDP比重,Gross national savings as percent of GDP,% of GDP,A,NSA,level,2
-GROSS_CAPITAL_FORMATION_GDP_A,资本形成总额占GDP比重,Gross capital formation as percent of GDP,% of GDP,A,NSA,level,2
-GOV_REVENUE_GDP_A,政府收入占GDP比重,General government revenue as percent of GDP,% of GDP,A,NSA,level,2
-GOV_EXPENSE_GDP_A,政府支出占GDP比重,General government expense as percent of GDP,% of GDP,A,NSA,level,2
-GOV_NET_LENDING_GDP_A,政府净借贷占GDP比重,General government net lending or borrowing as percent of GDP,% of GDP,A,NSA,level,2
-POPULATION_TOTAL_A,总人口,"Population, total",persons,A,NSA,level,2
-POPULATION_GROWTH_A,人口增长率,Population growth,%,A,NSA,YoY,1
-URBAN_POPULATION_RATE_A,城镇人口比重,Urban population share,% of total population,A,NSA,level,1
-GNI_CURRENT_USD_A,国民总收入,"GNI, current US dollars",current USD,A,NSA,level,1
-GNI_PER_CAPITA_USD_A,人均国民总收入,GNI per capita,current USD,A,NSA,level,1
-FDI_NET_INFLOWS_GDP_A,外商直接投资净流入占GDP比重,FDI net inflows as percent of GDP,% of GDP,A,NSA,level,1
-TRADE_GDP_A,贸易开放度,Trade as percent of GDP,% of GDP,A,NSA,level,1
-EXPORTS_GROWTH_A,出口实际增速,Exports real growth,%,A,NSA,YoY,1
-IMPORTS_GROWTH_A,进口实际增速,Imports real growth,%,A,NSA,YoY,1
-GDP_DEFLATOR_GROWTH_A,GDP平减指数增速,"Inflation, GDP deflator",%,A,NSA,YoY,1
-BROAD_MONEY_GDP_A,广义货币占GDP比重,Broad money as percent of GDP,% of GDP,A,NSA,level,1
-DOMESTIC_CREDIT_PRIVATE_GDP_A,对私营部门国内信贷占GDP比重,Domestic credit to private sector as percent of GDP,% of GDP,A,NSA,level,1
-TAX_REVENUE_GDP_A,税收收入占GDP比重,Tax revenue as percent of GDP,% of GDP,A,NSA,level,1
-MILITARY_EXPENDITURE_GDP_A,军费支出占GDP比重,Military expenditure as percent of GDP,% of GDP,A,NSA,level,1
-ENERGY_USE_PER_CAPITA_A,人均能源使用量,Energy use per capita,kg of oil equivalent per capita,A,NSA,level,1
-ELECTRIC_POWER_CONSUMPTION_A,人均电力消费,Electric power consumption per capita,kWh per capita,A,NSA,level,1
-INTERNET_USERS_RATE_A,互联网使用率,Individuals using the Internet,% of population,A,NSA,level,1
-LIFE_EXPECTANCY_A,预期寿命,Life expectancy at birth,years,A,NSA,level,1
-SCHOOL_ENROLLMENT_TERTIARY_A,高等教育毛入学率,"School enrollment, tertiary",% gross,A,NSA,level,1
-US_CPI_INDEX_M,美国居民消费价格指数,U.S. Consumer Price Index,index 1982-1984=100,M,SA,level,1
-US_UNEMPLOYMENT_RATE_M,美国失业率,U.S. Unemployment Rate,%,M,SA,level,1
-US_INDUSTRIAL_PRODUCTION_M,美国工业生产指数,U.S. Industrial Production Index,index 2017=100,M,SA,level,1
-US_FED_FUNDS_RATE_M,美国联邦基金有效利率,U.S. Effective Federal Funds Rate,%,M,NSA,level,1
-US_PPI_INDEX_M,美国生产者价格指数,U.S. Producer Price Index,index 1982=100,M,NSA,level,1
-US_CORE_CPI_INDEX_M,美国核心CPI指数,U.S. Core CPI Index,index 1982-1984=100,M,SA,level,1
-US_RETAIL_SALES_M,美国零售销售额,U.S. Retail Sales,millions of dollars,M,SA,level,1
-US_HOUSING_STARTS_M,美国新屋开工,U.S. Housing Starts,thousands of units,M,SA,level,1
-US_NONFARM_PAYROLLS_M,美国非农就业人数,U.S. Nonfarm Payrolls,thousands of persons,M,SA,level,1
-US_M2_MONEY_STOCK_M,美国M2货币存量,U.S. M2 Money Stock,billions of dollars,M,SA,level,1
-US_10Y_TREASURY_RATE_M,美国10年期国债收益率,U.S. 10-Year Treasury Rate,%,M,NSA,level,1
-US_2Y_TREASURY_RATE_M,美国2年期国债收益率,U.S. 2-Year Treasury Rate,%,M,NSA,level,1
-CN_CPI_YOY_M,中国居民消费价格指数同比,China CPI YoY,%,M,NSA,YoY,1
-CN_PPI_YOY_M,中国工业生产者出厂价格指数同比,China PPI YoY,%,M,NSA,YoY,1
-CN_INDUSTRIAL_VALUE_ADDED_YOY_M,中国规模以上工业增加值同比,China industrial value added YoY,%,M,NSA,YoY,1
-CN_RETAIL_SALES_YOY_M,中国社会消费品零售总额同比,China total retail sales YoY,%,M,NSA,YoY,1
-CN_FIXED_ASSET_INVESTMENT_YTD_YOY_M,中国固定资产投资累计同比,China fixed asset investment YTD YoY,%,M,NSA,YTD_YoY,1
-CN_URBAN_SURVEYED_UNEMPLOYMENT_RATE_M,中国城镇调查失业率,China surveyed urban unemployment rate,%,M,NSA,level,1
-CN_MANUFACTURING_PMI_M,中国制造业采购经理指数,China manufacturing PMI,index,M,SA,level,1
-CN_M1_YOY_M,中国狭义货币 M1 同比,China M1 money supply YoY,%,M,NSA,YoY,1
-CN_M2_YOY_M,中国广义货币 M2 同比,China M2 money supply YoY,%,M,NSA,YoY,1
-CN_TOTAL_SOCIAL_FINANCING_FLOW_M,中国社会融资规模增量,China aggregate financing to the real economy flow,100 million CNY,M,NSA,flow,1
-CN_EXPORTS_USD_YOY_M,中国出口金额同比,China exports in USD YoY,%,M,NSA,YoY,1
-CN_IMPORTS_USD_YOY_M,中国进口金额同比,China imports in USD YoY,%,M,NSA,YoY,1
-PPI_YOY_M,生产者价格指数同比,Producer Price Index YoY,%,M,NSA,YoY,2
-PPI_YOY_A,生产者价格指数同比,Producer Price Index YoY,%,A,NSA,annual_average,2
-INDUSTRIAL_OUTPUT_YOY_M,工业生产同比,Industrial Output YoY,%,M,NSA,YoY,2
-INDUSTRIAL_OUTPUT_YOY_A,工业生产同比,Industrial Output YoY,%,A,NSA,annual_average,2
-EXCHANGE_RATE_USD_M,本币兑美元汇率,Exchange rates against USD,local currency per USD,M,NSA,period_average,2
-EXCHANGE_RATE_USD_A,本币兑美元汇率,Exchange rates against USD,local currency per USD,A,NSA,period_average,2
+﻿indicator_code,indicator_name_zh,indicator_name_en,unit,frequency,seasonal_adjustment,calculation,source_count,domain,concept,measure,unit_family,price_basis,stock_flow,currency,frequency_code,seasonal_adjustment_code,calculation_code,semantic_signature,definition_status,standard_version
+GDP_NOMINAL_USD_A,名义GDP,Nominal GDP,current USD,A,NSA,level,2,national_accounts,gdp,level,currency,current_price,not_specified,USD,A,NSA,level,national_accounts|gdp|level|currency|current_price|not_specified|USD|A|NSA,registered,2.1.0
+GDP_REAL_GROWTH_YOY_A,实际GDP增速,Real GDP Growth,%,A,NSA,YoY,2,national_accounts,gdp,year_on_year_growth,percent,constant_price,not_specified,NA,A,NSA,YoY,national_accounts|gdp|year_on_year_growth|percent|constant_price|not_specified|NA|A|NSA,registered,2.1.0
+GDP_PER_CAPITA_USD_A,人均GDP,GDP per capita,current USD,A,NSA,level,2,national_accounts,gdp,level,currency,current_price,not_specified,USD,A,NSA,level,national_accounts|gdp|level|currency|current_price|not_specified|USD|A|NSA,registered,2.1.0
+CPI_YOY_A,居民消费价格指数同比,Consumer Price Index YoY,%,A,NSA,YoY,4,prices,cpi,year_on_year_growth,percent,not_applicable,not_specified,NA,A,NSA,YoY,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+UNEMPLOYMENT_RATE_A,失业率,Unemployment Rate,% of labor force,A,NSA,level,3,labour,unemployment,rate,percent,not_applicable,not_specified,NA,A,NSA,level,labour|unemployment|rate|percent|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+EXPORTS_USD_A,货物和服务出口,Exports of goods and services,current USD,A,NSA,level,2,external_sector,exports,level,currency,current_price,flow,USD,A,NSA,level,external_sector|exports|level|currency|current_price|flow|USD|A|NSA,registered,2.1.0
+IMPORTS_USD_A,货物和服务进口,Imports of goods and services,current USD,A,NSA,level,2,external_sector,imports,level,currency,current_price,flow,USD,A,NSA,level,external_sector|imports|level|currency|current_price|flow|USD|A|NSA,registered,2.1.0
+RESERVES_USD_A,外汇储备,Total reserves,current USD,A,NSA,level,1,external_sector,reserves,level,currency,current_price,stock,USD,A,NSA,level,external_sector|reserves|level|currency|current_price|stock|USD|A|NSA,registered,2.1.0
+GOV_DEBT_GDP_A,政府债务占GDP比重,"Central government debt, total",% of GDP,A,NSA,level,2,national_accounts,gdp,level,ratio_gdp,not_applicable,stock,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|stock|NA|A|NSA,registered,2.1.0
+CURRENT_ACCOUNT_GDP_A,经常账户余额占GDP比重,Current account balance,% of GDP,A,NSA,level,2,national_accounts,gdp,level,ratio_gdp,current_price,not_specified,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|current_price|not_specified|NA|A|NSA,registered,2.1.0
+CPI_YOY_M,居民消费价格指数同比,Consumer Price Index YoY,%,M,NSA,YoY,4,prices,cpi,year_on_year_growth,percent,not_applicable,not_specified,NA,M,NSA,YoY,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+UNEMPLOYMENT_RATE_M,月度失业率,Monthly unemployment rate,%,M,SA,level,1,labour,unemployment,rate,percent,not_applicable,not_specified,NA,M,SA,level,labour|unemployment|rate|percent|not_applicable|not_specified|NA|M|SA,registered,2.1.0
+INDUSTRIAL_PRODUCTION_INDEX_M,工业生产指数,Industrial production index,index (2021=100),M,SCA,level,1,industry_consumption,industrial_production,level,index,not_applicable,not_specified,NA,M,SCA,level,industry_consumption|industrial_production|level|index|not_applicable|not_specified|NA|M|SCA,registered,2.1.0
+GDP_REAL_GROWTH_YOY_Q,季度实际GDP同比增速,Quarterly real GDP growth YoY,%,Q,SCA,YoY,1,national_accounts,gdp,year_on_year_growth,percent,constant_price,not_specified,NA,Q,SCA,YoY,national_accounts|gdp|year_on_year_growth|percent|constant_price|not_specified|NA|Q|SCA,registered,2.1.0
+EUR_USD_EXCHANGE_RATE_D,欧元兑美元参考汇率,Euro foreign exchange reference rate: USD,USD per EUR,D,NSA,level,1,other,exchange_rate,level,exchange_rate,not_applicable,not_specified,USD,D,NSA,level,other|exchange_rate|level|exchange_rate|not_applicable|not_specified|USD|D|NSA,registered,2.1.0
+EXCHANGE_RATE_USD_D,本币兑美元汇率,Exchange rates against USD,local currency per USD,D,NSA,level,2,external_sector,exchange_rate,level,exchange_rate,not_applicable,not_specified,USD,D,NSA,level,external_sector|exchange_rate|level|exchange_rate|not_applicable|not_specified|USD|D|NSA,registered,2.1.0
+GDP_CURRENT_LCU_A,本币计价名义GDP,Nominal GDP in local currency,current LCU,A,NSA,level,2,national_accounts,gdp,level,currency,current_price,not_specified,LCU,A,NSA,level,national_accounts|gdp|level|currency|current_price|not_specified|LCU|A|NSA,registered,2.1.0
+GDP_REAL_LCU_A,本币计价实际GDP,Real GDP in local currency,constant LCU,A,NSA,level,2,national_accounts,gdp,level,currency,constant_price,not_specified,LCU,A,NSA,level,national_accounts|gdp|level|currency|constant_price|not_specified|LCU|A|NSA,registered,2.1.0
+GDP_DEFLATOR_INDEX_A,GDP平减指数,GDP deflator index,index,A,NSA,level,2,national_accounts,gdp,level,index,not_applicable,not_specified,NA,A,NSA,level,national_accounts|gdp|level|index|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+GROSS_SAVINGS_GDP_A,国民总储蓄占GDP比重,Gross national savings as percent of GDP,% of GDP,A,NSA,level,2,national_accounts,gdp,level,ratio_gdp,not_applicable,not_specified,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+GROSS_CAPITAL_FORMATION_GDP_A,资本形成总额占GDP比重,Gross capital formation as percent of GDP,% of GDP,A,NSA,level,2,national_accounts,gdp,level,ratio_gdp,not_applicable,not_specified,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+GOV_REVENUE_GDP_A,政府收入占GDP比重,General government revenue as percent of GDP,% of GDP,A,NSA,level,2,national_accounts,gdp,level,ratio_gdp,not_applicable,flow,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA,registered,2.1.0
+GOV_EXPENSE_GDP_A,政府支出占GDP比重,General government expense as percent of GDP,% of GDP,A,NSA,level,2,national_accounts,gdp,level,ratio_gdp,not_applicable,flow,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA,registered,2.1.0
+GOV_NET_LENDING_GDP_A,政府净借贷占GDP比重,General government net lending or borrowing as percent of GDP,% of GDP,A,NSA,level,2,national_accounts,gdp,level,ratio_gdp,not_applicable,not_specified,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+POPULATION_TOTAL_A,总人口,"Population, total",persons,A,NSA,level,2,population_social,population,level,persons,not_applicable,stock,NA,A,NSA,level,population_social|population|level|persons|not_applicable|stock|NA|A|NSA,registered,2.1.0
+POPULATION_GROWTH_A,人口增长率,Population growth,%,A,NSA,YoY,1,population_social,population,year_on_year_growth,percent,not_applicable,stock,NA,A,NSA,YoY,population_social|population|year_on_year_growth|percent|not_applicable|stock|NA|A|NSA,registered,2.1.0
+URBAN_POPULATION_RATE_A,城镇人口比重,Urban population share,% of total population,A,NSA,level,1,population_social,population,rate,percent,not_applicable,stock,NA,A,NSA,level,population_social|population|rate|percent|not_applicable|stock|NA|A|NSA,registered,2.1.0
+GNI_CURRENT_USD_A,国民总收入,"GNI, current US dollars",current USD,A,NSA,level,1,national_accounts,gni,level,currency,current_price,not_specified,USD,A,NSA,level,national_accounts|gni|level|currency|current_price|not_specified|USD|A|NSA,registered,2.1.0
+GNI_PER_CAPITA_USD_A,人均国民总收入,GNI per capita,current USD,A,NSA,level,1,national_accounts,gni,level,currency,current_price,not_specified,USD,A,NSA,level,national_accounts|gni|level|currency|current_price|not_specified|USD|A|NSA,registered,2.1.0
+FDI_NET_INFLOWS_GDP_A,外商直接投资净流入占GDP比重,FDI net inflows as percent of GDP,% of GDP,A,NSA,level,1,national_accounts,gdp,level,ratio_gdp,not_applicable,flow,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA,registered,2.1.0
+TRADE_GDP_A,贸易开放度,Trade as percent of GDP,% of GDP,A,NSA,level,1,national_accounts,gdp,level,ratio_gdp,not_applicable,not_specified,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+EXPORTS_GROWTH_A,出口实际增速,Exports real growth,%,A,NSA,YoY,1,external_sector,exports,year_on_year_growth,percent,constant_price,flow,NA,A,NSA,YoY,external_sector|exports|year_on_year_growth|percent|constant_price|flow|NA|A|NSA,registered,2.1.0
+IMPORTS_GROWTH_A,进口实际增速,Imports real growth,%,A,NSA,YoY,1,external_sector,imports,year_on_year_growth,percent,constant_price,flow,NA,A,NSA,YoY,external_sector|imports|year_on_year_growth|percent|constant_price|flow|NA|A|NSA,registered,2.1.0
+GDP_DEFLATOR_GROWTH_A,GDP平减指数增速,"Inflation, GDP deflator",%,A,NSA,YoY,1,national_accounts,gdp,year_on_year_growth,percent,not_applicable,not_specified,NA,A,NSA,YoY,national_accounts|gdp|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+BROAD_MONEY_GDP_A,广义货币占GDP比重,Broad money as percent of GDP,% of GDP,A,NSA,level,1,national_accounts,gdp,level,ratio_gdp,not_applicable,stock,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|stock|NA|A|NSA,registered,2.1.0
+DOMESTIC_CREDIT_PRIVATE_GDP_A,对私营部门国内信贷占GDP比重,Domestic credit to private sector as percent of GDP,% of GDP,A,NSA,level,1,national_accounts,gdp,level,ratio_gdp,not_applicable,not_specified,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+TAX_REVENUE_GDP_A,税收收入占GDP比重,Tax revenue as percent of GDP,% of GDP,A,NSA,level,1,national_accounts,gdp,level,ratio_gdp,not_applicable,flow,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|flow|NA|A|NSA,registered,2.1.0
+MILITARY_EXPENDITURE_GDP_A,军费支出占GDP比重,Military expenditure as percent of GDP,% of GDP,A,NSA,level,1,national_accounts,gdp,level,ratio_gdp,not_applicable,not_specified,NA,A,NSA,level,national_accounts|gdp|level|ratio_gdp|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+ENERGY_USE_PER_CAPITA_A,人均能源使用量,Energy use per capita,kg of oil equivalent per capita,A,NSA,level,1,energy,energy_use_per,level,physical,not_applicable,not_specified,NA,A,NSA,level,energy|energy_use_per|level|physical|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+ELECTRIC_POWER_CONSUMPTION_A,人均电力消费,Electric power consumption per capita,kWh per capita,A,NSA,level,1,energy,electric_power_consumption,level,physical,not_applicable,not_specified,NA,A,NSA,level,energy|electric_power_consumption|level|physical|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+INTERNET_USERS_RATE_A,互联网使用率,Individuals using the Internet,% of population,A,NSA,level,1,population_social,internet_users_rate,rate,percent,not_applicable,not_specified,NA,A,NSA,level,population_social|internet_users_rate|rate|percent|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+LIFE_EXPECTANCY_A,预期寿命,Life expectancy at birth,years,A,NSA,level,1,population_social,life_expectancy,level,years,not_applicable,not_specified,NA,A,NSA,level,population_social|life_expectancy|level|years|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+SCHOOL_ENROLLMENT_TERTIARY_A,高等教育毛入学率,"School enrollment, tertiary",% gross,A,NSA,level,1,population_social,school_enrollment_tertiary,level,percent,not_applicable,not_specified,NA,A,NSA,level,population_social|school_enrollment_tertiary|level|percent|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+US_CPI_INDEX_M,美国居民消费价格指数,U.S. Consumer Price Index,index 1982-1984=100,M,SA,level,1,prices,cpi,level,index,not_applicable,not_specified,NA,M,SA,level,prices|cpi|level|index|not_applicable|not_specified|NA|M|SA,registered,2.1.0
+US_UNEMPLOYMENT_RATE_M,美国失业率,U.S. Unemployment Rate,%,M,SA,level,1,labour,unemployment,rate,percent,not_applicable,not_specified,NA,M,SA,level,labour|unemployment|rate|percent|not_applicable|not_specified|NA|M|SA,registered,2.1.0
+US_INDUSTRIAL_PRODUCTION_M,美国工业生产指数,U.S. Industrial Production Index,index 2017=100,M,SA,level,1,industry_consumption,industrial_production,level,index,not_applicable,not_specified,NA,M,SA,level,industry_consumption|industrial_production|level|index|not_applicable|not_specified|NA|M|SA,registered,2.1.0
+US_FED_FUNDS_RATE_M,美国联邦基金有效利率,U.S. Effective Federal Funds Rate,%,M,NSA,level,1,other,fed_funds_rate,rate,percent,not_applicable,not_specified,NA,M,NSA,level,other|fed_funds_rate|rate|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+US_PPI_INDEX_M,美国生产者价格指数,U.S. Producer Price Index,index 1982=100,M,NSA,level,1,prices,ppi,level,index,not_applicable,not_specified,NA,M,NSA,level,prices|ppi|level|index|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+US_CORE_CPI_INDEX_M,美国核心CPI指数,U.S. Core CPI Index,index 1982-1984=100,M,SA,level,1,prices,cpi,level,index,not_applicable,not_specified,NA,M,SA,level,prices|cpi|level|index|not_applicable|not_specified|NA|M|SA,registered,2.1.0
+US_RETAIL_SALES_M,美国零售销售额,U.S. Retail Sales,millions of dollars,M,SA,level,1,industry_consumption,retail_sales,level,currency,not_applicable,not_specified,NA,M,SA,level,industry_consumption|retail_sales|level|currency|not_applicable|not_specified|NA|M|SA,registered,2.1.0
+US_HOUSING_STARTS_M,美国新屋开工,U.S. Housing Starts,thousands of units,M,SA,level,1,industry_consumption,housing_starts,level,thousands of units,not_applicable,not_specified,NA,M,SA,level,industry_consumption|housing_starts|level|thousands of units|not_applicable|not_specified|NA|M|SA,registered,2.1.0
+US_NONFARM_PAYROLLS_M,美国非农就业人数,U.S. Nonfarm Payrolls,thousands of persons,M,SA,level,1,labour,nonfarm_payrolls,level,persons,not_applicable,not_specified,NA,M,SA,level,labour|nonfarm_payrolls|level|persons|not_applicable|not_specified|NA|M|SA,registered,2.1.0
+US_M2_MONEY_STOCK_M,美国M2货币存量,U.S. M2 Money Stock,billions of dollars,M,SA,level,1,money_finance,m2,level,currency,not_applicable,stock,NA,M,SA,level,money_finance|m2|level|currency|not_applicable|stock|NA|M|SA,registered,2.1.0
+US_10Y_TREASURY_RATE_M,美国10年期国债收益率,U.S. 10-Year Treasury Rate,%,M,NSA,level,1,money_finance,10y_treasury_rate,rate,percent,not_applicable,not_specified,NA,M,NSA,level,money_finance|10y_treasury_rate|rate|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+US_2Y_TREASURY_RATE_M,美国2年期国债收益率,U.S. 2-Year Treasury Rate,%,M,NSA,level,1,money_finance,2y_treasury_rate,rate,percent,not_applicable,not_specified,NA,M,NSA,level,money_finance|2y_treasury_rate|rate|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+CN_CPI_YOY_M,中国居民消费价格指数同比,China CPI YoY,%,M,NSA,YoY,1,prices,cpi,year_on_year_growth,percent,not_applicable,not_specified,NA,M,NSA,YoY,prices|cpi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+CN_PPI_YOY_M,中国工业生产者出厂价格指数同比,China PPI YoY,%,M,NSA,YoY,1,prices,ppi,year_on_year_growth,percent,not_applicable,not_specified,NA,M,NSA,YoY,prices|ppi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+CN_INDUSTRIAL_VALUE_ADDED_YOY_M,中国规模以上工业增加值同比,China industrial value added YoY,%,M,NSA,YoY,1,industry_consumption,industrial_value_added,year_on_year_growth,percent,not_applicable,not_specified,NA,M,NSA,YoY,industry_consumption|industrial_value_added|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+CN_RETAIL_SALES_YOY_M,中国社会消费品零售总额同比,China total retail sales YoY,%,M,NSA,YoY,1,industry_consumption,retail_sales,year_on_year_growth,percent,not_applicable,not_specified,NA,M,NSA,YoY,industry_consumption|retail_sales|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+CN_FIXED_ASSET_INVESTMENT_YTD_YOY_M,中国固定资产投资累计同比,China fixed asset investment YTD YoY,%,M,NSA,YTD_YoY,1,investment,fixed_asset_investment,ytd_growth,percent,not_applicable,not_specified,NA,M,NSA,YTD_YoY,investment|fixed_asset_investment|ytd_growth|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+CN_URBAN_SURVEYED_UNEMPLOYMENT_RATE_M,中国城镇调查失业率,China surveyed urban unemployment rate,%,M,NSA,level,1,labour,unemployment,rate,percent,not_applicable,not_specified,NA,M,NSA,level,labour|unemployment|rate|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+CN_MANUFACTURING_PMI_M,中国制造业采购经理指数,China manufacturing PMI,index,M,SA,level,1,industry_consumption,pmi,level,index,not_applicable,not_specified,NA,M,SA,level,industry_consumption|pmi|level|index|not_applicable|not_specified|NA|M|SA,registered,2.1.0
+CN_M1_YOY_M,中国狭义货币 M1 同比,China M1 money supply YoY,%,M,NSA,YoY,1,money_finance,m1,year_on_year_growth,percent,not_applicable,stock,NA,M,NSA,YoY,money_finance|m1|year_on_year_growth|percent|not_applicable|stock|NA|M|NSA,registered,2.1.0
+CN_M2_YOY_M,中国广义货币 M2 同比,China M2 money supply YoY,%,M,NSA,YoY,1,money_finance,m2,year_on_year_growth,percent,not_applicable,stock,NA,M,NSA,YoY,money_finance|m2|year_on_year_growth|percent|not_applicable|stock|NA|M|NSA,registered,2.1.0
+CN_TOTAL_SOCIAL_FINANCING_FLOW_M,中国社会融资规模增量,China aggregate financing to the real economy flow,100 million CNY,M,NSA,flow,1,money_finance,total_social_financing,flow,currency,constant_price,flow,CNY,M,NSA,flow,money_finance|total_social_financing|flow|currency|constant_price|flow|CNY|M|NSA,registered,2.1.0
+CN_EXPORTS_USD_YOY_M,中国出口金额同比,China exports in USD YoY,%,M,NSA,YoY,1,external_sector,exports,year_on_year_growth,percent,not_applicable,flow,NA,M,NSA,YoY,external_sector|exports|year_on_year_growth|percent|not_applicable|flow|NA|M|NSA,registered,2.1.0
+CN_IMPORTS_USD_YOY_M,中国进口金额同比,China imports in USD YoY,%,M,NSA,YoY,1,external_sector,imports,year_on_year_growth,percent,not_applicable,flow,NA,M,NSA,YoY,external_sector|imports|year_on_year_growth|percent|not_applicable|flow|NA|M|NSA,registered,2.1.0
+PPI_YOY_M,生产者价格指数同比,Producer Price Index YoY,%,M,NSA,YoY,2,prices,ppi,year_on_year_growth,percent,not_applicable,not_specified,NA,M,NSA,YoY,prices|ppi|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+PPI_YOY_A,生产者价格指数同比,Producer Price Index YoY,%,A,NSA,annual_average,2,prices,ppi,year_on_year_growth,percent,not_applicable,not_specified,NA,A,NSA,annual_average,prices|ppi|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+INDUSTRIAL_OUTPUT_YOY_M,工业生产同比,Industrial Output YoY,%,M,NSA,YoY,2,industry_consumption,industrial_output,year_on_year_growth,percent,not_applicable,not_specified,NA,M,NSA,YoY,industry_consumption|industrial_output|year_on_year_growth|percent|not_applicable|not_specified|NA|M|NSA,registered,2.1.0
+INDUSTRIAL_OUTPUT_YOY_A,工业生产同比,Industrial Output YoY,%,A,NSA,annual_average,2,industry_consumption,industrial_output,year_on_year_growth,percent,not_applicable,not_specified,NA,A,NSA,annual_average,industry_consumption|industrial_output|year_on_year_growth|percent|not_applicable|not_specified|NA|A|NSA,registered,2.1.0
+EXCHANGE_RATE_USD_M,本币兑美元汇率,Exchange rates against USD,local currency per USD,M,NSA,period_average,2,external_sector,exchange_rate,period_average,exchange_rate,not_applicable,not_specified,USD,M,NSA,period_average,external_sector|exchange_rate|period_average|exchange_rate|not_applicable|not_specified|USD|M|NSA,registered,2.1.0
+EXCHANGE_RATE_USD_A,本币兑美元汇率,Exchange rates against USD,local currency per USD,A,NSA,period_average,2,external_sector,exchange_rate,period_average,exchange_rate,not_applicable,not_specified,USD,A,NSA,period_average,external_sector|exchange_rate|period_average|exchange_rate|not_applicable|not_specified|USD|A|NSA,registered,2.1.0

@@ -36,7 +36,8 @@ def render_message(status: dict, repository: str = "", run_url: str = "") -> tup
         f"开始时间：{status.get('started_at') or '-'}",
         f"结束时间：{status.get('finished_at') or '-'}",
         f"运行耗时：{status.get('duration_seconds') if status.get('duration_seconds') is not None else '-'} 秒",
-        f"数据规模：{summary.get('row_count', '-')} 条 / {summary.get('indicator_count', '-')} 项指标 / {summary.get('country_count', '-')} 个国家（地区）",
+        f"当前数据：{summary.get('current_row_count', summary.get('row_count', '-'))} 条 / {summary.get('indicator_count', '-')} 项指标 / {summary.get('country_count', '-')} 个国家（地区）",
+        f"预测隔离：{summary.get('forecast_row_count', '-')} 条；质量门禁：{summary.get('quality_gate', '-')}；待复核映射：{summary.get('alignment_review_pending', '-')} 条",
         f"运行结果：{status.get('message') or '-'}",
     ]
     if repository:

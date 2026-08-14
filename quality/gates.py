@@ -8,6 +8,7 @@ from pathlib import Path
 import pandas as pd
 
 from config import DATA_CLEAN, METADATA_DIR
+from governance.contracts import evaluate_contracts
 
 
 OUT_FILE = DATA_CLEAN / "quality_gate.json"
@@ -16,27 +17,19 @@ OUT_FILE = DATA_CLEAN / "quality_gate.json"
 def run_quality_gates(raise_on_failure: bool = True) -> dict:
     data = pd.read_csv(DATA_CLEAN / "macro_observations.csv", encoding="utf-8-sig", low_memory=False)
     master = pd.read_csv(METADATA_DIR / "indicator_master.csv", encoding="utf-8-sig", low_memory=False)
-    value = pd.to_numeric(data["value"], errors="coerce")
-    key = ["country_code", "indicator_code", "date", "source_organization", "source_dataset"]
-    required = [
-        "country_code", "indicator_code", "date", "frequency", "unit", "value",
-        "source_organization", "source_dataset", "source_indicator_code", "source_url",
-        "observation_type", "processing_level", "source_status", "data_version",
-    ]
-    missing_columns = [column for column in required if column not in data.columns]
-    future_year = pd.to_numeric(data["date"].astype(str).str[:4], errors="coerce") > pd.Timestamp.now().year
-    forecast_mislabeled = int((future_year & data.get("observation_type", pd.Series("", index=data.index)).ne("forecast") & data["source_organization"].eq("IMF")).sum())
-    checks = {
-        "required_columns_present": {"passed": not missing_columns, "detail": missing_columns},
-        "no_null_observations": {"passed": int(value.isna().sum()) == 0, "detail": int(value.isna().sum())},
-        "no_duplicate_business_keys": {"passed": int(data.duplicated(key).sum()) == 0, "detail": int(data.duplicated(key).sum())},
-        "all_indicators_registered": {
-            "passed": set(data["indicator_code"].dropna()).issubset(set(master["indicator_code"].dropna())),
-            "detail": sorted(set(data["indicator_code"].dropna()) - set(master["indicator_code"].dropna())),
-        },
-        "forecast_semantics_valid": {"passed": forecast_mislabeled == 0, "detail": forecast_mislabeled},
-        "source_urls_complete": {"passed": int(data["source_url"].isna().sum()) == 0, "detail": int(data["source_url"].isna().sum())},
+    checks = evaluate_contracts(data, master)
+    required_semantic_fields = {"domain", "concept", "measure", "unit_family", "semantic_signature"}
+    checks["indicator_semantics_complete"] = {
+        "passed": required_semantic_fields.issubset(master.columns),
+        "detail": sorted(required_semantic_fields - set(master.columns)),
     }
+    mapping_path = METADATA_DIR / "source_mapping.csv"
+    mapping = pd.read_csv(mapping_path, encoding="utf-8-sig") if mapping_path.exists() else pd.DataFrame()
+    registry_scope = data[data["processing_level"].ne("derived")]
+    source_keys = set(zip(registry_scope["source_organization"].astype(str), registry_scope["source_indicator_code"].astype(str)))
+    mapping_keys = set(zip(mapping.get("source", pd.Series(dtype=str)).astype(str), mapping.get("source_indicator_code", pd.Series(dtype=str)).astype(str)))
+    unmapped = sorted(source_keys - mapping_keys)
+    checks["source_series_registered"] = {"passed": not unmapped, "detail": ["|".join(item) for item in unmapped[:50]]}
     payload = {
         "status": "passed" if all(item["passed"] for item in checks.values()) else "failed",
         "row_count": int(len(data)),
