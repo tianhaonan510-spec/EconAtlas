@@ -34,6 +34,7 @@ def query_observations(
     end: Optional[str] = None,
     frequency: Optional[str] = None,
     source: Optional[str] = None,
+    include_forecast: bool = False,
 ) -> pd.DataFrame:
     sql = """
         SELECT *
@@ -42,6 +43,9 @@ def query_observations(
           AND indicator_code = ?
     """
     params: list[Any] = [country, indicator]
+
+    if not include_forecast:
+        sql += " AND observation_type != 'forecast'"
 
     if frequency:
         sql += " AND frequency = ?"
@@ -110,6 +114,7 @@ def build_query_response(
     end: Optional[str] = None,
     frequency: Optional[str] = None,
     source: Optional[str] = None,
+    include_forecast: bool = False,
 ) -> dict[str, Any]:
     request_obj = {
         "country": country,
@@ -118,9 +123,10 @@ def build_query_response(
         "end_date": end,
         "frequency": frequency,
         "source": source,
+        "include_forecast": include_forecast,
     }
 
-    df = query_observations(country, indicator, start, end, frequency, source)
+    df = query_observations(country, indicator, start, end, frequency, source, include_forecast)
     if df.empty:
         return {"request": request_obj, "series": None, "error": {"message": "No data found"}}
 
@@ -155,6 +161,7 @@ def build_batch_response(queries: list[dict[str, Any]]) -> dict[str, Any]:
                     end=item.get("end"),
                     frequency=item.get("frequency"),
                     source=item.get("source"),
+                    include_forecast=bool(item.get("include_forecast", False)),
                 )
             )
         except Exception as exc:

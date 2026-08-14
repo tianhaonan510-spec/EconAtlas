@@ -1,20 +1,37 @@
 ﻿# -*- coding: utf-8 -*-
 from typing import Any, Literal, Optional
 import os
+import json
+import time
 from datetime import date
+from html import escape as html_escape
+from io import BytesIO
 from pathlib import Path
 
 import pandas as pd
 
 from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, Response
 from pydantic import BaseModel, Field
 
 from config import DB_PATH
 from api_service.panel import PANEL_HTML
 from services.ai_qa_service import ask_deepseek, build_messages, prepare_evidence, resolve_query_intent, route_with_deepseek
 from services.query_service import build_batch_response, build_query_response, read_sql
+
+try:
+    from reportlab.lib import colors
+    from reportlab.lib.pagesizes import A4
+    from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
+    from reportlab.lib.units import cm
+    from reportlab.pdfbase import pdfmetrics
+    from reportlab.pdfbase.cidfonts import UnicodeCIDFont
+    from reportlab.platypus import Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+    from reportlab.graphics.shapes import Drawing, PolyLine, String
+    REPORTLAB_AVAILABLE = True
+except ImportError:  # pragma: no cover - deployment dependency guard
+    REPORTLAB_AVAILABLE = False
 
 
 class QueryItem(BaseModel):
@@ -24,6 +41,7 @@ class QueryItem(BaseModel):
     end: Optional[str] = Field(None, description="End date or year, e.g. 2024 or 2024-12")
     frequency: Optional[str] = Field(None, description="Frequency code: D/W/M/Q/A")
     source: Optional[str] = Field(None, description="Source organization, e.g. IMF, World Bank, FRED")
+    include_forecast: bool = Field(False, description="Explicitly include forecast scenarios; defaults to false")
 
 
 class BatchQueryRequest(BaseModel):
@@ -46,13 +64,18 @@ class ReportRequest(BaseModel):
     indicator: str = Field(..., min_length=2, max_length=120)
 
 
+# Reuse the just-generated report when the user immediately downloads its PDF.
+# This prevents a second DeepSeek request and keeps the PDF button responsive.
+REPORT_CACHE: dict[tuple[str, str], tuple[float, dict[str, Any]]] = {}
+
+
 def _records(frame: pd.DataFrame) -> list[dict[str, Any]]:
     return frame.astype(object).where(frame.notna(), None).to_dict(orient="records")
 
 
 app = FastAPI(
     title="EconAtlas 全球宏观经济指标数据要素服务",
-    version="1.2.0",
+    version="2.0.0",
     description="面向全球宏观经济指标的数据采集、标准化治理与结构化 JSON API 服务。",
 )
 
@@ -70,7 +93,7 @@ def api_home() -> dict[str, Any]:
     return {
         "name": "EconAtlas",
         "description": "全球宏观经济指标数据要素采集、标准化治理与结构化服务平台",
-        "version": "1.2.0",
+        "version": "2.0.0",
         "db_path": str(DB_PATH),
         "db_exists": DB_PATH.exists(),
         "endpoints": {
@@ -166,6 +189,100 @@ def catalog() -> dict[str, Any]:
     return {"countries": _records(countries), "indicators": _records(indicators)}
 
 
+@app.get("/series-data")
+def series_data(
+    country: str = Query(...), indicator: str = Query(...),
+    start: Optional[str] = Query(None), end: Optional[str] = Query(None),
+    frequency: Optional[str] = Query(None), source: Optional[str] = Query(None),
+    include_forecast: bool = Query(False),
+) -> dict[str, Any]:
+    sql = """SELECT date, value, unit, frequency, source_organization, source_dataset,
+                    observation_type, status
+             FROM macro_observations WHERE country_code = ? AND indicator_code = ?
+                    AND value IS NOT NULL"""
+    params: list[Any] = [country.upper(), indicator]
+    if not include_forecast:
+        sql += " AND observation_type != 'forecast'"
+    if start:
+        sql += " AND date >= ?"
+        params.append(start)
+    if end:
+        sql += " AND date <= ?"
+        params.append(end)
+    if frequency:
+        sql += " AND frequency = ?"
+        params.append(frequency)
+    if source:
+        sql += " AND source_organization = ?"
+        params.append(source)
+    sql += " ORDER BY date, source_organization LIMIT 5000"
+    frame = read_sql(sql, params)
+    return {
+        "country": country.upper(), "indicator": indicator, "start": start, "end": end,
+        "frequency": frequency, "source": source, "include_forecast": include_forecast,
+        "rows": _records(frame), "count": len(frame),
+    }
+
+
+@app.get("/lineage")
+def lineage() -> dict[str, Any]:
+    path = Path(DB_PATH).parent.parent / "metadata" / "source_mapping.csv"
+    frame = pd.read_csv(path) if path.exists() else pd.DataFrame()
+    return {"mappings": _records(frame), "count": len(frame)}
+
+
+@app.get("/alignment-candidates")
+def alignment_candidates() -> dict[str, Any]:
+    path = Path(DB_PATH).parent.parent / "metadata" / "alignment_candidates.csv"
+    frame = pd.read_csv(path) if path.exists() else pd.DataFrame()
+    distribution = frame.groupby("confidence_level", dropna=False).size().reset_index(name="count") if not frame.empty else pd.DataFrame()
+    return {"candidates": _records(frame), "distribution": _records(distribution), "count": len(frame)}
+
+
+@app.get("/asset-ratings")
+def asset_ratings() -> dict[str, Any]:
+    frame = read_sql(
+        """SELECT indicator_code, COALESCE(MAX(indicator_name_zh), indicator_code) AS indicator_name_zh,
+                  COALESCE(MAX(frequency), '') AS frequency,
+                  COUNT(DISTINCT country_code) AS country_count,
+                  COUNT(DISTINCT source_organization) AS source_count,
+                  COUNT(*) AS total_rows,
+                  SUM(CASE WHEN value IS NOT NULL THEN 1 ELSE 0 END) AS valid_rows,
+                  MIN(CAST(SUBSTR(date, 1, 4) AS INTEGER)) AS start_year,
+                  MAX(CAST(SUBSTR(date, 1, 4) AS INTEGER)) AS end_year
+           FROM macro_observations WHERE observation_type != 'forecast'
+           GROUP BY indicator_code"""
+    )
+    if frame.empty:
+        return {"assets": [], "distribution": [], "count": 0}
+    frame["completeness"] = (frame["valid_rows"] / frame["total_rows"].replace(0, pd.NA) * 100).fillna(0)
+    for source, target in [("country_count", "coverage_score"), ("source_count", "source_score"), ("valid_rows", "scale_score")]:
+        frame[target] = frame[source] / max(float(frame[source].max()), 1) * 100
+    frame["freshness_score"] = frame["end_year"].apply(lambda year: 100 if pd.notna(year) and year >= date.today().year - 1 else 70)
+    frame["asset_score"] = (frame["completeness"] * .30 + frame["coverage_score"] * .25 + frame["source_score"] * .20 + frame["scale_score"] * .15 + frame["freshness_score"] * .10).round(1)
+    frame["asset_level"] = frame["asset_score"].apply(lambda score: "S" if score >= 90 else "A" if score >= 80 else "B" if score >= 70 else "C" if score >= 60 else "D")
+    frame = frame.sort_values(["asset_score", "valid_rows"], ascending=False)
+    distribution = frame.groupby("asset_level").size().reset_index(name="count")
+    return {"assets": _records(frame), "distribution": _records(distribution), "count": len(frame), "method": "完整性30% + 覆盖度25% + 多源20% + 规模15% + 新鲜度10%"}
+
+
+@app.get("/system-status")
+def system_status() -> dict[str, Any]:
+    root = Path(DB_PATH).parent.parent
+    update_path = root / "metadata" / "update_status.json"
+    try:
+        update = json.loads(update_path.read_text(encoding="utf-8-sig")) if update_path.exists() else {}
+    except Exception:
+        update = {}
+    return {
+        "service": "ok", "database": "ok" if DB_PATH.exists() else "missing",
+        "database_bytes": DB_PATH.stat().st_size if DB_PATH.exists() else 0,
+        "database_modified_at": date.fromtimestamp(DB_PATH.stat().st_mtime).isoformat() if DB_PATH.exists() else None,
+        "deepseek": "configured" if os.environ.get("DEEPSEEK_API_KEY", "").strip() else "not_configured",
+        "deployment": "FastAPI + Uvicorn on Render", "scheduled_update": update,
+    }
+
+
 @app.get("/quality-status")
 def quality_status() -> dict[str, Any]:
     base = Path(DB_PATH).parent
@@ -175,9 +292,32 @@ def quality_status() -> dict[str, Any]:
         "coverage": base / "quality_coverage_report.csv",
         "outliers": base / "quality_outlier_report.csv",
     }
-    result: dict[str, Any] = {}
+    current_year = date.today().year
+    current_rows = int(read_sql(
+        "SELECT COUNT(*) AS rows FROM macro_observations WHERE observation_type != 'forecast'"
+    ).iloc[0]["rows"])
+    forecast_rows = int(read_sql(
+        "SELECT COUNT(*) AS rows FROM macro_observations WHERE observation_type = 'forecast'"
+    ).iloc[0]["rows"])
+    result: dict[str, Any] = {
+        "scope": "released_data",
+        "as_of_date": date.today().isoformat(),
+        "forecast_rows_excluded": forecast_rows,
+    }
     for key, path in files.items():
         frame = pd.read_csv(path) if path.exists() else pd.DataFrame()
+        if key in {"consistency", "outliers"} and not frame.empty and "date" in frame:
+            years = pd.to_numeric(frame["date"].astype(str).str.extract(r"^(\d{4})", expand=False), errors="coerce")
+            frame = frame[years.le(current_year) | years.isna()].copy()
+        if key == "checks" and not frame.empty:
+            frame.loc[frame["check_item"] == "row_count", "value"] = current_rows
+            if "outlier_count" in frame["check_item"].astype(str).values:
+                outlier_path = files["outliers"]
+                outlier_frame = pd.read_csv(outlier_path) if outlier_path.exists() else pd.DataFrame()
+                if not outlier_frame.empty and "date" in outlier_frame:
+                    years = pd.to_numeric(outlier_frame["date"].astype(str).str.extract(r"^(\d{4})", expand=False), errors="coerce")
+                    outlier_frame = outlier_frame[years.le(current_year) | years.isna()]
+                frame.loc[frame["check_item"] == "outlier_count", "value"] = len(outlier_frame)
         result[key] = _records(frame.head(200))
         result[f"{key}_count"] = int(len(frame))
         result[f"{key}_warnings"] = int((frame.get("status", pd.Series(dtype=str)).astype(str).str.lower() == "warning").sum())
@@ -199,8 +339,7 @@ def risk_alerts() -> dict[str, Any]:
     }
 
 
-@app.post("/reports/generate")
-def generate_report(payload: ReportRequest) -> dict[str, Any]:
+def _report_payload(payload: ReportRequest, use_deepseek: bool = True) -> dict[str, Any]:
     data = read_sql(
         """SELECT date, value, unit, frequency, source_organization, source_dataset,
                   country_name_zh, indicator_name_zh, observation_type
@@ -212,7 +351,14 @@ def generate_report(payload: ReportRequest) -> dict[str, Any]:
     )
     if data.empty:
         return {"error": "当前条件没有可生成报告的历史或已发布数据。"}
-    recent = data.tail(24).copy()
+    source_rank = (
+        data.groupby("source_organization", dropna=False)
+        .agg(rows=("value", "size"), latest=("date", "max"))
+        .sort_values(["latest", "rows"], ascending=False)
+    )
+    primary_source = source_rank.index[0]
+    primary = data[data["source_organization"].fillna("") == ("" if pd.isna(primary_source) else primary_source)].copy()
+    recent = primary.tail(24).copy()
     latest = float(recent.iloc[-1]["value"])
     first = float(recent.iloc[0]["value"])
     trend = "上升" if latest > first else "下降" if latest < first else "平稳"
@@ -225,6 +371,32 @@ def generate_report(payload: ReportRequest) -> dict[str, Any]:
         f"最新值为{latest:g}{unit}，样本均值为{float(recent['value'].mean()):g}{unit}。"
         "本结论仅使用历史值和截至当前日期已发布的数据，不使用预测值。"
     )
+    ai_analysis = summary
+    analysis_mode = "statistical_fallback"
+    if use_deepseek and os.environ.get("DEEPSEEK_API_KEY", "").strip():
+        evidence_lines = "\n".join(
+            f"[D{i + 1}] {row.date}: {row.value:g}{unit}，来源={row.source_organization}"
+            for i, row in enumerate(recent.itertuples(index=False))
+        )
+        messages = [
+            {
+                "role": "system",
+                "content": (
+                    "你是 EconAtlas 智能报告分析器。只能依据编号数据证据写中文分析，不得补写数据或预测未来。"
+                    "请用‘趋势判断、关键变化、数据局限’三个短段落，每个关键数值标注 [D编号]。"
+                ),
+            },
+            {
+                "role": "user",
+                "content": f"对象：{country_name}；指标：{indicator_name}；单位：{unit}\n{evidence_lines}",
+            },
+        ]
+        try:
+            ai_result = ask_deepseek(messages)
+            ai_analysis = ai_result.text
+            analysis_mode = f"deepseek:{ai_result.model}"
+        except Exception:
+            pass
     markdown = f"""# {country_name} {indicator_name}分析报告
 
 ## 报告摘要
@@ -242,6 +414,10 @@ def generate_report(payload: ReportRequest) -> dict[str, Any]:
 - 最小值：{float(recent['value'].min()):g}{unit}
 - 数据来源：{'、'.join(sources)}
 
+## 智能分析
+
+{ai_analysis}
+
 ## 数据治理说明
 
 报告基于 EconAtlas 标准库生成，已排除 observation_type=forecast 的预测记录，并保留来源与口径字段。
@@ -249,10 +425,86 @@ def generate_report(payload: ReportRequest) -> dict[str, Any]:
     return {
         "country": payload.country.upper(), "country_name": country_name,
         "indicator": payload.indicator, "indicator_name": indicator_name,
-        "summary": summary, "markdown": markdown,
+        "summary": summary, "ai_analysis": ai_analysis, "analysis_mode": analysis_mode, "markdown": markdown,
         "stats": {"count": len(recent), "latest": latest, "mean": float(recent["value"].mean()), "min": float(recent["value"].min()), "max": float(recent["value"].max()), "unit": unit, "start": str(recent.iloc[0]["date"]), "end": str(recent.iloc[-1]["date"])},
-        "sources": sources, "series": _records(recent), "forecast_excluded": True,
+        "sources": sources, "primary_source": None if pd.isna(primary_source) else str(primary_source),
+        "series": _records(recent), "forecast_excluded": True,
     }
+
+
+@app.post("/reports/generate")
+def generate_report(payload: ReportRequest) -> dict[str, Any]:
+    report = _report_payload(payload)
+    if not report.get("error"):
+        REPORT_CACHE[(payload.country.upper(), payload.indicator)] = (time.time(), report)
+        if len(REPORT_CACHE) > 64:
+            oldest_key = min(REPORT_CACHE, key=lambda key: REPORT_CACHE[key][0])
+            REPORT_CACHE.pop(oldest_key, None)
+    return report
+
+
+def _build_pdf(report: dict[str, Any]) -> bytes:
+    if not REPORTLAB_AVAILABLE:
+        raise RuntimeError("当前环境未安装 reportlab")
+    try:
+        pdfmetrics.registerFont(UnicodeCIDFont("STSong-Light"))
+        font_name = "STSong-Light"
+    except Exception:  # pragma: no cover
+        font_name = "Helvetica"
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=A4, rightMargin=1.6 * cm, leftMargin=1.6 * cm, topMargin=1.5 * cm, bottomMargin=1.5 * cm)
+    styles = getSampleStyleSheet()
+    title_style = ParagraphStyle("TitleCN", parent=styles["Title"], fontName=font_name, fontSize=18, leading=25, textColor=colors.HexColor("#17356b"))
+    heading = ParagraphStyle("HeadingCN", parent=styles["Heading2"], fontName=font_name, fontSize=13, leading=20, textColor=colors.HexColor("#315ee9"), spaceBefore=12, spaceAfter=7)
+    body = ParagraphStyle("BodyCN", parent=styles["BodyText"], fontName=font_name, fontSize=10.5, leading=18, textColor=colors.HexColor("#172033"))
+    stats = report["stats"]
+    story: list[Any] = [
+        Paragraph(html_escape(f"{report['country_name']} · {report['indicator_name']}分析报告"), title_style),
+        Paragraph("EconAtlas 全球宏观经济数据要素平台", body), Spacer(1, 8),
+        Paragraph("一、报告摘要", heading), Paragraph(html_escape(report["summary"]), body),
+        Paragraph("二、核心统计", heading),
+    ]
+    rows = [
+        ["项目", "内容"], ["指标代码", report["indicator"]], ["时间范围", f"{stats['start']}—{stats['end']}"],
+        ["有效观测", str(stats["count"])], ["最新值", f"{stats['latest']:g}{stats['unit']}"],
+        ["均值", f"{stats['mean']:g}{stats['unit']}"], ["数据来源", "、".join(report["sources"])], ["预测记录", "0（已排除）"],
+    ]
+    table = Table(rows, colWidths=[4 * cm, 11.2 * cm])
+    table.setStyle(TableStyle([("FONTNAME", (0, 0), (-1, -1), font_name), ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#315ee9")), ("TEXTCOLOR", (0, 0), (-1, 0), colors.white), ("GRID", (0, 0), (-1, -1), .4, colors.HexColor("#d8dfec")), ("BACKGROUND", (0, 1), (-1, -1), colors.HexColor("#f8faff")), ("PADDING", (0, 0), (-1, -1), 7)]))
+    story.append(table)
+    values = [float(row["value"]) for row in report["series"]]
+    if len(values) >= 2:
+        drawing = Drawing(440, 150)
+        low, high = min(values), max(values)
+        spread = high - low or 1
+        points = [(18 + i * 400 / (len(values) - 1), 24 + (value - low) * 102 / spread) for i, value in enumerate(values)]
+        drawing.add(PolyLine(points, strokeColor=colors.HexColor("#5868ef"), strokeWidth=2))
+        drawing.add(String(18, 132, f"{high:g}", fontName=font_name, fontSize=8, fillColor=colors.HexColor("#718096")))
+        drawing.add(String(18, 8, f"{low:g}", fontName=font_name, fontSize=8, fillColor=colors.HexColor("#718096")))
+        drawing.add(String(72, 8, str(report["series"][0]["date"]), fontName=font_name, fontSize=8, fillColor=colors.HexColor("#718096")))
+        drawing.add(String(350, 8, str(report["series"][-1]["date"]), fontName=font_name, fontSize=8, fillColor=colors.HexColor("#718096")))
+        story.extend([Paragraph("三、趋势图", heading), drawing])
+    story.extend([
+        Paragraph("四、智能分析", heading), Paragraph(html_escape(report["ai_analysis"]).replace("\n", "<br/>"), body),
+        Paragraph("五、数据治理说明", heading),
+        Paragraph("本报告仅使用 EconAtlas 标准库中的历史值和截至当前日期已发布数据，预测情景已严格排除；来源、频率、单位和观测类型均保留可追溯字段。", body),
+    ])
+    doc.build(story)
+    return buffer.getvalue()
+
+
+@app.get("/reports/pdf")
+def report_pdf(country: str = Query(...), indicator: str = Query(...)) -> Response:
+    cache_key = (country.upper(), indicator)
+    cached = REPORT_CACHE.get(cache_key)
+    report = cached[1] if cached and time.time() - cached[0] <= 600 else _report_payload(
+        ReportRequest(country=country, indicator=indicator)
+    )
+    if report.get("error"):
+        return Response(report["error"], status_code=404, media_type="text/plain; charset=utf-8")
+    pdf = _build_pdf(report)
+    filename = f"EconAtlas-{country.upper()}-{indicator}.pdf"
+    return Response(pdf, media_type="application/pdf", headers={"Content-Disposition": f'attachment; filename="{filename}"'})
 
 
 @app.post("/chat")
@@ -265,7 +517,12 @@ def chat(payload: ChatRequest) -> dict[str, Any]:
                 "answer": decision.answer, "route": decision.route,
                 "context": payload.context or {}, "evidence": [],
             }
-        observations = read_sql("SELECT * FROM macro_observations")
+        # Conversational data answers use the same released-data boundary as
+        # the query, quality and report modules. Forecast scenarios remain in
+        # the database but are never presented as current facts.
+        observations = read_sql(
+            "SELECT * FROM macro_observations WHERE observation_type != 'forecast'"
+        )
         observations["date_year"] = observations["date"].astype(str).str[:4].astype("Int64")
         intent = resolve_query_intent(payload.question, observations, payload.context)
         subset = observations[
@@ -333,9 +590,10 @@ def query_macro(
     end: Optional[str] = Query(None, description="结束日期或年份，例如 2024 或 2024-12"),
     frequency: Optional[str] = Query(None, description="频率代码，例如 D、M、Q、A"),
     source: Optional[str] = Query(None, description="数据来源，例如 IMF、World Bank、FRED"),
+    include_forecast: bool = Query(False, description="是否显式包含预测情景；默认不包含"),
 ) -> dict[str, Any]:
     try:
-        return build_query_response(country, indicator, start, end, frequency, source)
+        return build_query_response(country, indicator, start, end, frequency, source, include_forecast)
     except Exception as exc:
         return {
             "request": {
@@ -345,6 +603,7 @@ def query_macro(
                 "end_date": end,
                 "frequency": frequency,
                 "source": source,
+                "include_forecast": include_forecast,
             },
             "series": None,
             "error": {"message": str(exc)},
