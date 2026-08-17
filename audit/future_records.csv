@@ -572,7 +572,7 @@ ID,CURRENT_ACCOUNT_GDP_A,2031,-0.784,IMF,World Economic Outlook,official,final,f
 ID,GDP_CURRENT_LCU_A,2027,2.7749649375e+16,IMF,World Economic Outlook,official,final,forecast
 ID,GDP_CURRENT_LCU_A,2028,2.9918819137e+16,IMF,World Economic Outlook,official,final,forecast
 ID,GDP_CURRENT_LCU_A,2029,3.2262242292e+16,IMF,World Economic Outlook,official,final,forecast
-ID,GDP_CURRENT_LCU_A,2030,3.4801877770999996e+16,IMF,World Economic Outlook,official,final,forecast
+ID,GDP_CURRENT_LCU_A,2030,3.4801877771e+16,IMF,World Economic Outlook,official,final,forecast
 ID,GDP_CURRENT_LCU_A,2031,3.7544461863e+16,IMF,World Economic Outlook,official,final,forecast
 ID,GDP_DEFLATOR_INDEX_A,2027,185.302,IMF,World Economic Outlook,official,final,forecast
 ID,GDP_DEFLATOR_INDEX_A,2028,189.967,IMF,World Economic Outlook,official,final,forecast
@@ -1296,7 +1296,7 @@ ZA,GDP_DEFLATOR_INDEX_A,2030,190.111,IMF,World Economic Outlook,official,final,f
 ZA,GDP_DEFLATOR_INDEX_A,2031,195.861,IMF,World Economic Outlook,official,final,forecast
 ZA,GDP_NOMINAL_USD_A,2027,494409000000.0,IMF,World Economic Outlook,official,final,forecast
 ZA,GDP_NOMINAL_USD_A,2028,513063000000.0,IMF,World Economic Outlook,official,final,forecast
-ZA,GDP_NOMINAL_USD_A,2029,533313999999.99994,IMF,World Economic Outlook,official,final,forecast
+ZA,GDP_NOMINAL_USD_A,2029,533314000000.0,IMF,World Economic Outlook,official,final,forecast
 ZA,GDP_NOMINAL_USD_A,2030,555264000000.0,IMF,World Economic Outlook,official,final,forecast
 ZA,GDP_NOMINAL_USD_A,2031,577966000000.0,IMF,World Economic Outlook,official,final,forecast
 ZA,GDP_PER_CAPITA_USD_A,2027,7623.795,IMF,World Economic Outlook,official,final,forecast
