@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "row_count": 66434,
+  "row_count": 66758,
   "checks": {
     "required_columns_present": {
       "passed": true,
