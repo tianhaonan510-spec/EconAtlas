@@ -1,6 +1,6 @@
 ﻿indicator_code,indicator_name_zh,frequency,asset_tier,classification_reason,historical_rows,current_published_rows,forecast_rows,raw_standardized_rows,country_count,source_count,start_date,end_date
 CPI_YOY_A,居民消费价格指数同比,A,core,多国、多源且历史观测充足,971,971,85,1044,17,4,1980,2026
-CPI_YOY_M,调和居民消费价格指数同比,M,core,多国、多源且历史观测充足,2970,2970,0,2832,17,4,2015-01,2026-07
+CPI_YOY_M,调和居民消费价格指数同比,M,core,多国、多源且历史观测充足,2974,2974,0,2836,17,4,2015-01,2026-07
 UNEMPLOYMENT_RATE_A,失业率,A,core,多国、多源且历史观测充足,877,877,80,945,17,3,1980,2026
 CURRENT_ACCOUNT_GDP_A,经常账户余额占GDP比重,A,core,多国、多源且历史观测充足,967,967,85,1052,17,2,1980,2026
 GDP_CURRENT_LCU_A,本币计价名义GDP,A,core,多国、多源且历史观测充足,980,980,85,1065,17,2,1980,2026
@@ -17,7 +17,7 @@ GROSS_CAPITAL_FORMATION_GDP_A,资本形成总额占GDP比重,A,core,多国、多
 GROSS_SAVINGS_GDP_A,国民总储蓄占GDP比重,A,core,多国、多源且历史观测充足,981,981,85,1066,17,2,1980,2026
 POPULATION_TOTAL_A,总人口,A,core,多国、多源且历史观测充足,986,986,85,1071,17,2,1980,2026
 EXCHANGE_RATE_USD_A,本币兑美元汇率,A,core,多国、多源且历史观测充足,144,144,0,0,11,2,2015,2026
-EXCHANGE_RATE_USD_D,本币兑美元汇率,D,core,多国、多源且历史观测充足,35934,35934,0,32955,11,2,2015-01-01,2026-08-21
+EXCHANGE_RATE_USD_D,本币兑美元汇率,D,core,多国、多源且历史观测充足,35994,35994,0,33010,11,2,2015-01-01,2026-08-28
 EXCHANGE_RATE_USD_M,本币兑美元汇率,M,core,多国、多源且历史观测充足,1680,1680,0,0,11,2,2015-01,2026-08
 DOMESTIC_CREDIT_PRIVATE_GDP_A,对私营部门国内信贷占GDP比重,A,extended,具备一定广度或多源能力，仍需增强,167,167,0,167,17,1,2015,2025
 ELECTRIC_POWER_CONSUMPTION_A,人均电力消费,A,extended,具备一定广度或多源能力，仍需增强,164,164,0,164,17,1,2015,2024
@@ -50,7 +50,7 @@ PPI_YOY_A,生产者价格指数同比,A,specialized,国家专属或低覆盖指�
 CN_CPI_YOY_M,中国居民消费价格指数同比,M,specialized,国家专属或低覆盖指标,12,12,0,12,1,1,2024-01,2024-12
 CN_INDUSTRIAL_VALUE_ADDED_YOY_M,中国规模以上工业增加值同比,M,specialized,国家专属或低覆盖指标,11,11,0,11,1,1,2024-02,2024-12
 CN_PPI_YOY_M,中国工业生产者出厂价格指数同比,M,specialized,国家专属或低覆盖指标,12,12,0,12,1,1,2024-01,2024-12
-EUR_USD_EXCHANGE_RATE_D,欧元兑美元参考汇率,D,specialized,国家专属或低覆盖指标,2979,2979,0,2979,1,1,2015-01-02,2026-08-21
+EUR_USD_EXCHANGE_RATE_D,欧元兑美元参考汇率,D,specialized,国家专属或低覆盖指标,2984,2984,0,2984,1,1,2015-01-02,2026-08-28
 US_10Y_TREASURY_RATE_M,美国10年期国债收益率,M,specialized,国家专属或低覆盖指标,139,139,0,139,1,1,2015-01,2026-07
 US_2Y_TREASURY_RATE_M,美国2年期国债收益率,M,specialized,国家专属或低覆盖指标,139,139,0,139,1,1,2015-01,2026-07
 US_CORE_CPI_INDEX_M,美国核心CPI指数,M,specialized,国家专属或低覆盖指标,138,138,0,138,1,1,2015-01,2026-07
@@ -58,7 +58,7 @@ US_CPI_INDEX_M,美国居民消费价格指数,M,specialized,国家专属或低�
 US_FED_FUNDS_RATE_M,美国联邦基金有效利率,M,specialized,国家专属或低覆盖指标,139,139,0,139,1,1,2015-01,2026-07
 US_HOUSING_STARTS_M,美国新屋开工,M,specialized,国家专属或低覆盖指标,139,139,0,139,1,1,2015-01,2026-07
 US_INDUSTRIAL_PRODUCTION_M,美国工业生产指数,M,specialized,国家专属或低覆盖指标,139,139,0,139,1,1,2015-01,2026-07
-US_M2_MONEY_STOCK_M,美国M2货币存量,M,specialized,国家专属或低覆盖指标,138,138,0,138,1,1,2015-01,2026-06
+US_M2_MONEY_STOCK_M,美国M2货币存量,M,specialized,国家专属或低覆盖指标,139,139,0,139,1,1,2015-01,2026-07
 US_NONFARM_PAYROLLS_M,美国非农就业人数,M,specialized,国家专属或低覆盖指标,139,139,0,139,1,1,2015-01,2026-07
 US_PPI_INDEX_M,美国生产者价格指数,M,specialized,国家专属或低覆盖指标,139,139,0,139,1,1,2015-01,2026-07
 US_RETAIL_SALES_M,美国零售销售额,M,specialized,国家专属或低覆盖指标,139,139,0,139,1,1,2015-01,2026-07
