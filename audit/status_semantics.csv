@@ -1,11 +1,11 @@
 ﻿source_organization,source_status,release_status,observation_type,row_count
-BIS,A,final,historical,33175
+BIS,A,final,historical,33230
 BIS,derived_aligned,estimated,derived,1683
-ECB,A,final,historical,2999
-ECB,derived_aligned,estimated,derived,3152
+ECB,A,final,historical,3004
+ECB,derived_aligned,estimated,derived,3157
 Eurostat,final,final,historical,2141
 FRED,derived_aligned,estimated,derived,428
-FRED,final,final,historical,1676
+FRED,final,final,historical,1677
 IMF,official,final,forecast,1355
 IMF,official,final,historical,11891
 National Bureau of Statistics of China,derived_aligned,estimated,derived,38
